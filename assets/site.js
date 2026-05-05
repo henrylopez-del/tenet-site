@@ -1,10 +1,10 @@
-/* TENET — site.js · MMXXVI */
+/* TENET — site.js · 2026 */
 
 /* console manifesto · view-source reward */
 console.log("%c TENET ", "background:#E50914;color:#fff;font-weight:900;font-size:22px;padding:6px 14px;letter-spacing:8px");
 console.log("%c El loop está cerrado.", "color:#F5D000;font-family:monospace;font-size:13px;letter-spacing:2px");
 console.log("%c ─────────────────────", "color:#444");
-console.log("%c MMXXVI · Madrid · Partnership cohort Q2", "color:#888;font-family:monospace");
+console.log("%c 2026 · Madrid · Partnership cohort Q2", "color:#888;font-family:monospace");
 console.log("%c hola@tenet.partners", "color:#fff;font-family:monospace;text-decoration:underline");
 console.log("%c ", "");
 console.log("%c Si encontraste este mensaje, escríbenos al correo de arriba\n con la frase 'view-source' en el subject. Te respondemos\n en menos de 24h con propuesta directa, sin formulario.","color:#5fff7e;font-family:monospace;font-size:11px;line-height:1.6");

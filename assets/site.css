@@ -1,4 +1,4 @@
-/* TENET — MMXXVI · v2 multi-page
+/* TENET — 2026 · v2 multi-page
    body: y2k skater grew up · soul: mad men
    no consensus. no setup fees. no negotiation. */
 
@@ -644,7 +644,7 @@ footer .palindrome{color:var(--red);letter-spacing:8px}
   opacity:.6;pointer-events:none;
 }
 .adinsert::after{
-  content:"PAID INSERT · TENET QUARTERLY · MMXXVI";
+  content:"PAID INSERT · TENET QUARTERLY · 2026";
   position:absolute;top:14px;left:0;right:0;text-align:center;
   font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:6px;
   color:#000;opacity:.5;text-transform:uppercase;

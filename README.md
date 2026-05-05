@@ -1,6 +1,6 @@
 # TENET — tenet.partners
 
-Performance marketing closed-loop. Madrid · MMXXVI.
+Performance marketing closed-loop. Madrid · 2026.
 
 **Stack:** static HTML/CSS/JS. Sin frameworks. Sin build step.
 Hosted en GitHub Pages.
@@ -20,7 +20,7 @@ Ver `~/Desktop/HenryBrain/wiki/projects/tenet/tenet-brand-identity-v8.md`
 1. URL palindrómica preparada (rutas `/loop/closed/loop`)
 2. Live counter "loops cerrados" en esquina inferior izq.
 3. View-source manifesto + console.log easter egg
-4. Copyright en romanos (MMXXVI)
+4. Copyright en romanos (2026)
 5. Timestamps inversos (40-50-6202)
 6. 404 reverso ("TIME INVERTED")
 7. Sator square en console + footer
