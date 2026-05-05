@@ -99,7 +99,7 @@ A square photograph of a black laptop lid covered in approximately 12 overlappin
 **Filename:** `assets/img/email-sig.png`
 **Aspect:** 600 × 200
 ```
-Horizontal banner 600x200 pixels. Pure black background with subtle grain. On the far left, the TENET wordmark in white condensed Anton bold, 48px, with a thin red underline. To the right of the wordmark, a vertical red line separator. To the right of the line, a small block: line 1 in white monospace 14px "Henry López · Founder", line 2 in cream monospace 12px "hola@tenet.partners", line 3 in red monospace 11px "tenet.partners". Far right corner: a tiny yellow circle reading "M M X X V I" in tiny black monospace circular text. Spartan, brutalist, no decoration. 600x200.
+Horizontal banner 600x200 pixels. Pure black background with subtle grain. On the far left, the TENET wordmark in white condensed Anton bold, 48px, with a thin red underline. To the right of the wordmark, a vertical red line separator. To the right of the line, a small block: line 1 in white monospace 14px "Henry López · Founder", line 2 in cream monospace 12px "hola@tenet.partners", line 3 in red monospace 11px "tenet.partners". Far right corner: a tiny yellow circle reading "2 0 2 6" in tiny black monospace circular text. Spartan, brutalist, no decoration. 600x200.
 ```
 
 ### 12 — Madrid wall poster (printable A2)
