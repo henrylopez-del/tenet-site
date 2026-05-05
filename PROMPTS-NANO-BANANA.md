@@ -153,3 +153,82 @@ Siempre que generes algo nuevo, incluye al menos 3 de estos términos en el prom
 - **Referencias seguras de citar en el prompt:** "Stüssy posters", "Big Brother Magazine collages", "Pentagram precision", "Russian constructivist", "Mad Men 1962 Sterling Cooper", "Tony Hawk Pro Skater 2 menu UI", "Pompeii Sator Square", "Saul Bass titles"
 
 **Nunca** menciones por nombre marcas que tengan trademark protegido (Nike, Apple, MTV) — usa descripciones genéricas. **Sí** puedes referenciar movimientos/épocas/aesthetics generales y nombres de diseñadores históricos como Saul Bass, Massimo Vignelli, Stefan Sagmeister.
+
+---
+
+## F — END-TO-END · DATA-IS-THE-PRODUCT (drop 02)
+
+> Estos prompts refuerzan el reposicionamiento: TENET no es complemento técnico, es el motor completo. La data es el entregable.
+
+### 19 — "LA DATA ES EL PRODUCTO" (poster manifesto)
+**Filename:** `assets/img/data-es-producto.png` · **Aspect:** 1080 × 1350
+```
+A vertical poster with deep saturated red field (#E50914) covering the top two-thirds, heavy print grain and CMYK misregistration. Bottom third pure black with paper-grain texture. On the red field, in massive cream Anton condensed bold caps stacked tight: "LA DATA / ES EL / PRODUCTO." with the period in yellow. Below the headline on the red field, in tiny cream monospace 14px caps: "EL PIXEL · EL CRM · LA LANDING — SOLO HERRAMIENTAS". On the black bottom third, in cream Anton 24px caps: "TENET · MADRID · MMXXVI". A small yellow ticket sticker rotated 6° in upper-right reads "EDICIÓN 02 · DROP 02". Heavy halftone grain, riso misregistration on every letter edge. Aesthetic: Russian constructivist meets Pentagram precision meets a 1970s Vignelli MTA poster. All Spanish. 1080x1350.
+```
+
+### 20 — "TAKEOVER" (we run it all, end to end)
+**Filename:** `assets/img/takeover.png` · **Aspect:** 1600 × 900
+```
+A cinematic 16:9 horizontal frame, photographed on expired film stock with grain. Scene: a vintage 1990s computer monitor on a desk, screen glowing red — on the screen is a stylized full-screen takeover graphic showing a single bold cream Anton condensed word "TENET" centered, with a thin red blinking cursor underneath spelling "OPERATING_". In the foreground, soft-focus, a single black-gloved hand resting on a vintage mechanical keyboard, no person visible above the wrist. Behind the monitor, slightly out of focus, a wall of Post-It notes in yellow with handwritten Caveat-style notes (illegible at distance, just texture). The room is lit with a warm desk-lamp glow plus the cold red glare of the screen. Top-left corner: tiny cream monospace text "// REC · 00:14:00 · MADRID · MMXXVI". Bottom-right: small TENET wordmark stamped over the photograph in yellow. Aesthetic: a 1999 hacker movie still meets a Wallpaper magazine editorial meets Big Brother Magazine darkroom photo. 1600x900 cinematic widescreen.
+```
+
+### 21 — "FUGAS DEL PIXEL" (diagnostic visual, 6-grid)
+**Filename:** `assets/img/fugas-pixel.png` · **Aspect:** 1080 × 1080
+```
+A square poster on cream paper textured background with riso misregistration. The composition is a 2x3 grid of stylized "leak" diagrams, each cell a different hand-drawn red arrow pointing down through a torn paper edge representing data loss. Each cell labeled in tiny black Anton caps top-left: "iOS 14.5 / ITP COOKIES / BLOQUEADORES / VISTA OFFLINE / MATCH RATE / DEDUP". Numbers in giant red Anton condensed under each label: "−47%" / "−22%" / "−18%" / "−40%" / "−50%" / "−15%". Across the entire poster, overlaid at 30% opacity, a giant cream Anton diagonal slash from upper-left to lower-right reading "FUGAS". Bottom-right corner, in tiny cream monospace: "TENET · LO QUE TU PIXEL NO TE DICE · MMXXVI". Aesthetic of editorial infographic from a 1990s tech magazine meets Stefan Sagmeister monograph. 1080x1080.
+```
+
+### 22 — "EXTREMO A EXTREMO" (full-stack diagram, brutalist)
+**Filename:** `assets/img/extremo-a-extremo.png` · **Aspect:** 1600 × 600
+```
+A horizontal banner, deep black background with subtle grain. Across the entire width, a single horizontal flow diagram of 7 connected boxes, each in a different color from the TENET palette (red, yellow, blue, cream alternating). Each box is a square with a label in cream Anton caps inside: "01 · AUDIT" → "02 · PERSONAS" → "03 · LANDING" → "04 · TRACKING" → "05 · CRM" → "06 · CREATIVOS" → "07 · IA". Between each box, a thick yellow arrow with a riso-misregistration shadow. Above the entire flow, in tiny cream monospace caps: "LO QUE HACEMOS · TODO · SIN SUBCONTRATAR". Below: "TENET · MOTOR DE ADQUISICIÓN END-TO-END · MMXXVI". Heavy print grain on every element. Aesthetic of a Massimo Vignelli MTA subway diagram meets a Soviet 5-year-plan poster. 1600x600 horizontal banner.
+```
+
+### 23 — "FOUNDER PORTRAIT" (stylized poster of the founder)
+**Filename:** `assets/img/founder-poster.png` · **Aspect:** 1080 × 1350
+```
+A vertical poster, deep red field (#E50914) with heavy halftone grain. The composition is a high-contrast silhouette portrait — a single male figure from the chest up, facing slightly to the right, rendered entirely in deep navy blue (#1B3CFF) with hard rim-light, no facial features identifiable, hair short and messy, wearing a plain dark t-shirt. The portrait occupies the right two-thirds of the frame. On the left third, vertical text in massive cream Anton condensed caps stacked: "TOMO / TU / EMPRESA." with a thin yellow underline below "EMPRESA". Below the portrait, in tiny cream monospace caps: "HENRY LÓPEZ · FUNDADOR TENET · MADRID MMXXVI". A small yellow ticket sticker rotated 5° in upper-right reads "FOUNDER'S PROMISE". The whole composition has CMYK chromatic aberration on the type edges. Aesthetic of a 1968 Cuban revolutionary poster meets a 2001 skate-shop founder portrait meets Saul Bass title card. No identifiable face, no real people. 1080x1350.
+```
+
+### 24 — "MATCH RATE 73%" (dashboard moment, single big number)
+**Filename:** `assets/img/match-rate-73.png` · **Aspect:** 1080 × 1080
+```
+A square poster, pure black background with fine film grain. Centered, a single massive numeral "73%" in cream Anton condensed bold, 540px tall, with strong CMYK chromatic aberration (red ghost left, blue ghost right, offset 4px each). Below the number, a thin yellow horizontal line. Below the line, in tiny cream monospace caps: "MATCH RATE · CAPI · TENET DEPLOYMENT". Top-left corner: tiny green VT323 monospace "▶ LIVE · CLIENT 02". Top-right corner: tiny cream monospace "MMXXVI · DROP 01". Around the number, faint scanlines of an old CRT display at 8% opacity. Bottom of poster: a thin red horizontal bar with cream caps reading "EMQ 8.4 · DEDUPED · CONSENT MAPPED". Aesthetic of an early-2000s sports stat broadcast graphic meets a vintage Bloomberg terminal screen meets a Saul Bass title. 1080x1080.
+```
+
+---
+
+## G — VEO VIDEO PROMPTS · 8 SECONDS · 3 PER DAY
+
+> Veo permite hasta 3 videos al día de 8 segundos. Estos 3 prompts están optimizados para tomar pleno aprovechamiento. Single-shot o 2-shot máximo por prompt — Veo rinde mejor con visión clara, no con narrativa compleja.
+
+### V1 — "EL CLICK QUE NADÓ" · short reel
+**Duration:** 8 seconds · 1080×1080 · 24fps
+```
+An 8-second underwater video clip. Camera holds steady underwater in deep cyan-blue water with strong sun rays from above. In the foreground, a single euro coin (€1) suspended in the water column, slowly drifting away from camera as if pulled by an invisible current. Sun caustics dance on the coin's surface. After 4 seconds, a cream-colored fishing net silhouette enters from the bottom edge of the frame and moves upward, gently catching the coin just before it disappears into darkness. As the net catches the coin, a soft red glow pulses once around it. Final 1 second: title text fades in over the catch — cream Anton condensed caps "EL LOOP CERRADO." with a yellow period. Heavy film grain overlay throughout. Audio: muffled underwater ambience + a single satisfying "tick" at the moment of catch. Aesthetic of 1990s underwater photography by Howard Hall + Apple Watch close-your-rings satisfaction. No human figures. 1080x1080, 24fps, 8 seconds.
+```
+
+### V2 — "TAKEOVER · 14 DAYS" · timelapse opener
+**Duration:** 8 seconds · 1080×1920 (vertical · IG Reel / TikTok) · 24fps
+```
+An 8-second vertical video. First 2 seconds: extreme close-up of a black mechanical keyboard under a warm desk-lamp glow, fingers typing fast (only fingers visible, no face). Camera slowly pulls back. Seconds 3-5: pull-back reveals a vintage 1990s CRT monitor on the desk, screen showing scrolling green VT323 monospace text "tenet deploy --client agencia.madrid... scanning... ok... wiring meta capi... ok... wiring google ec... ok..." Each line appears every 0.4s with subtle glow. Seconds 6-7: camera continues pulling back, revealing the desk in a darkened Madrid apartment — yellow Post-It notes on the wall behind, a small framed TENET poster in red. Second 8: full pullback frame freezes, big cream Anton condensed caps fade in centered "14 DÍAS." with red period. Heavy film grain throughout. Audio: ambient room tone + mechanical keyboard clack rhythm + a final analog "thunk". Aesthetic of a 2002 hacker movie opening shot meets a Wallpaper magazine editorial spread. No identifiable face. 1080x1920, 24fps, 8 seconds.
+```
+
+### V3 — "MATCH RATE LIVE" · ticker reveal
+**Duration:** 8 seconds · 1080×1080 · 24fps
+```
+An 8-second square video. First 1 second: pure black frame, only fine film grain visible. Second 2: a thin red horizontal line draws itself across the center from left to right. Seconds 3-5: above the line, a counter starts ticking up rapidly from "00%" → "73%" in cream Anton condensed bold caps, 540px tall, with each frame the chromatic aberration getting more intense (red ghost left, blue ghost right, growing from 1px to 5px offset). Below the line, a row of monospace events scrolls right-to-left like a stock ticker: "META.CAPI · OK · GOOGLE.EC · OK · OFFLINE.CONV · OK · DEDUP · OK · CONSENT.V2 · OK". Seconds 6-7: the counter holds at "73%" with the chromatic aberration pulsing once. Second 8: a yellow ticket sticker drops in from above with a slight bounce, lands rotated 5° in the upper-right corner reading "MATCH · LIVE · MMXXVI". Heavy CRT scanline overlay throughout. Audio: subtle digital "blip" at each tick + a satisfying analog "thunk" at the final hold. Aesthetic of a vintage Bloomberg terminal meets ESPN sports score graphic from 2003. 1080x1080, 24fps, 8 seconds.
+```
+
+---
+
+## CADENCIA DE GENERACIÓN SUGERIDA (próximos 3 días)
+
+**Día 1 (hoy):** prompts 19, 20, 21 (poster manifesto + takeover scene + fugas grid) en GPT Image · prompt V1 (el click que nadó) en Veo
+**Día 2:** prompts 22, 23, 24 (extremo a extremo + founder portrait + match rate) en GPT Image · prompt V2 (takeover 14 días) en Veo
+**Día 3:** los 4-pack IG (07, 08, 09, 10 originales) en GPT Image · prompt V3 (match rate live) en Veo
+
+Total cohorte completa al final del día 3: **13 prompts visuales nuevos en producción + 3 videos de 8s nuevos para Reels/TikTok/LinkedIn**.
+
+Cuando los tengas, sube todo a `~/Desktop/tenet-site/assets/img/` (estáticos) y `~/Desktop/tenet-site/assets/video/` (crear si no existe), y push. Si necesitas que reemplace placeholders existentes con los nuevos, dime cuáles.
+
