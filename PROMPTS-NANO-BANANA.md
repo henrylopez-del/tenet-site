@@ -24,7 +24,7 @@ A horizontal red banner, deep saturated red #E50914, with three giant white nume
 **Filename:** `assets/img/banner-estrategia.png`
 **Aspect:** 1600 × 600
 ```
-A horizontal black banner with film grain. Left half: in massive cream Anton condensed bold, three lines stacked tightly: "ESTRATEGIA" / "CREATIVA" / "3 MESES." with a thin yellow underline below "MESES". Right half: in deep red, a single giant numeral "€1.500" 280px tall, with small monospace caption below in cream "PAGO ÚNICO · NO RECURRENTE". Yellow ticket sticker rotated 5° in upper-right reading "CUPO LIMITADO". A small bottom-bar in cream monospace 11px reading "TAKEOVER META 3 MESES · AUDITORÍA · BUYER PERSONAS · CREATIVOS AI · REPORTE 5 AÑOS". All Spanish. Aesthetic: Pentagram precision meets Big Brother Magazine. 1600x600 horizontal.
+A horizontal black banner with film grain. Left half: in massive cream Anton condensed bold, three lines stacked tightly: "ESTRATEGIA" / "CREATIVA" / "3 MESES." with a thin yellow underline below "MESES". Right half: in deep red, a single giant numeral "€2.000" 320px tall, with small monospace caption below in cream "PAGO ÚNICO · NO RECURRENTE". Yellow ticket sticker rotated 5° in upper-right reading "CUPO LIMITADO". A small bottom-bar in cream monospace 11px reading "TAKEOVER META 3 MESES · AUDITORÍA · BUYER PERSONAS · CREATIVOS AI · REPORTE 5 AÑOS". All Spanish. Aesthetic: Pentagram precision meets Big Brother Magazine. 1600x600 horizontal.
 ```
 
 ### 03 — Manifesto cover (LinkedIn carousel slide 1)
