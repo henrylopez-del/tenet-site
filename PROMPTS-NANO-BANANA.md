@@ -17,7 +17,14 @@ A bold editorial poster, screen-printed feel, photographed flat under fluorescen
 **Filename:** `assets/img/banner-pricing.png`
 **Aspect:** 1600 × 600
 ```
-A horizontal red banner, deep saturated red #E50914, with three giant white numerals stacked horizontally with thin yellow underlines: "€1.000" "€1.500" "€1.800". Below each, microscopic monospace caption "META" "GOOGLE" "AMBOS". Heavy print grain texture, slight CMYK misregistration on the digits creating blue and red ghost shadows. A black rectangular ticket sticker rotated 4 degrees on the far right reads "SIN ASTERISCOS" in white Anton condensed type. Inspired by old gas-station price boards mixed with Russian constructivist posters mixed with Vans skate ads from 2002. 1600x600 horizontal.
+A horizontal red banner, deep saturated red #E50914, with three giant white numerals stacked horizontally with thin yellow underlines, exactly: "€600" "€1.000" "€1.300". Below each, microscopic monospace caption: "META" "GOOGLE" "AMBOS". Heavy print grain texture, slight CMYK misregistration on the digits creating blue and red ghost shadows. A black rectangular ticket sticker rotated 4 degrees on the far right reads "CERO ASTERISCOS" in white Anton condensed type. Tiny line of monospace text bottom-center: "2 MESES POR ADELANTADO · DEVOLUCIÓN 60 DÍAS". All Spanish, no English. Inspired by old gas-station price boards mixed with Russian constructivist posters mixed with Vans skate ads from 2002. 1600x600 horizontal.
+```
+
+### 02b — Banner Estrategia Creativa (3 meses · pago único)
+**Filename:** `assets/img/banner-estrategia.png`
+**Aspect:** 1600 × 600
+```
+A horizontal black banner with film grain. Left half: in massive cream Anton condensed bold, three lines stacked tightly: "ESTRATEGIA" / "CREATIVA" / "3 MESES." with a thin yellow underline below "MESES". Right half: in deep red, a single giant numeral "€1.500" 280px tall, with small monospace caption below in cream "PAGO ÚNICO · NO RECURRENTE". Yellow ticket sticker rotated 5° in upper-right reading "CUPO LIMITADO". A small bottom-bar in cream monospace 11px reading "TAKEOVER META 3 MESES · AUDITORÍA · BUYER PERSONAS · CREATIVOS AI · REPORTE 5 AÑOS". All Spanish. Aesthetic: Pentagram precision meets Big Brother Magazine. 1600x600 horizontal.
 ```
 
 ### 03 — Manifesto cover (LinkedIn carousel slide 1)
