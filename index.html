@@ -18,6 +18,8 @@
 <meta property="og:image" content="assets/img/hero-we-closed-the-loop.png">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="stylesheet" href="assets/site.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
 </head>
 <body class="vhs">
 
@@ -72,7 +74,7 @@
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:24px">
       <div>
         <p style="font-size:19px;line-height:1.6;color:#e8e8e8;font-weight:500">
-          Una <strong style="color:var(--bone)">agencia técnica de Madrid</strong> que arregla tu medición de Meta Ads y Google Ads. iOS, GDPR y los bloqueadores te han ocultado entre el <strong style="color:var(--yellow)">30% y el 60%</strong> de las ventas que tu publicidad genera. Recuperamos esa atribución con <em>tracking server-side</em> (Meta CAPI + Google Enhanced Conversions) + un <strong style="color:var(--bone)">CRM all-in-one (GoHighLevel) incluido en el plan</strong> donde se cierra cada venta — la pieza final del loop — y una capa de <strong style="color:var(--bone)">IA</strong> sobre los datos limpios para optimizar campañas en tiempo real.
+          Una <strong style="color:var(--bone)">agencia técnica de Madrid</strong> que arregla tu medición de Meta Ads y Google Ads. iOS, GDPR y los bloqueadores te han ocultado entre el <span class="annot"><strong style="color:var(--yellow);position:relative;z-index:2">30% y el 60%</strong><svg viewBox="0 0 200 60" preserveAspectRatio="none"><ellipse cx="100" cy="30" rx="92" ry="22" fill="none" stroke="#E50914" stroke-width="2.5" stroke-dasharray="0,0" style="filter:url(#rough)" transform="rotate(-2 100 30)"/></svg></span> de las ventas que tu publicidad genera. Recuperamos esa atribución con <em>tracking server-side</em> (Meta CAPI + Google Enhanced Conversions) + un <strong style="color:var(--bone)">CRM all-in-one (GoHighLevel) incluido en el plan</strong> donde se cierra cada venta — la pieza final del loop — y una capa de <strong style="color:var(--bone)">IA</strong> sobre los datos limpios para optimizar campañas en tiempo real.
         </p>
       </div>
       <div>
@@ -123,6 +125,12 @@
   </div>
 </section>
 
+<!-- ─── Loading tip strip (Xbox 360) ─── -->
+<div class="loadtip">
+  <span class="lab">DATO</span>
+  <span class="msg" id="loadtip-msg">El pixel client-side perdió un 47% de eventos tras iOS 14.5.</span>
+</div>
+
 <!-- ─── ticker ─── -->
 <div class="ticker">
   <div class="track">
@@ -160,10 +168,50 @@
   </div>
 </section>
 
-<!-- ─── viewer discretion bumper ─── -->
-<div class="discretion">
+<!-- ─── viewer discretion bumper (con marquee lights) ─── -->
+<div class="marquee">
   ★  <span class="red">PRECIOS PÚBLICOS</span>  ★  3 TIERS · 1 ESTRATEGIA · CERO ASTERISCOS  ★  LO LEES, DECIDES, ESCRIBES  ★
 </div>
+
+<!-- ─── Corkboard (vinyl shop + Big Brother spread) ─── -->
+<section class="corkboard">
+  <div class="wrap" style="max-width:1280px;margin:0 auto;text-align:center;margin-bottom:48px">
+    <div class="eyebrow" style="color:var(--yellow)">Side A · Drop 01</div>
+    <h2 class="section-title" style="font-size:clamp(36px,5vw,64px);margin-bottom:0">El sistema en fotos.</h2>
+  </div>
+  <div class="scatter">
+    <div class="p1">
+      <div class="polaroid tilt-l">
+        <div class="tape"></div>
+        <img src="assets/img/crt-static.jpg" alt="CRT static">
+        <div class="cap">"el pixel"</div>
+      </div>
+    </div>
+    <div class="p2">
+      <div class="polaroid tilt-r">
+        <div class="tape"></div>
+        <img src="assets/img/empty-pool.jpg" alt="Halfpipe / piscina">
+        <div class="cap">cohorte Q2</div>
+      </div>
+      <div class="post-it pos-1">← donde nadan los clicks que nadie midió</div>
+    </div>
+    <div class="p3">
+      <div class="polaroid tilt-r2">
+        <div class="tape"></div>
+        <img src="assets/img/diner-night.jpg" alt="Restaurante de carretera">
+        <div class="cap">3 AM · brief</div>
+      </div>
+    </div>
+    <div class="p4">
+      <div class="polaroid tilt-l">
+        <div class="tape"></div>
+        <img src="assets/img/convenience-night.jpg" alt="Tienda 24h">
+        <div class="cap">side b</div>
+      </div>
+      <div class="post-it r pos-2">★ no es agencia creativa, es sistema</div>
+    </div>
+  </div>
+</section>
 
 <!-- ─── manifesto teaser ─── -->
 <section class="manifesto">
@@ -243,6 +291,21 @@
       <a href="mailto:hola@tenet.partners?subject=Closed-loop · Madrid&body=Stack actual:%0AGasto mensual ads:%0AAcceso DNS sí/no:%0A" class="mail">hola@tenet.partners</a>
       <a href="#" class="btn red">Agendar 30 min →</a>
     </div>
+
+    <!-- ─── Ticket stub (cinema) ─── -->
+    <div class="ticket">
+      <div class="head">★ ADMIT ONE ★</div>
+      <div class="row">
+        <span><b>SHOW:</b> 30 MIN</span>
+        <span><b>SALA:</b> ZOOM</span>
+        <span><b>FILA:</b> A1</span>
+      </div>
+      <div class="num" style="margin-top:6px">UNA DECISIÓN</div>
+      <div class="row" style="margin-top:4px">
+        <span><b>NO:</b> formulario</span>
+        <span><b>NO:</b> agendar demo</span>
+      </div>
+    </div>
     <p class="mono" style="margin-top:32px;font-size:11px;letter-spacing:2px;color:#888">
       Madrid · LATAM ops · Q2 2026 cohorte abierta · 4 plazas restantes
     </p>
@@ -285,6 +348,26 @@
 <div class="counter" id="counter" aria-hidden="true">
   <div class="lab"><span class="pulse"></span>LOOPS CERRADOS</div>
   <div class="num" id="num">1,247</div>
+</div>
+
+<!-- ─── NOW SPINNING (vinyl shop) ─── -->
+<div class="spinning" aria-hidden="true">
+  <div class="disc"></div>
+  <div class="meta">
+    <div class="lab">▶ NOW SPINNING</div>
+    <div class="title">Cohorte Q2 2026</div>
+    <div class="sub">Side A · Madrid · Drop 01</div>
+  </div>
+</div>
+
+<!-- ─── ACHIEVEMENT TOAST (Xbox 360) ─── -->
+<div class="achievement" id="achievement" aria-hidden="true">
+  <div class="icon">T</div>
+  <div class="body">
+    <div class="lab">★ LOGRO DESBLOQUEADO</div>
+    <div class="title">El que lee el manifesto</div>
+    <div class="pts"><span>50G</span> · TENET · MMXXVI</div>
+  </div>
 </div>
 
 <script src="assets/site.js"></script>

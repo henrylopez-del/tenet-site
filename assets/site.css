@@ -531,6 +531,267 @@ footer .palindrome{color:var(--red);letter-spacing:8px}
   .vhs-tag{font-size:14px;top:56px;right:12px}
 }
 
+/* ═══════════════════════════════════════════════════
+   v4 · Big Brother + Vinyl + Cinema + Xbox 360 layer
+   ═══════════════════════════════════════════════════ */
+
+/* ─── Achievement toast (Xbox 360) ─── */
+.achievement{
+  position:fixed;top:84px;right:-440px;z-index:80;
+  width:380px;background:linear-gradient(135deg,#1a1a1a 0%,#0a0a0a 100%);
+  border:1px solid #444;border-left:4px solid var(--green);
+  padding:14px 18px;display:flex;gap:14px;align-items:center;
+  box-shadow:0 16px 40px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.06);
+  font-family:'Inter',sans-serif;
+  transition:right .55s cubic-bezier(.2,.9,.3,1);
+  border-radius:2px;
+}
+.achievement.show{right:18px}
+.achievement .icon{
+  width:42px;height:42px;border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,#c9ff8a,var(--green) 60%,#2a8a3c 100%);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Anton',sans-serif;color:#000;font-size:22px;
+  flex-shrink:0;box-shadow:inset -3px -3px 6px rgba(0,0,0,.35);
+}
+.achievement .body .lab{
+  font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;
+  color:var(--green);text-transform:uppercase;
+}
+.achievement .body .title{
+  font-family:'Anton',sans-serif;font-size:18px;color:#fff;text-transform:uppercase;
+  letter-spacing:.02em;line-height:1;margin-top:2px;
+}
+.achievement .body .pts{
+  font-family:'JetBrains Mono',monospace;font-size:11px;color:#888;
+  letter-spacing:1px;margin-top:4px;
+}
+.achievement .body .pts span{color:var(--yellow)}
+
+/* ─── Now Spinning widget (vinyl shop) ─── */
+.spinning{
+  position:fixed;right:18px;bottom:18px;z-index:55;
+  background:#0a0a0a;border:1px solid var(--line);padding:10px 12px;
+  display:flex;align-items:center;gap:12px;
+  box-shadow:0 12px 32px rgba(0,0,0,.5);max-width:280px;
+}
+.spinning .disc{
+  width:36px;height:36px;border-radius:50%;
+  background:radial-gradient(circle at center,#000 0%,#000 26%,#1a1a1a 27%,#0a0a0a 50%,#1a1a1a 51%,#0a0a0a 75%,#1a1a1a 76%,#000 100%);
+  border:1px solid #333;flex-shrink:0;position:relative;
+  animation:spin 4s linear infinite;
+}
+.spinning .disc::before{
+  content:"";position:absolute;inset:0;margin:auto;
+  width:10px;height:10px;border-radius:50%;background:var(--red);
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  box-shadow:0 0 0 1px #000;
+}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.spinning .meta{font-family:'JetBrains Mono',monospace;line-height:1.35}
+.spinning .meta .lab{font-size:9px;color:#666;letter-spacing:3px;text-transform:uppercase}
+.spinning .meta .title{font-size:11px;color:var(--yellow);letter-spacing:1px;font-weight:700}
+.spinning .meta .sub{font-size:9px;color:#999;letter-spacing:1.5px;margin-top:2px}
+
+/* ─── Ticket stub (cinema) ─── */
+.ticket{
+  position:relative;display:inline-block;
+  background:var(--bone);color:#000;
+  padding:14px 22px 14px 14px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  letter-spacing:2px;text-transform:uppercase;
+  margin-top:24px;
+  box-shadow:6px 6px 0 #000, 8px 8px 0 var(--red);
+  transform:rotate(-2deg);
+}
+.ticket::before,.ticket::after{
+  content:"";position:absolute;width:14px;height:14px;border-radius:50%;
+  background:#000;top:50%;transform:translateY(-50%);
+}
+.ticket::before{left:-7px}
+.ticket::after{right:-7px}
+.ticket .head{font-family:'Anton',sans-serif;font-size:18px;letter-spacing:1px;line-height:1}
+.ticket .row{display:flex;gap:14px;margin-top:6px;font-size:10px}
+.ticket .row b{color:var(--red)}
+.ticket .num{font-family:'Anton',sans-serif;font-size:24px;color:var(--red);line-height:1}
+
+/* ─── Loading tip strip (Xbox 360) ─── */
+.loadtip{
+  background:#000;color:var(--bone);padding:10px 0;
+  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;
+  text-transform:uppercase;border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;
+  display:flex;align-items:center;gap:14px;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.loadtip::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:32px;
+  background:linear-gradient(90deg,transparent,var(--green),transparent);
+  animation:slide 2.4s ease-in-out infinite;mix-blend-mode:screen;
+}
+@keyframes slide{0%{left:-32px}100%{left:100%}}
+.loadtip .lab{color:var(--green);font-weight:700}
+.loadtip .lab::before{content:"⚡  "}
+.loadtip .msg{color:#cfcfcf;font-style:italic}
+
+/* ─── Ad insert page (Big Brother spread) ─── */
+.adinsert{
+  position:relative;padding:80px 32px;
+  background:#f5f1e8;color:#000;overflow:hidden;
+}
+.adinsert::before{
+  content:"";position:absolute;inset:0;
+  background:url('textures/paper.svg') center/600px 600px;
+  opacity:.6;pointer-events:none;
+}
+.adinsert::after{
+  content:"PAID INSERT · TENET QUARTERLY · MMXXVI";
+  position:absolute;top:14px;left:0;right:0;text-align:center;
+  font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:6px;
+  color:#000;opacity:.5;text-transform:uppercase;
+}
+.adinsert .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.adinsert .left h2{
+  font-family:'Anton',sans-serif;font-size:clamp(56px,8vw,120px);line-height:.85;
+  text-transform:uppercase;letter-spacing:-.02em;color:var(--red);
+  text-shadow:4px 4px 0 #000, 4px 4px 0 #000;
+}
+.adinsert .left h2 .y{color:var(--yellow);-webkit-text-stroke:1px #000}
+.adinsert .left .sub{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;font-size:24px;line-height:1.2;margin-top:18px;color:#000}
+.adinsert .left .body{font-size:15px;line-height:1.55;color:#222;margin-top:18px;max-width:480px}
+.adinsert .left .cta{
+  display:inline-block;margin-top:24px;background:#000;color:var(--bone);
+  padding:14px 22px;font-family:'JetBrains Mono',monospace;font-size:12px;
+  letter-spacing:3px;text-transform:uppercase;font-weight:700;
+}
+.adinsert .right{position:relative}
+.adinsert .right .stamp-big{
+  position:absolute;top:-30px;right:-30px;width:140px;height:140px;
+  background:var(--red);color:#fff;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  font-family:'Anton',sans-serif;font-size:18px;text-transform:uppercase;line-height:.95;
+  transform:rotate(-12deg);border:3px solid #000;box-shadow:6px 6px 0 #000;
+  letter-spacing:.5px;z-index:3;
+}
+.adinsert .right .ticket-stack{
+  position:relative;background:#fff;border:2px solid #000;padding:24px;
+  box-shadow:12px 12px 0 var(--red),12px 12px 0 4px #000;
+  transform:rotate(2deg);
+}
+.adinsert .right .ticket-stack h3{font-family:'Anton',sans-serif;font-size:32px;text-transform:uppercase;line-height:1;margin-bottom:14px;letter-spacing:-.01em}
+.adinsert .right .ticket-stack ul{list-style:none;display:flex;flex-direction:column;gap:8px;font-size:13px;font-family:'JetBrains Mono',monospace;letter-spacing:1px}
+.adinsert .right .ticket-stack ul li::before{content:"☑  ";color:var(--red);font-weight:700}
+.adinsert .right .ticket-stack .price{font-family:'Anton',sans-serif;font-size:48px;color:var(--red);line-height:1;margin-top:18px}
+.adinsert .right .ticket-stack .price small{font-size:11px;font-family:'JetBrains Mono',monospace;color:#666;letter-spacing:2px;display:block}
+
+/* ─── Marquee lights (cinema border) ─── */
+.marquee{
+  position:relative;padding:16px 24px;background:#000;
+  border-top:1px dashed #2a2a2a;border-bottom:1px dashed #2a2a2a;
+  text-align:center;font-family:'Anton',sans-serif;font-size:18px;
+  text-transform:uppercase;letter-spacing:6px;color:var(--bone);
+}
+.marquee::before,.marquee::after{
+  content:"● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ● ●";
+  position:absolute;left:0;right:0;font-size:8px;letter-spacing:14px;
+  color:var(--yellow);text-align:center;animation:bli 1.6s steps(2) infinite;
+}
+.marquee::before{top:3px}
+.marquee::after{bottom:3px}
+@keyframes bli{50%{opacity:.3}}
+.marquee .red{color:var(--red)}
+
+/* ─── Hand-drawn annotation (Big Brother red marker) ─── */
+.annot{position:relative;display:inline-block}
+.annot svg{position:absolute;inset:-8px -10px;width:calc(100% + 20px);height:calc(100% + 16px);pointer-events:none}
+.annot-arrow{
+  position:absolute;font-family:'Caveat',cursive,sans-serif;
+  color:var(--red);font-size:18px;font-weight:700;
+  transform:rotate(-6deg);
+}
+
+/* ─── Coming-soon poster (cinema) ─── */
+.coming{
+  background:#0a0a0a;padding:80px 32px;border-top:1px solid var(--line);
+}
+.coming .wrap{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center}
+.poster-card{
+  width:280px;aspect-ratio:2/3;
+  background:linear-gradient(135deg,#1a1a1a 0%,#0a0a0a 60%);
+  border:2px solid #2a2a2a;padding:24px;display:flex;flex-direction:column;justify-content:space-between;
+  box-shadow:0 24px 64px rgba(0,0,0,.6);position:relative;overflow:hidden;
+  transform:rotate(-2deg);
+}
+.poster-card::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 30% 20%,rgba(229,9,20,.18) 0%,transparent 60%);
+  pointer-events:none;
+}
+.poster-card .top{position:relative;z-index:2}
+.poster-card .top .lab{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--yellow);letter-spacing:3px;text-transform:uppercase}
+.poster-card .top h3{font-family:'Anton',sans-serif;font-size:38px;text-transform:uppercase;letter-spacing:-.01em;line-height:.95;color:var(--bone);margin-top:8px}
+.poster-card .mid{position:relative;z-index:2;font-family:'Inter',sans-serif;font-size:12px;color:#888;line-height:1.5}
+.poster-card .bot{position:relative;z-index:2;font-family:'Anton',sans-serif;font-size:64px;color:var(--red);text-transform:uppercase;letter-spacing:-.01em;line-height:.9;text-shadow:2px 0 0 var(--blue)}
+.poster-card .bot small{font-family:'JetBrains Mono',monospace;font-size:11px;color:#666;letter-spacing:3px;display:block;margin-top:8px}
+
+@media(max-width:980px){
+  .achievement{width:calc(100vw - 36px);right:-110vw}
+  .achievement.show{right:18px}
+  .spinning{display:none}
+  .adinsert .wrap{grid-template-columns:1fr;gap:32px}
+  .coming .wrap{grid-template-columns:1fr;gap:32px}
+  .poster-card{width:100%;max-width:320px;margin:0 auto}
+}
+
+/* ─── Polaroid (corkboard scattered look) ─── */
+.polaroid{
+  background:#fff;padding:10px 10px 38px;display:inline-block;
+  box-shadow:0 14px 28px rgba(0,0,0,.45),inset 0 0 0 1px rgba(0,0,0,.08);
+  position:relative;
+}
+.polaroid img{display:block;width:100%;height:auto;filter:saturate(.9) contrast(.95)}
+.polaroid .cap{
+  position:absolute;left:0;right:0;bottom:8px;text-align:center;
+  font-family:'Caveat',cursive,sans-serif;font-size:18px;color:#000;font-weight:700;
+}
+.polaroid .tape{
+  position:absolute;top:-12px;left:50%;transform:translateX(-50%) rotate(-3deg);
+  width:80px;height:22px;background:rgba(245,208,0,.65);
+  box-shadow:0 1px 2px rgba(0,0,0,.2);
+}
+.polaroid.tilt-l{transform:rotate(-4deg)}
+.polaroid.tilt-r{transform:rotate(3deg)}
+.polaroid.tilt-r2{transform:rotate(-2deg)}
+
+/* ─── Corkboard strip ─── */
+.corkboard{
+  position:relative;background:#0a0a0a;
+  background-image:url('textures/grain.svg');background-size:400px;background-blend-mode:overlay;
+  padding:80px 32px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.corkboard .scatter{
+  display:grid;grid-template-columns:repeat(12,1fr);gap:14px;align-items:center;
+  max-width:1280px;margin:0 auto;
+}
+.corkboard .scatter > *{position:relative}
+.corkboard .p1{grid-column:1/4;width:180px;justify-self:center}
+.corkboard .p2{grid-column:4/7;width:200px;justify-self:center;margin-top:32px}
+.corkboard .p3{grid-column:7/10;width:170px;justify-self:center;margin-top:-20px}
+.corkboard .p4{grid-column:10/13;width:190px;justify-self:center;margin-top:18px}
+.corkboard .post-it{
+  position:absolute;background:var(--yellow);color:#000;padding:14px 16px;
+  font-family:'Caveat',cursive,sans-serif;font-weight:700;font-size:20px;line-height:1.15;
+  box-shadow:0 8px 18px rgba(0,0,0,.35);transform:rotate(-4deg);
+  width:160px;
+}
+.corkboard .post-it.r{background:var(--red);color:#fff;transform:rotate(3deg)}
+.corkboard .pos-1{top:-12px;right:8%;z-index:3}
+.corkboard .pos-2{bottom:-18px;left:18%;z-index:3}
+@media(max-width:980px){
+  .corkboard .scatter{grid-template-columns:1fr 1fr;gap:14px}
+  .corkboard .p1,.corkboard .p2,.corkboard .p3,.corkboard .p4{grid-column:auto;width:90%;margin:0}
+  .corkboard .post-it{display:none}
+}
+
 /* ─── tiny utilities ─── */
 .mono{font-family:'JetBrains Mono',monospace}
 .kbd{font-family:'JetBrains Mono',monospace;font-size:11px;background:#1a1a1a;border:1px solid #333;border-bottom-width:2px;padding:2px 6px;border-radius:3px;color:#bbb}

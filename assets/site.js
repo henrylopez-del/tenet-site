@@ -49,6 +49,56 @@ console.log("%c     S A T O R\n     A R E P O\n     T E N E T\n     O P E R A\n 
   document.querySelectorAll('.btn.red').forEach(function(b){io.observe(b)});
 })();
 
+/* ─── Achievement toast (Xbox 360) — fires once on scroll past manifesto teaser ─── */
+(function(){
+  var el = document.getElementById('achievement');
+  var trigger = document.querySelector('.manifesto');
+  if(!el || !trigger) return;
+  var fired = false;
+  try{ if(sessionStorage.getItem('tenet_achievement')) fired = true; }catch(e){}
+  if(fired) return;
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting && !fired){
+        fired = true;
+        try{sessionStorage.setItem('tenet_achievement','1')}catch(e){}
+        setTimeout(function(){ el.classList.add('show'); }, 380);
+        setTimeout(function(){ el.classList.remove('show'); }, 6500);
+        io.disconnect();
+      }
+    });
+  },{threshold:.5});
+  io.observe(trigger);
+})();
+
+/* ─── Loading tip rotator (Xbox 360 dashboard) ─── */
+(function(){
+  var el = document.getElementById('loadtip-msg');
+  if(!el) return;
+  var tips = [
+    "El pixel client-side perdió un 47% de eventos tras iOS 14.5.",
+    "Sin CRM no sabes quién agendó, quién compró, ni quién volvió.",
+    "Server-side endurece la señal — Meta CAPI no usa cookies de navegador.",
+    "Cada euro tiene dos direcciones. Tenet la película va y viene. Esta es la idea.",
+    "Drop 01 es Q2 2026. Drop 02 traerá integración con HubSpot.",
+    "El refund de 60 días no es marketing — es contrato firmado.",
+    "GoHighLevel cierra el loop porque ahí marcas la venta cerrada.",
+    "EMQ > 7 = la atribución que Meta considera de alta calidad.",
+    "Si tu CFO te preguntó por qué Meta y GA4 dicen cosas distintas, esto es para ti.",
+    "Cmd+U te enseña cómo está hecho el sitio. Hay un mensaje en la consola."
+  ];
+  var i = 0;
+  setInterval(function(){
+    i = (i+1) % tips.length;
+    el.style.opacity = '0';
+    setTimeout(function(){
+      el.textContent = tips[i];
+      el.style.opacity = '1';
+    }, 240);
+  }, 5800);
+  el.style.transition = 'opacity .35s ease';
+})();
+
 /* smooth-scroll */
 document.querySelectorAll('a[href^="#"]').forEach(function(a){
   a.addEventListener('click', function(e){
