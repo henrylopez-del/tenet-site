@@ -49,28 +49,6 @@ console.log("%c     S A T O R\n     A R E P O\n     T E N E T\n     O P E R A\n 
   document.querySelectorAll('.btn.red').forEach(function(b){io.observe(b)});
 })();
 
-/* ─── Achievement toast (Xbox 360) — fires once on scroll past manifesto teaser ─── */
-(function(){
-  var el = document.getElementById('achievement');
-  var trigger = document.querySelector('.manifesto');
-  if(!el || !trigger) return;
-  var fired = false;
-  try{ if(sessionStorage.getItem('tenet_achievement')) fired = true; }catch(e){}
-  if(fired) return;
-  var io = new IntersectionObserver(function(es){
-    es.forEach(function(e){
-      if(e.isIntersecting && !fired){
-        fired = true;
-        try{sessionStorage.setItem('tenet_achievement','1')}catch(e){}
-        setTimeout(function(){ el.classList.add('show'); }, 380);
-        setTimeout(function(){ el.classList.remove('show'); }, 6500);
-        io.disconnect();
-      }
-    });
-  },{threshold:.5});
-  io.observe(trigger);
-})();
-
 /* ─── Loading tip rotator (Xbox 360 dashboard) ─── */
 (function(){
   var el = document.getElementById('loadtip-msg');

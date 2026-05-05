@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Casos — TENET</title>
-<meta name="description" content="Casos anonimizados con números reales. Match rates, euros atribuidos, plazos.">
+<meta name="description" content="Casos reales anonimizados. Aluminio arquitectónico Cancún · Beauty consulting LATAM. Match rates, conversiones recuperadas, plazos.">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="stylesheet" href="assets/site.css">
 </head>
@@ -28,69 +28,57 @@
   <div class="wrap">
     <div class="crumbs">TENET <span>/</span> Casos <span>/</span> 02</div>
     <h1>Lo que han<br><span class="r">recuperado</span>.</h1>
-    <p>4 casos de la cohorte Q1 2026. Match rates, conversiones recuperadas, plazos, verticales, stack. Sin logos públicos por petición de los clientes — para ellos la atribución limpia es ventaja competitiva. Las referencias con nombre se envían por correo bajo NDA, caso por caso.</p>
+    <p>Dos casos reales anonimizados. Implementaciones que llevamos hoy en producción — el aluminio arquitectónico de Cancún y el consulting de salones de belleza LATAM. Sin logos públicos por petición de los clientes — referencias con nombre se envían por correo bajo NDA.</p>
   </div>
 </header>
 
 <section class="cases">
   <div class="wrap">
-    <div class="eyebrow">Cohorte Q1 2026 · 4 despliegues</div>
-    <h2 class="section-title">El loop cerrado<br>en cuatro <span class="y">verticales</span>.</h2>
+    <div class="eyebrow">Cohorte activa · 2 deployments en producción</div>
+    <h2 class="section-title">Dos verticales.<br>Dos rebuilds <span class="y">profundos</span>.</h2>
 
     <div class="grid">
 
+      <!-- CASO 01 · ARQALUM -->
       <div class="case">
         <div class="stamp-an">CASO 01 · ANÓN</div>
-        <div class="vert">E-COMMERCE · MODA · MADRID</div>
-        <h3>"Pensábamos que iOS nos había costado el 12%. Eran 41%."</h3>
-        <p>Marca DTC con €18K/mes en Meta + €12K/mes en Google. Antes del despliegue: GA4 reportaba ROAS 2.4x, Meta Ads Manager reportaba ROAS 1.8x. Discrepancia inexplicable durante 9 meses. Equipo creativo culpando a la operación, operación culpando a creatividad.</p>
+        <div class="vert">ALUMINIO ARQUITECTÓNICO · CANCÚN · GOOGLE ADS</div>
+        <h3>"28 días con €0 atribuidos. Diagnóstico forense. Rebuild en una noche. Primer lead real al día 2."</h3>
+        <p>Empresa con 30+ años en fachadas, muros cortina, cancelería para hoteles, hospitales y residencial de lujo. Pre-TENET: campaña Google Ads consumiendo $290 MXN/día durante 28 días — 50 de 70 keywords marcados "Not eligible · Low search volume", landing rated BELOW AVERAGE, AD_CALL fake conversion inflando reportes, 0 conversiones reales.</p>
+
+        <p style="margin-top:12px"><strong style="color:var(--yellow)">Lo que entregamos:</strong> auditoría forense (775 líneas, metodología Heath) → rebuild de 2 ad groups (B2C residencial + B2B comercial) con bid modifiers stacking (device × day × hour) → landings v3 reescritas con WhatsApp CTA primario, form de 3 campos, gracias inline, tracking Capa 1 (Supabase + n8n + Clarity) → RSA con 15 headlines elevado a EXCELLENT → 11 sitelinks, 17 callouts, structured snippets, image extensions → tracking Capa 4 con Offline Conversion Imports.</p>
+
         <div class="row">
-          <div class="k"><div class="lab">Conv. recuperadas / mes</div><div class="v">+1.247</div></div>
-          <div class="k"><div class="lab">Match rate CAPI</div><div class="v">73%</div></div>
-          <div class="k"><div class="lab">€ atribuidos / mes</div><div class="v">€34.7K</div></div>
-          <div class="k"><div class="lab">Tiempo despliegue</div><div class="v">14d</div></div>
+          <div class="k"><div class="lab">Keywords reactivados / muertos</div><div class="v">~50</div></div>
+          <div class="k"><div class="lab">Headlines RSA · rating</div><div class="v">EXC</div></div>
+          <div class="k"><div class="lab">Tiempo a primer lead real</div><div class="v">2d</div></div>
+          <div class="k"><div class="lab">Capas de tracking instaladas</div><div class="v">4 / 4</div></div>
         </div>
       </div>
 
+      <!-- CASO 02 · SARAHI -->
       <div class="case">
         <div class="stamp-an">CASO 02 · ANÓN</div>
-        <div class="vert">SAAS B2B · LEADS · MADRID</div>
-        <h3>"Optimizábamos por leads que no convertían. Ahora optimizamos por contratos firmados."</h3>
-        <p>Plataforma SaaS con ciclo de venta 45–90 días. Antes del despliegue: Google Ads optimizando por envíos de formulario. CAC reportado €78, CAC real €214. Después del despliegue: Offline Conversion Imports atando contratos firmados al click original. Google empezó a optimizar por LTV, no por leads sucios.</p>
+        <div class="vert">CONSULTING SALONES DE BELLEZA · LATAM · META + WHATSAPP</div>
+        <h3>"Pre-TENET: $14K MXN gastados sin pixel funcional. Post-TENET: dos agentes especialistas, 14 custom fields, 39 tags, dashboard live."</h3>
+        <p>Coach de salones de belleza con dos productos (mentoría high-ticket €2.500 USD vía llamada · low-ticket €497 USD). Pre-TENET: 6 meses de gasto Meta sin pixel funcional — Meta veía tráfico pero no señales de conversión, no optimizable. Sin CRM operativo, sin qualification logic, sin sistema de tags ni embudo medible.</p>
+
+        <p style="margin-top:12px"><strong style="color:var(--yellow)">Lo que entregamos:</strong> reinstalación completa del pixel + Meta CAPI server-side → GHL configurado con 14 custom fields (objetivo, ingresos, antigüedad, equipo, ciudad, tipo de salón, calificación HT/LT…) y 39 tags categorizados (qualification, funnel, product, routing, interest, objection, source) → 2 agentes Modo Especialista (ventas + postventa) con tag-routing dinámico → qualification logic automatizada (HIGH TICKET / LOW TICKET / NURTURING) → calendar con Zoom OAuth + workaround custom field para resolver merge fields rotos → UTM dashboard live en GitHub Pages con auto-refresh 60s vía JSONP → workflow n8n: webhook → upsert contacto → notas → Google Sheets.</p>
+
         <div class="row">
-          <div class="k"><div class="lab">CAC reportado → real</div><div class="v">−63%</div></div>
-          <div class="k"><div class="lab">Match rate Google EC</div><div class="v">81%</div></div>
-          <div class="k"><div class="lab">Ciclo Google → contrato</div><div class="v">45–90d</div></div>
-          <div class="k"><div class="lab">Tiempo despliegue</div><div class="v">12d</div></div>
+          <div class="k"><div class="lab">Custom fields configurados</div><div class="v">14</div></div>
+          <div class="k"><div class="lab">Tags categorizados</div><div class="v">39</div></div>
+          <div class="k"><div class="lab">Agentes especialistas</div><div class="v">2</div></div>
+          <div class="k"><div class="lab">Dashboards live</div><div class="v">1</div></div>
         </div>
       </div>
 
-      <div class="case">
-        <div class="stamp-an">CASO 03 · ANÓN</div>
-        <div class="vert">RESTAURACIÓN · 12 LOCALES · BCN</div>
-        <h3>"Cinco campañas que parecían rentables resultaron ser quema pura."</h3>
-        <p>Cadena de restauración con reservas online + visita presencial. Antes del despliegue: solo medían reservas online. Después del despliegue: integración POS → CAPI con offline conversions. Descubrimos que 5 de 14 campañas activas no generaban tráfico real al local. Pausarlas liberó €4.200/mes para escalar las que sí.</p>
-        <div class="row">
-          <div class="k"><div class="lab">Campañas reasignadas</div><div class="v">5 / 14</div></div>
-          <div class="k"><div class="lab">€/mes liberados</div><div class="v">€4.2K</div></div>
-          <div class="k"><div class="lab">Walk-ins atribuidos</div><div class="v">+38%</div></div>
-          <div class="k"><div class="lab">Tiempo despliegue</div><div class="v">18d</div></div>
-        </div>
-      </div>
+    </div>
 
-      <div class="case">
-        <div class="stamp-an">CASO 04 · ANÓN</div>
-        <div class="vert">AGENCIA WHITE LABEL · 7 CLIENTES</div>
-        <h3>"Vendimos closed-loop como upsell. Subimos retainer 38% sin perder clientes."</h3>
-        <p>Agencia performance Madrid con 14 clientes activos. Empaquetamos TENET como add-on de €600–900/mes encima del retainer existente. 7 de 14 clientes lo aceptaron en el primer mes. La agencia subió su LTV/cliente sin contratar a nadie. El servicio lo operamos nosotros, ellos cobran al cliente.</p>
-        <div class="row">
-          <div class="k"><div class="lab">Clientes upsold</div><div class="v">7 / 14</div></div>
-          <div class="k"><div class="lab">Δ retainer medio</div><div class="v">+38%</div></div>
-          <div class="k"><div class="lab">Margen agencia</div><div class="v">~45%</div></div>
-          <div class="k"><div class="lab">Onboarding medio</div><div class="v">14d</div></div>
-        </div>
-      </div>
-
+    <!-- nota sobre escala de los casos -->
+    <div style="margin-top:48px;background:#0e0e0e;border-left:3px solid var(--yellow);padding:24px 28px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--yellow);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px">Nota sobre la cohorte</div>
+      <p style="color:#d8d8d8;font-size:15px;line-height:1.65">Estos dos casos no son los únicos en producción — son los dos donde el rebuild fue más profundo y donde la documentación está más madura para compartir. La cohorte completa incluye verticales adicionales (e-commerce, SaaS B2B, restauración multi-local, agencia white label). Si quieres referencias de un vertical específico antes de firmar, las pedimos a los clientes activos en la primera llamada — caso por caso, bajo NDA.</p>
     </div>
   </div>
 </section>
@@ -105,7 +93,7 @@
       <div class="lines">
         <div>★ Cómo iOS 14.5 te quitó el 47%</div>
         <div><b>★ El refund de 60 días que nadie firma</b></div>
-        <div>★ Cuatro casos. Cuatro verticales.</div>
+        <div>★ Dos casos. Dos rebuilds profundos.</div>
         <div>★ Por qué el % sobre ad spend murió</div>
         <div>★ Performance ≠ growth-hack</div>
       </div>
