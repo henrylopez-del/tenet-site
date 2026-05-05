@@ -17,7 +17,7 @@ A bold editorial poster, screen-printed feel, photographed flat under fluorescen
 **Filename:** `assets/img/banner-pricing.png`
 **Aspect:** 1600 × 600
 ```
-A horizontal red banner, deep saturated red #E50914, with three giant white numerals stacked horizontally with thin yellow underlines, exactly: "€600" "€1.000" "€1.300". Below each, microscopic monospace caption: "META" "GOOGLE" "AMBOS". Heavy print grain texture, slight CMYK misregistration on the digits creating blue and red ghost shadows. A black rectangular ticket sticker rotated 4 degrees on the far right reads "CERO ASTERISCOS" in white Anton condensed type. Tiny line of monospace text bottom-center: "2 MESES POR ADELANTADO · DEVOLUCIÓN 60 DÍAS". All Spanish, no English. Inspired by old gas-station price boards mixed with Russian constructivist posters mixed with Vans skate ads from 2002. 1600x600 horizontal.
+A horizontal red banner, deep saturated red #E50914, with three giant white numerals stacked horizontally with thin yellow underlines, exactly: "€600" "€1.000" "€1.500". Below each, microscopic monospace caption: "META" "GOOGLE" "AMBOS". Heavy print grain texture, slight CMYK misregistration on the digits creating blue and red ghost shadows. A black rectangular ticket sticker rotated 4 degrees on the far right reads "CERO ASTERISCOS" in white Anton condensed type. Tiny line of monospace text bottom-center: "2 MESES POR ADELANTADO · DEVOLUCIÓN 60 DÍAS". All Spanish, no English. Inspired by old gas-station price boards mixed with Russian constructivist posters mixed with Vans skate ads from 2002. 1600x600 horizontal.
 ```
 
 ### 02b — Banner Estrategia Creativa (3 meses · pago único)
