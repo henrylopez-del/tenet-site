@@ -214,8 +214,8 @@ h2.section-title .r{color:var(--red)}
 }
 .pagehead::before{
   content:"";position:absolute;inset:0;
-  background:url('img/crt-static.jpg') center/cover;
-  opacity:.18;mix-blend-mode:screen;
+  background:linear-gradient(135deg,rgba(229,9,20,.06),transparent 60%);
+  pointer-events:none;
 }
 .pagehead .wrap{position:relative;z-index:2}
 .pagehead .crumbs{
