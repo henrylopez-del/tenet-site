@@ -11,24 +11,7 @@ console.log("%c Si encontraste este mensaje, escríbenos al correo de arriba\n c
 console.log("%c ", "");
 console.log("%c     S A T O R\n     A R E P O\n     T E N E T\n     O P E R A\n     R O T A S","color:#E50914;font-family:monospace;font-size:11px;letter-spacing:4px;line-height:1.6");
 
-/* live counter that ticks */
-(function(){
-  var seed = 1247;
-  try{ var saved = +localStorage.getItem('tenet_loops')||0; if(saved>seed) seed = saved; }catch(e){}
-  var n = seed;
-  var el = document.getElementById('num');
-  if(!el) return;
-  function fmt(x){return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-  el.textContent = fmt(n);
-  setInterval(function(){
-    if(Math.random() < 0.32){
-      n += 1; el.textContent = fmt(n);
-      try{localStorage.setItem('tenet_loops', n)}catch(e){}
-      el.style.color = '#5fff7e';
-      setTimeout(function(){el.style.color = '#F5D000'}, 600);
-    }
-  }, 4200);
-})();
+
 
 /* audio tick gated · ?tick=1 */
 (function(){
