@@ -427,6 +427,98 @@
   }
   .s4 .tag{box-shadow:4px 4px 0 var(--ink)}
 
+  /* ─── ANIMATIONS · drama ─── */
+  /* stagger fade-in al entrar slide */
+  .slide .wrap > *{
+    opacity:0;transform:translateY(28px);
+    transition:opacity .65s cubic-bezier(.2,.8,.2,1),transform .65s cubic-bezier(.2,.8,.2,1);
+  }
+  .slide.in-view .wrap > *{opacity:1;transform:translateY(0)}
+  .slide.in-view .wrap > *:nth-child(1){transition-delay:0ms}
+  .slide.in-view .wrap > *:nth-child(2){transition-delay:90ms}
+  .slide.in-view .wrap > *:nth-child(3){transition-delay:180ms}
+  .slide.in-view .wrap > *:nth-child(4){transition-delay:280ms}
+  .slide.in-view .wrap > *:nth-child(5){transition-delay:380ms}
+  .slide.in-view .wrap > *:nth-child(6){transition-delay:480ms}
+  .slide .sator{opacity:0;transition:opacity 1.2s ease 800ms}
+  .slide.in-view .sator{opacity:.5}
+
+  /* glitch entry en títulos */
+  @keyframes intro-glitch{
+    0%{opacity:0;transform:translateY(24px) skewX(0)}
+    20%{opacity:.4;transform:translateY(8px) skewX(-1.5deg);text-shadow:9px 0 0 var(--red),-9px 0 0 #1B3CFF,0 5px 0 var(--yellow)}
+    35%{opacity:.7;transform:translateY(2px) skewX(.8deg);text-shadow:1px 0 0 var(--red),-1px 0 0 #1B3CFF}
+    55%{opacity:.85;transform:translateY(0) skewX(-.4deg);text-shadow:6px 0 0 var(--red),-6px 0 0 #1B3CFF}
+    100%{opacity:1;transform:translateY(0) skewX(0);text-shadow:3px 0 0 var(--red),-3px 0 0 #1B3CFF}
+  }
+  .slide.in-view h1.title,.slide.in-view h2.title{
+    animation:intro-glitch 1.1s cubic-bezier(.2,.8,.2,1);
+  }
+  .s4.in-view h2.title,.s6.in-view h2.title{
+    /* slides cream + red bg con shadows distintos */
+    animation-name:intro-glitch-alt;
+  }
+  @keyframes intro-glitch-alt{
+    0%{opacity:0;transform:translateY(24px)}
+    50%{opacity:.6}
+    100%{opacity:1;transform:translateY(0)}
+  }
+
+  /* pulse en tier featured */
+  @keyframes featured-pulse{
+    0%,100%{box-shadow:8px 8px 0 var(--ink),8px 8px 0 4px var(--cream)}
+    50%{box-shadow:8px 8px 0 var(--ink),8px 8px 0 4px var(--yellow), 0 0 40px rgba(245,208,0,.25)}
+  }
+  .s6.in-view .tier.featured{
+    animation:featured-pulse 2.4s ease-in-out infinite;
+  }
+
+  /* number pop on count-up complete */
+  @keyframes num-pop{
+    0%{transform:scale(1)}
+    40%{transform:scale(1.12)}
+    100%{transform:scale(1)}
+  }
+  .num-popped{animation:num-pop .35s ease-out}
+
+  /* fugas borde flash al contar */
+  @keyframes fuga-flash{
+    0%,100%{border-color:var(--cream)}
+    50%{border-color:var(--red);box-shadow:0 0 0 2px rgba(229,9,20,.15)}
+  }
+  .s2.in-view .fuga{
+    animation:fuga-flash 1.6s ease-out;
+  }
+  .s2.in-view .fuga:nth-child(1){animation-delay:200ms}
+  .s2.in-view .fuga:nth-child(2){animation-delay:450ms}
+  .s2.in-view .fuga:nth-child(3){animation-delay:700ms}
+  .s2.in-view .fuga:nth-child(4){animation-delay:950ms}
+
+  /* CTA glow en slide 7 entry */
+  @keyframes cta-pulse{
+    0%,100%{box-shadow:8px 8px 0 var(--cream)}
+    50%{box-shadow:8px 8px 0 var(--cream),0 0 32px rgba(229,9,20,.5)}
+  }
+  .s7.in-view .cta{
+    animation:cta-pulse 2.8s ease-in-out infinite;
+    animation-delay:1.5s;
+  }
+
+  /* sator parpadeo aleatorio */
+  @keyframes sator-flicker{
+    0%,98%,100%{opacity:.5}
+    99%{opacity:.15}
+  }
+  .s1.in-view .sator{animation:sator-flicker 4s linear infinite}
+
+  /* respect reduced motion */
+  @media (prefers-reduced-motion: reduce){
+    .slide .wrap > *,.slide.in-view h1.title,.slide.in-view h2.title,.s6.in-view .tier.featured,.s2.in-view .fuga,.s7.in-view .cta,.s1.in-view .sator{
+      animation:none !important;transition:none !important;
+      opacity:1 !important;transform:none !important;
+    }
+  }
+
   /* ─── guarantee strip ─── */
   .guarantee{
     border-top:2px solid var(--cream);
@@ -478,10 +570,10 @@
       <h2 class="title">Lo que tu pixel<br>ya no <span class="y">captura</span><span class="stop">.</span></h2>
       <p class="lede">Cuatro vectores técnicos que hoy reducen la fidelidad de medición client-side. Lo que ves aquí es lo que encontramos en cada audit · no estimaciones, mecanismos:</p>
       <div class="fugas">
-        <div class="fuga"><div class="pct">−47%</div><div class="lab">iOS 14.5 ATT · App Tracking Transparency suprime el envío de eventos en iPhone</div></div>
-        <div class="fuga"><div class="pct">−22%</div><div class="lab">Safari ITP · cookies first-party caducas a 7 días · ciclos de venta largos invisibilizados</div></div>
-        <div class="fuga"><div class="pct">−18%</div><div class="lab">Bloqueadores y consent banners · uBlock, Brave, rechazo GDPR cortan la señal en origen</div></div>
-        <div class="fuga"><div class="pct">−40%</div><div class="lab">Eventos offline · WhatsApp, llamadas, ventas presenciales nunca llegan al ad platform</div></div>
+        <div class="fuga"><div class="pct" data-anim-num="47" data-prefix="−" data-suffix="%">−47%</div><div class="lab">iOS 14.5 ATT · App Tracking Transparency suprime el envío de eventos en iPhone</div></div>
+        <div class="fuga"><div class="pct" data-anim-num="22" data-prefix="−" data-suffix="%">−22%</div><div class="lab">Safari ITP · cookies first-party caducas a 7 días · ciclos de venta largos invisibilizados</div></div>
+        <div class="fuga"><div class="pct" data-anim-num="18" data-prefix="−" data-suffix="%">−18%</div><div class="lab">Bloqueadores y consent banners · uBlock, Brave, rechazo GDPR cortan la señal en origen</div></div>
+        <div class="fuga"><div class="pct" data-anim-num="40" data-prefix="−" data-suffix="%">−40%</div><div class="lab">Eventos offline · WhatsApp, llamadas, ventas presenciales nunca llegan al ad platform</div></div>
       </div>
       <span class="mono">★ Suma compuesta típica · 30 a 60% de las conversiones reales no llegan a Meta ni a Google</span>
     </div>
@@ -533,8 +625,8 @@
           <h3 class="head">"28 días sin atribución. Diagnóstico forense. Primer lead real al día 2 post-rebuild."</h3>
           <p class="body">Empresa con 30+ años en fachadas y muros cortina. Pre-TENET · 50 de 70 keywords clasificados Not Eligible, landing rated BELOW AVERAGE, AD_CALL como conversión fake. Post-TENET · rebuild de 2 ad groups (B2C + B2B), bid modifiers stacking device × day × hour, landing v3, RSA elevado a EXCELLENT con 15 headlines, tracking Capa 1 a 4 con OCI hacia Google Ads.</p>
           <div class="nums">
-            <div class="k"><div class="v">~50</div><div class="l">keywords reactivados</div></div>
-            <div class="k"><div class="v">2d</div><div class="l">tiempo a primer lead</div></div>
+            <div class="k"><div class="v" data-anim-num="50" data-prefix="~">~50</div><div class="l">keywords reactivados</div></div>
+            <div class="k"><div class="v" data-anim-num="2" data-suffix="d">2d</div><div class="l">tiempo a primer lead</div></div>
           </div>
         </div>
         <div class="case">
@@ -542,8 +634,8 @@
           <h3 class="head">"6 meses de gasto Meta sin pixel funcional. Reinstalación + GHL + agentes especialistas."</h3>
           <p class="body">Coach beauty consulting con dos productos high/low ticket. Pre-TENET · pixel roto, sin señal de conversión, no optimizable. Post-TENET · reinstalación pixel + Meta CAPI server-side, GHL configurado con 14 custom fields y 39 tags categorizados, qualification logic HIGH/LOW/NURTURING, 2 agentes Modo Especialista con tag-routing, UTM dashboard live JSONP.</p>
           <div class="nums">
-            <div class="k"><div class="v">14</div><div class="l">custom fields</div></div>
-            <div class="k"><div class="v">39</div><div class="l">tags categorizados</div></div>
+            <div class="k"><div class="v" data-anim-num="14">14</div><div class="l">custom fields</div></div>
+            <div class="k"><div class="v" data-anim-num="39">39</div><div class="l">tags categorizados</div></div>
           </div>
         </div>
       </div>
@@ -679,6 +771,61 @@
   console.log("%c AURY · T E N E T ", "background:#E50914;color:#F5F1E8;font-weight:900;font-size:18px;padding:6px 14px;letter-spacing:6px");
   console.log("%c Cerramos el loop.", "color:#F5D000;font-family:monospace;font-size:13px;letter-spacing:2px");
   console.log("%c hola@tenet.partners", "color:#fff;font-family:monospace;text-decoration:underline");
+
+  /* ─── ANIMATIONS · IntersectionObserver + count-up ─── */
+  function animateNumber(el, end, duration, prefix, suffix){
+    var start = 0;
+    var t0 = performance.now();
+    function fmt(n){
+      // Spanish locale thousands separator (dot)
+      return n.toLocaleString('es-ES');
+    }
+    function tick(now){
+      var t = Math.min((now - t0) / duration, 1);
+      var eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+      var v = Math.round(start + (end - start) * eased);
+      el.textContent = prefix + fmt(v) + suffix;
+      if(t < 1) requestAnimationFrame(tick);
+      else {
+        el.textContent = prefix + fmt(end) + suffix;
+        el.classList.add('num-popped');
+        setTimeout(function(){ el.classList.remove('num-popped'); }, 360);
+      }
+    }
+    requestAnimationFrame(tick);
+  }
+
+  function animateSlide(slide){
+    if(slide.dataset.animated) return;
+    slide.dataset.animated = '1';
+    var nums = slide.querySelectorAll('[data-anim-num]');
+    nums.forEach(function(el, idx){
+      var target = parseInt(el.dataset.animNum, 10);
+      var prefix = el.dataset.prefix || '';
+      var suffix = el.dataset.suffix || '';
+      // wait for slide stagger to land first, then count up
+      var delay = 350 + idx * 120;
+      setTimeout(function(){
+        animateNumber(el, target, 1200, prefix, suffix);
+      }, delay);
+    });
+  }
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('in-view');
+        animateSlide(e.target);
+      }
+    });
+  }, {threshold: 0.4, rootMargin: '0px'});
+  slides.forEach(function(s){ io.observe(s); });
+
+  // primera slide al load
+  if(slides[0]){
+    slides[0].classList.add('in-view');
+    setTimeout(function(){ animateSlide(slides[0]); }, 100);
+  }
 })();
 </script>
 
