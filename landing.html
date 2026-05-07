@@ -3,380 +3,360 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>AURY T E N E T — Closed-Loop Marketing</title>
+<title>AURY · T E N E T — Closed-Loop Marketing</title>
 <meta name="description" content="Cerramos el loop entre tu inversión en ads y tus ventas reales. Server-side + CRM + IA. Madrid · 2026.">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@1,800;1,900&display=swap" rel="stylesheet">
 <style>
-  /* ─── reset + base ─── */
+  /* ─── reset ─── */
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{
-    --cream:#E8DCC4;
-    --cream-light:#F0E5CE;
-    --cream-dark:#D8C9A8;
-    --ink:#1A1410;
-    --orange:#D85A2E;
-    --orange-deep:#B0421C;
-    --green:#5C7A3F;
-    --blue:#3F5A7A;
+    --red:#E50914;
+    --red-deep:#B30710;
+    --yellow:#F5D000;
+    --cream:#F5F1E8;
+    --cream-warm:#E8DCC4;
+    --ink:#0A0A0A;
+    --ash:#1A1410;
     --line:#2A2018;
+    --orange:#D85A2E;
   }
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
   body{
-    background:var(--cream);
-    color:var(--ink);
+    background:var(--ink);
+    color:var(--cream);
     font-family:'Inter',system-ui,sans-serif;
     overflow:hidden;
-    height:100vh;
-    height:100dvh;
+    height:100vh;height:100dvh;
+    -webkit-font-smoothing:antialiased;
   }
 
-  /* ─── slider container · responsive direction ─── */
+  /* ─── halftone grain SVG embedded as data URI ─── */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:99;pointer-events:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    background-size:320px;
+    opacity:.18;
+    mix-blend-mode:overlay;
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:99;pointer-events:none;
+    background:repeating-linear-gradient(0deg,
+      rgba(255,255,255,.025) 0,
+      rgba(255,255,255,.025) 1px,
+      transparent 1px,
+      transparent 3px);
+    mix-blend-mode:overlay;
+  }
+
+  /* ─── deck ─── */
   .deck{
     display:flex;
-    height:100vh;
-    height:100dvh;
+    height:100vh;height:100dvh;
     width:100vw;
-    overflow-x:auto;
-    overflow-y:hidden;
+    overflow-x:auto;overflow-y:hidden;
     scroll-snap-type:x mandatory;
     scroll-behavior:smooth;
     -webkit-overflow-scrolling:touch;
   }
   .deck::-webkit-scrollbar{display:none}
   .deck{scrollbar-width:none}
-
   .slide{
     flex:0 0 100vw;
-    width:100vw;
-    height:100vh;
-    height:100dvh;
-    scroll-snap-align:start;
-    scroll-snap-stop:always;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:48px 32px;
-    position:relative;
-    overflow:hidden;
+    width:100vw;height:100vh;height:100dvh;
+    scroll-snap-align:start;scroll-snap-stop:always;
+    display:flex;align-items:center;justify-content:center;
+    padding:64px 40px;
+    position:relative;overflow:hidden;
   }
-
-  /* ─── mobile · vertical TikTok mode ─── */
   @media (max-width:768px){
-    .deck{
-      flex-direction:column;
-      overflow-x:hidden;
-      overflow-y:auto;
-      scroll-snap-type:y mandatory;
-    }
-    .slide{
-      flex:0 0 100vh;
-      flex:0 0 100dvh;
-      padding:32px 24px;
-    }
+    .deck{flex-direction:column;overflow-x:hidden;overflow-y:auto;scroll-snap-type:y mandatory}
+    .slide{flex:0 0 100vh;flex:0 0 100dvh;padding:40px 24px}
   }
 
-  /* ─── nav top ─── */
+  /* ─── topbar ─── */
   .topbar{
     position:fixed;top:0;left:0;right:0;z-index:50;
     display:flex;justify-content:space-between;align-items:center;
-    padding:18px 24px;
+    padding:18px 28px;
     pointer-events:none;
-    mix-blend-mode:multiply;
   }
   .topbar > *{pointer-events:auto}
   .wordmark{
-    font-family:'Bricolage Grotesque',sans-serif;
-    font-weight:800;font-size:14px;
-    letter-spacing:6px;
-    color:var(--ink);
+    font-family:'Anton','Inter',sans-serif;
+    font-size:14px;letter-spacing:7px;
+    color:var(--cream);
+    text-decoration:none;
+    text-shadow:1.5px 0 0 var(--red), -1.5px 0 0 #1B3CFF;
   }
-  .progress{
-    display:flex;gap:6px;
-  }
+  .wordmark span{color:var(--red)}
+  .progress{display:flex;gap:6px}
   .dot{
-    width:24px;height:3px;
-    background:rgba(26,20,16,.2);
-    transition:background .25s ease;
-    cursor:pointer;
+    width:26px;height:3px;
+    background:rgba(245,241,232,.22);
+    transition:background .25s ease;cursor:pointer;
   }
-  .dot.active{background:var(--ink)}
+  .dot.active{background:var(--red)}
   @media (max-width:768px){
     .progress{flex-direction:column;width:3px}
-    .dot{width:3px;height:18px}
+    .dot{width:3px;height:20px}
   }
 
-  /* ─── slide content blocks ─── */
+  /* ─── viewer-discretion bumper top ─── */
+  .bumper{
+    position:fixed;top:50px;left:0;right:0;z-index:48;
+    background:transparent;
+    text-align:center;padding:6px 0;
+    font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:5px;
+    color:var(--cream);opacity:.55;text-transform:uppercase;
+    pointer-events:none;
+  }
+  .bumper .red{color:var(--red);opacity:.95}
+
+  /* ─── content blocks ─── */
   .wrap{
-    width:100%;
-    max-width:780px;
-    display:flex;
-    flex-direction:column;
-    gap:24px;
+    width:100%;max-width:840px;
+    display:flex;flex-direction:column;gap:24px;
+    position:relative;z-index:2;
   }
   .eyebrow{
     font-family:'JetBrains Mono',monospace;
-    font-size:11px;
-    letter-spacing:3px;
-    color:var(--ink);
-    opacity:.6;
-    text-transform:uppercase;
+    font-size:11px;letter-spacing:4px;
+    color:var(--red);text-transform:uppercase;
   }
+  .eyebrow::before{content:"■  "}
   h1.title,h2.title{
-    font-family:'Bricolage Grotesque',sans-serif;
-    font-weight:700;
-    font-size:clamp(48px,9vw,128px);
-    line-height:.92;
-    letter-spacing:-.025em;
-    color:var(--ink);
+    font-family:'Anton','Inter',sans-serif;
+    font-size:clamp(64px,11vw,168px);
+    line-height:.86;
+    letter-spacing:-.02em;
+    text-transform:uppercase;
+    color:var(--cream);
+    text-shadow:3px 0 0 var(--red), -3px 0 0 #1B3CFF;
   }
-  h1.title .accent,h2.title .accent{color:var(--orange)}
-  h1.title .ul{position:relative;display:inline-block}
-  h1.title .ul::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:6px;background:var(--orange);z-index:-1;opacity:.55}
+  h1.title .y,h2.title .y{
+    color:var(--yellow);
+    text-shadow:none;
+  }
+  h1.title .stop,h2.title .stop{color:var(--red);text-shadow:none}
   .lede{
-    font-size:clamp(18px,2.4vw,24px);
+    font-size:clamp(17px,2.2vw,22px);
     line-height:1.5;
-    color:var(--ink);
-    max-width:640px;
+    color:#cfcfcf;
+    max-width:680px;font-weight:500;
   }
-  .lede b{font-weight:700;background:linear-gradient(transparent 60%,rgba(216,90,46,.35) 60%);padding:0 2px}
+  .lede b{color:var(--cream);font-weight:700}
+  .lede .hl{background:linear-gradient(transparent 60%, rgba(229,9,20,.4) 60%);padding:0 4px;color:var(--cream);font-weight:700}
   .mono{
     font-family:'JetBrains Mono',monospace;
-    font-size:13px;
-    letter-spacing:1.5px;
-    color:var(--ink);
-    opacity:.7;
+    font-size:12px;letter-spacing:2px;
+    color:#999;text-transform:uppercase;
   }
 
-  /* ─── frames + outlines (RS register) ─── */
-  .frame{
-    border:3px solid var(--ink);
-    background:var(--cream-light);
-    padding:28px 32px;
-    position:relative;
-  }
-  .frame.shadow{
-    box-shadow:8px 8px 0 var(--ink);
-  }
-  .frame.shadow-orange{
-    box-shadow:8px 8px 0 var(--orange);
-  }
-  .frame.tilted{transform:rotate(-1.5deg)}
-  .frame.tilted-r{transform:rotate(1.5deg)}
-
-  /* ─── numbers stack ─── */
-  .stack{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:14px;
-  }
+  /* ─── stack of stats (RS-frame meets TENET-color) ─── */
+  .stack{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
   .stack .item{
-    border:3px solid var(--ink);
-    background:var(--cream-light);
-    padding:20px;
-    text-align:left;
+    border:2px solid var(--cream);
+    background:rgba(245,241,232,.04);
+    padding:22px 24px;text-align:left;
   }
   .stack .item .big{
-    font-family:'Bricolage Grotesque',sans-serif;
-    font-weight:800;
-    font-size:clamp(40px,6vw,72px);
-    color:var(--orange);
-    line-height:1;
+    font-family:'Anton',sans-serif;
+    font-size:clamp(48px,7vw,84px);line-height:1;
+    color:var(--yellow);
+    text-shadow:2px 0 0 var(--red);
   }
   .stack .item .lab{
     font-family:'JetBrains Mono',monospace;
     font-size:10px;letter-spacing:2px;
-    text-transform:uppercase;color:var(--ink);
-    margin-top:8px;
+    text-transform:uppercase;color:var(--cream);
+    margin-top:10px;opacity:.85;
   }
   @media (max-width:768px){
     .stack{grid-template-columns:1fr;gap:10px}
     .stack .item{padding:14px 18px}
-    .stack .item .big{font-size:48px}
+    .stack .item .big{font-size:54px}
   }
 
   /* ─── questions list ─── */
-  .qs{
-    display:flex;flex-direction:column;gap:6px;
-  }
+  .qs{display:flex;flex-direction:column;gap:8px}
   .qs li{
     list-style:none;
-    font-family:'Bricolage Grotesque',sans-serif;
-    font-weight:700;
-    font-size:clamp(20px,3vw,32px);
-    line-height:1.15;
-    color:var(--ink);
-    padding-left:32px;
-    position:relative;
+    font-family:'Anton',sans-serif;
+    font-size:clamp(28px,5vw,56px);line-height:1.05;
+    color:var(--cream);
+    padding-left:48px;position:relative;
+    text-transform:uppercase;letter-spacing:-.01em;
   }
   .qs li::before{
-    content:"›";
-    position:absolute;left:0;color:var(--orange);font-weight:800;
+    content:"●";position:absolute;left:0;color:var(--red);font-size:14px;top:14px;
   }
+  .qs li:nth-child(5)::before{color:var(--yellow)}
 
   /* ─── pricing tiers ─── */
-  .tiers{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:14px;
-  }
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
   .tier{
-    border:3px solid var(--ink);
-    background:var(--cream-light);
-    padding:20px;
-    text-align:left;
+    border:2px solid var(--cream);
+    background:rgba(245,241,232,.05);
+    padding:22px 22px;text-align:left;
   }
   .tier.featured{
-    background:var(--orange);
-    color:var(--cream-light);
-    box-shadow:8px 8px 0 var(--ink);
+    background:var(--red);
+    border-color:var(--cream);
+    box-shadow:8px 8px 0 var(--ink), 8px 8px 0 4px var(--cream);
+    position:relative;
+  }
+  .tier.featured::after{
+    content:"+ VENDIDO";
+    position:absolute;top:-12px;right:14px;
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;font-weight:700;
+    background:var(--yellow);color:var(--ink);padding:5px 9px;
   }
   .tier .label{
     font-family:'JetBrains Mono',monospace;
-    font-size:11px;letter-spacing:2px;
-    text-transform:uppercase;
-    opacity:.7;
+    font-size:10px;letter-spacing:2.5px;text-transform:uppercase;
+    color:var(--cream);opacity:.7;
   }
   .tier .price{
-    font-family:'Bricolage Grotesque',sans-serif;
-    font-weight:800;
-    font-size:clamp(36px,5vw,56px);
-    line-height:1;
-    margin-top:6px;
+    font-family:'Anton',sans-serif;
+    font-size:clamp(40px,5.6vw,72px);line-height:1;
+    color:var(--cream);margin-top:6px;
   }
+  .tier.featured .price{color:var(--cream);text-shadow:2px 0 0 var(--ink)}
   .tier .small{
     font-family:'JetBrains Mono',monospace;
-    font-size:10px;
-    letter-spacing:1.5px;
-    margin-top:4px;
-    opacity:.7;
+    font-size:10px;letter-spacing:1.5px;
+    margin-top:6px;color:var(--cream);opacity:.75;
   }
   @media (max-width:768px){
     .tiers{grid-template-columns:1fr;gap:10px}
   }
 
-  /* ─── CTA button ─── */
+  /* ─── CTA ─── */
   .cta{
-    display:inline-flex;
-    align-items:center;justify-content:center;gap:14px;
-    padding:24px 36px;
-    background:var(--orange);
-    color:var(--cream-light);
-    border:3px solid var(--ink);
-    font-family:'Bricolage Grotesque',sans-serif;
-    font-weight:700;
-    font-size:clamp(18px,2.5vw,24px);
-    text-decoration:none;
-    box-shadow:8px 8px 0 var(--ink);
+    display:inline-flex;align-items:center;gap:16px;
+    padding:22px 30px;
+    background:var(--red);
+    color:var(--cream);
+    border:none;
+    font-family:'Anton',sans-serif;
+    font-weight:400;font-size:clamp(18px,2.4vw,26px);
+    text-decoration:none;text-transform:uppercase;letter-spacing:1px;
     transition:all .15s ease;
-    text-align:left;
+    align-self:flex-start;
+    box-shadow:8px 8px 0 var(--cream);
   }
-  .cta:hover{
-    background:var(--orange-deep);
-    transform:translate(2px,2px);
-    box-shadow:6px 6px 0 var(--ink);
-  }
-  .cta .wa{
-    width:32px;height:32px;flex-shrink:0;
-    display:inline-flex;align-items:center;justify-content:center;
-  }
-  .cta .wa svg{width:100%;height:100%;fill:var(--cream-light)}
+  .cta:hover{background:var(--red-deep);transform:translate(2px,2px);box-shadow:6px 6px 0 var(--cream)}
+  .cta .wa{width:30px;height:30px;flex-shrink:0;display:inline-flex;align-items:center}
+  .cta .wa svg{width:100%;height:100%;fill:var(--cream)}
+  .cta .meta{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;font-weight:400;opacity:.85;display:block;margin-top:2px}
 
-  /* ─── floating CTWA (always visible after slide 1) ─── */
+  /* ─── floating CTWA ─── */
   .floating{
     position:fixed;bottom:24px;right:24px;z-index:60;
-    display:flex;align-items:center;gap:12px;
-    padding:14px 20px;
-    background:var(--ink);
-    color:var(--cream-light);
-    border:3px solid var(--ink);
-    box-shadow:6px 6px 0 var(--orange);
+    display:flex;align-items:center;gap:10px;
+    padding:13px 20px;
+    background:var(--red);color:var(--cream);
     text-decoration:none;
-    font-family:'JetBrains Mono',monospace;
-    font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:700;
-    opacity:0;
-    transform:translateY(20px);
-    transition:all .35s ease;
-    pointer-events:none;
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;font-weight:700;
+    box-shadow:5px 5px 0 var(--cream);
+    opacity:0;transform:translateY(20px);transition:all .35s ease;pointer-events:none;
   }
   .floating.show{opacity:1;transform:translateY(0);pointer-events:auto}
-  .floating svg{width:18px;height:18px;fill:var(--cream-light)}
+  .floating svg{width:18px;height:18px;fill:var(--cream)}
   @media (max-width:768px){
-    .floating{bottom:16px;right:16px;padding:12px 16px;font-size:11px}
+    .floating{bottom:16px;right:16px;padding:11px 16px;font-size:10px}
   }
 
-  /* ─── arrows desktop ─── */
+  /* ─── arrows ─── */
   .arrows{
     position:fixed;bottom:32px;left:50%;transform:translateX(-50%);z-index:55;
     display:flex;gap:14px;
   }
   .arrow{
-    width:52px;height:52px;
-    border:3px solid var(--ink);
-    background:var(--cream-light);
+    width:54px;height:54px;
+    border:2px solid var(--cream);
+    background:transparent;color:var(--cream);
     cursor:pointer;
-    display:flex;align-items:center;justify-content:center;
-    font-family:'Bricolage Grotesque',sans-serif;
-    font-weight:800;font-size:24px;color:var(--ink);
-    box-shadow:4px 4px 0 var(--ink);
+    font-family:'Anton',sans-serif;font-size:28px;
     transition:all .12s ease;
+    display:flex;align-items:center;justify-content:center;
   }
-  .arrow:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
-  .arrow:active{transform:translate(4px,4px);box-shadow:0 0 0 var(--ink)}
+  .arrow:hover{background:var(--red);border-color:var(--red);color:var(--cream)}
   @media (max-width:768px){.arrows{display:none}}
 
   /* ─── slide-specific backgrounds ─── */
-  .s1{background:var(--cream)}
-  .s2{background:var(--cream-light)}
-  .s3{background:var(--cream)}
-  .s4{background:var(--cream-light)}
-  .s5{background:var(--orange);color:var(--cream-light)}
-  .s5 .eyebrow,.s5 h2.title,.s5 .lede,.s5 .mono{color:var(--cream-light)}
-  .s5 .tier{border-color:var(--cream-light);color:var(--cream-light);background:rgba(255,255,255,.08)}
-  .s5 .tier.featured{background:var(--cream-light);color:var(--ink);border-color:var(--ink)}
-  .s5 .tier.featured .label,.s5 .tier.featured .price,.s5 .tier.featured .small{color:var(--ink);opacity:1}
-  .s6{background:var(--ink);color:var(--cream-light)}
-  .s6 .eyebrow,.s6 h2.title,.s6 .lede,.s6 .mono{color:var(--cream-light)}
-  .s6 .lede b{background:linear-gradient(transparent 60%,rgba(216,90,46,.55) 60%)}
+  .s1{background:var(--ink)}
+  .s2{background:var(--ink)}
+  .s3{background:var(--ink)}
+  .s4{background:var(--cream-warm);color:var(--ink)}
+  .s4 .eyebrow{color:var(--red)}
+  .s4 h2.title{color:var(--ink);text-shadow:3px 0 0 var(--red),-3px 0 0 #1B3CFF}
+  .s4 h2.title .y{color:var(--red);text-shadow:none}
+  .s4 .lede{color:#3a2018}
+  .s4 .lede b{color:var(--ink)}
+  .s4 .mono{color:#3a2018;opacity:.7}
+  .s5{background:var(--red);color:var(--cream)}
+  .s5 .eyebrow{color:var(--ink)}
+  .s5 h2.title{color:var(--cream);text-shadow:3px 0 0 var(--ink),-3px 0 0 var(--yellow)}
+  .s5 h2.title .y{color:var(--yellow);text-shadow:none}
+  .s5 .lede{color:var(--cream)}
+  .s5 .tier{border-color:var(--cream);background:rgba(0,0,0,.15)}
+  .s5 .tier.featured{background:var(--cream);color:var(--ink);border-color:var(--ink);box-shadow:8px 8px 0 var(--ink)}
+  .s5 .tier.featured .label,.s5 .tier.featured .price,.s5 .tier.featured .small{color:var(--ink)}
+  .s5 .tier .label,.s5 .tier .price,.s5 .tier .small{color:var(--cream)}
+  .s5 .mono{color:var(--cream);opacity:.85}
+  .s6{background:var(--ink)}
 
-  /* ─── decorative scribbles (RS hand-drawn feel, in CSS only) ─── */
-  .scribble{
-    position:absolute;
-    pointer-events:none;
-    opacity:.18;
-  }
-  .scribble svg{width:100%;height:auto}
-  .sc-tl{top:24px;left:24px;width:80px}
-  .sc-br{bottom:60px;right:24px;width:90px}
-  .sc-tr{top:60px;right:32px;width:70px}
-  @media (max-width:768px){.scribble{display:none}}
-
-  /* ─── slack tag ─── */
-  .tag{
-    display:inline-block;
-    font-family:'JetBrains Mono',monospace;
-    font-size:11px;letter-spacing:2px;
-    background:var(--ink);color:var(--cream-light);
-    padding:6px 12px;
-    text-transform:uppercase;
-    transform:rotate(-2deg);
-    box-shadow:3px 3px 0 var(--orange);
+  /* ─── sticker plate (advisory) ─── */
+  .plate{
+    display:inline-flex;flex-direction:column;align-items:center;justify-content:center;
+    border:2px solid var(--cream);
+    padding:8px 14px;line-height:1;
     align-self:flex-start;
   }
-  .s5 .tag{background:var(--cream-light);color:var(--orange)}
-  .s6 .tag{background:var(--orange);color:var(--cream-light);box-shadow:3px 3px 0 var(--cream-light)}
+  .plate .top{font-family:'Anton',sans-serif;font-size:14px;letter-spacing:2px;color:var(--cream)}
+  .plate .mid{font-family:'Anton',sans-serif;font-size:22px;color:var(--red);margin:2px 0;letter-spacing:1px}
+  .plate .bot{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#aaa;text-transform:uppercase}
+  .s4 .plate{border-color:var(--ink)}
+  .s4 .plate .top{color:var(--ink)}
+  .s4 .plate .mid{color:var(--red)}
+  .s4 .plate .bot{color:#3a2018}
+  .s5 .plate{border-color:var(--cream)}
+  .s5 .plate .top{color:var(--cream)}
+  .s5 .plate .mid{color:var(--ink)}
+  .s5 .plate .bot{color:var(--cream);opacity:.85}
 
-  /* ─── arrow inside cta ─── */
-  .arr-r::after{content:"  →"}
+  /* ─── Sator stamp ─── */
+  .sator{
+    position:absolute;right:32px;bottom:32px;
+    font-family:'Anton',sans-serif;font-size:11px;letter-spacing:6px;
+    color:var(--red);opacity:.5;line-height:1.5;text-align:right;
+    transform:rotate(-2deg);
+  }
+  @media (max-width:768px){.sator{display:none}}
+
+  /* ─── Big inline tag ─── */
+  .tag{
+    display:inline-block;align-self:flex-start;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:2.5px;text-transform:uppercase;font-weight:700;
+    background:var(--yellow);color:var(--ink);
+    padding:8px 14px;
+    transform:rotate(-2deg);
+    box-shadow:4px 4px 0 var(--cream);
+  }
+  .s4 .tag{box-shadow:4px 4px 0 var(--ink)}
+
 </style>
 </head>
 <body>
 
-<!-- ─── topbar persistent ─── -->
+<!-- ─── topbar ─── -->
 <div class="topbar">
-  <a href="/" class="wordmark">AURY · T E N E T</a>
+  <a href="/" class="wordmark">AURY <span>·</span> T E N E T</a>
   <div class="progress" id="progress">
     <span class="dot active" data-i="0"></span>
     <span class="dot" data-i="1"></span>
@@ -390,39 +370,38 @@
 <!-- ─── deck ─── -->
 <div class="deck" id="deck">
 
-  <!-- SLIDE 1 · HOOK -->
+  <!-- 1 · HOOK -->
   <section class="slide s1">
-    <div class="scribble sc-tl"><svg viewBox="0 0 100 100"><path d="M10 20 Q30 10, 50 25 T 90 30 M 15 50 Q 40 40, 70 55 M 20 75 Q 45 65, 80 80" stroke="#1A1410" stroke-width="3" fill="none" stroke-linecap="round"/></svg></div>
     <div class="wrap">
       <span class="eyebrow">★ ANTES DE GASTAR UN EURO MÁS</span>
-      <h1 class="title">Tu pixel<br>te <span class="ul">miente</span>.</h1>
-      <p class="lede">iOS, GDPR y los bloqueadores te ocultan entre el <b>30% y el 60%</b> de las ventas que tu publicidad genera. Tu agencia no te lo dice porque ella tampoco lo ve.</p>
+      <h1 class="title">Tu pixel<br>te <span class="y">miente</span><span class="stop">.</span></h1>
+      <p class="lede">iOS, GDPR y los bloqueadores te han ocultado entre el <span class="hl">30% y el 60%</span> de las ventas que tu publicidad genera. Tu agencia no te lo dice porque ella tampoco lo ve.</p>
       <span class="mono">Desliza →</span>
     </div>
+    <div class="sator">S A T O R<br>A R E P O<br>T E N E T<br>O P E R A<br>R O T A S</div>
   </section>
 
-  <!-- SLIDE 2 · SIN CRM -->
+  <!-- 2 · SIN CRM -->
   <section class="slide s2">
-    <div class="scribble sc-tr"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" stroke="#D85A2E" stroke-width="3" fill="none" stroke-dasharray="6 6"/><path d="M30 50 L50 65 L75 35" stroke="#D85A2E" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
     <div class="wrap">
       <span class="eyebrow">★ LO QUE TU PIXEL NO TE DICE</span>
-      <h2 class="title">Sin <span class="accent">CRM</span><br>no sabes ni…</h2>
+      <h2 class="title">Sin CRM<br>no sabes ni…</h2>
       <ul class="qs">
-        <li>Quién agendó cita</li>
-        <li>Quién asistió</li>
-        <li>Quién compró</li>
-        <li>Quién volvió</li>
-        <li>Quién te recomendó</li>
+        <li>quién agendó cita</li>
+        <li>quién asistió</li>
+        <li>quién compró</li>
+        <li>quién volvió</li>
+        <li>quién te <span class="y">recomendó</span></li>
       </ul>
     </div>
   </section>
 
-  <!-- SLIDE 3 · MECHANISM -->
+  <!-- 3 · CERRAMOS EL LOOP -->
   <section class="slide s3">
     <div class="wrap">
       <span class="eyebrow">★ LO QUE INSTALAMOS</span>
-      <h2 class="title">Cerramos<br>el loop<span style="color:var(--orange)">.</span></h2>
-      <p class="lede">Tracking <b>server-side</b> (Meta CAPI + Google Enhanced Conversions) + tu CRM all-in-one (GoHighLevel) + capa de IA optimizando con datos limpios. <b>14 días</b> de instalación. Datos limpios desde el día 15.</p>
+      <h2 class="title">Cerramos<br>el <span class="y">loop</span><span class="stop">.</span></h2>
+      <p class="lede">Tracking <b>server-side</b> · Meta CAPI + Google Enhanced Conversions · tu CRM all-in-one (GoHighLevel) · capa de IA optimizando con datos limpios. <b>14 días</b> de instalación · datos limpios desde el día 15.</p>
       <div class="stack">
         <div class="item"><div class="big">14d</div><div class="lab">Instalación</div></div>
         <div class="item"><div class="big">+47%</div><div class="lab">Atribución recuperada</div></div>
@@ -431,66 +410,70 @@
     </div>
   </section>
 
-  <!-- SLIDE 4 · LO QUE HACEMOS -->
+  <!-- 4 · TOMAMOS · cream -->
   <section class="slide s4">
-    <div class="scribble sc-br"><svg viewBox="0 0 100 100"><path d="M10 50 L30 30 L30 70 Z" fill="#1A1410"/><path d="M40 30 L40 70 L70 50 Z" fill="#D85A2E"/><circle cx="85" cy="50" r="8" fill="#1A1410"/></svg></div>
     <div class="wrap">
       <span class="eyebrow">★ END-TO-END · NO COMPLEMENTO</span>
-      <h2 class="title">Tomamos tu<br>adquisición<br><span class="accent">de principio a fin.</span></h2>
+      <h2 class="title">Tomamos<br>tu <span class="y">adquisición</span>.<br>De principio<br>a fin.</h2>
       <p class="lede">Auditoría · landing · tracking · CRM · creativos basados en data · gestión activa · IA. <b>Siete piezas</b>, todas incluidas.</p>
-      <span class="tag">★ NO HACEMOS COMMUNITY · NO SOCIAL ORGÁNICO · NO SEO</span>
+      <span class="tag">★ NO COMMUNITY · NO SOCIAL ORGÁNICO · NO SEO</span>
+    </div>
+    <div class="plate" style="position:absolute;top:96px;right:32px">
+      <div class="top">★ AVISO ★</div>
+      <div class="mid">NO PARA TODOS</div>
+      <div class="bot">PERFORMANCE · MADRID · 2026</div>
     </div>
   </section>
 
-  <!-- SLIDE 5 · PRICING -->
+  <!-- 5 · PRICING · red -->
   <section class="slide s5">
     <div class="wrap">
-      <span class="eyebrow">★ PRICING PÚBLICO · CERO ASTERISCOS</span>
-      <h2 class="title">Tres precios.<br>Sin negociar.</h2>
+      <span class="eyebrow" style="color:var(--ink)">★ PRICING PÚBLICO · CERO ASTERISCOS</span>
+      <h2 class="title">Tres precios.<br>Sin <span class="y">negociar</span><span class="stop" style="color:var(--ink)">.</span></h2>
       <div class="tiers">
         <div class="tier">
           <div class="label">META</div>
           <div class="price">€600</div>
-          <div class="small">/mes · 2 meses adelantado</div>
+          <div class="small">/mes · 2 meses por adelantado</div>
         </div>
         <div class="tier featured">
           <div class="label">AMBOS · LOOP COMPLETO</div>
           <div class="price">€1.500</div>
-          <div class="small">/mes · 2 meses adelantado</div>
+          <div class="small">/mes · 2 meses por adelantado</div>
         </div>
         <div class="tier">
           <div class="label">GOOGLE</div>
           <div class="price">€1.000</div>
-          <div class="small">/mes · 2 meses adelantado</div>
+          <div class="small">/mes · 2 meses por adelantado</div>
         </div>
       </div>
-      <p class="mono">★ DEVOLUCIÓN 100% PRIMEROS 60 DÍAS · SIN SETUP · SIN % SOBRE AD SPEND</p>
+      <span class="mono">★ DEVOLUCIÓN 100% PRIMEROS 60 DÍAS · SIN SETUP · SIN % SOBRE AD SPEND</span>
     </div>
   </section>
 
-  <!-- SLIDE 6 · CTA -->
+  <!-- 6 · CTA -->
   <section class="slide s6">
     <div class="wrap">
       <span class="eyebrow">★ HABLEMOS</span>
-      <h2 class="title">30 minutos.<br><span class="accent">Una decisión.</span></h2>
-      <p class="lede">Si en la primera llamada no aprendes algo nuevo sobre tu propia atribución, te debemos un café. Sin formularios, sin demos, sin agendar tres semanas adelante.</p>
-      <a class="cta" href="https://wa.me/34684790538?text=Hola%2C%20vi%20su%20landing%20de%20AURY%20T%20E%20N%20E%20T%20y%20quiero%20info%20sobre%20closed-loop%20marketing." target="_blank" rel="noopener noreferrer">
+      <h2 class="title">30 minutos.<br>Una <span class="y">decisión</span><span class="stop">.</span></h2>
+      <p class="lede">Si en la primera llamada no aprendes algo nuevo sobre tu propia atribución, te debemos un café. <b>Sin formularios.</b> Sin demos. Sin agendar tres semanas adelante.</p>
+      <a class="cta" href="https://wa.me/34684790538?text=Hola%2C%20vi%20su%20landing%20de%20AURY%20T%20E%20N%20E%20T%20y%20quiero%20info%20sobre%20closed-loop%20marketing." target="_blank" rel="noopener noreferrer" id="cta-main">
         <span class="wa"><svg viewBox="0 0 24 24"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.06 4 7.94 7.94 0 0 0 4.13 11.94a7.85 7.85 0 0 0 1.07 4l-1.13 4.13 4.23-1.11a7.94 7.94 0 0 0 3.79.96h.01a7.94 7.94 0 0 0 7.93-7.94 7.85 7.85 0 0 0-2.43-5.66ZM12.07 18.6a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.66.67-2.45-.16-.25a6.6 6.6 0 0 1-1-3.5 6.6 6.6 0 0 1 11.27-4.66 6.55 6.55 0 0 1 1.92 4.67 6.6 6.6 0 0 1-6.6 6.6Zm3.62-4.94c-.2-.1-1.18-.58-1.36-.65-.18-.07-.31-.1-.45.1s-.51.65-.63.78c-.11.13-.23.15-.43.05a5.43 5.43 0 0 1-1.6-.99 6 6 0 0 1-1.1-1.38c-.12-.2-.01-.31.09-.41.09-.09.2-.23.3-.35.1-.11.13-.2.2-.33.07-.13.03-.25-.01-.35-.05-.1-.45-1.08-.61-1.48-.16-.39-.32-.34-.45-.34h-.39a.74.74 0 0 0-.54.25 2.27 2.27 0 0 0-.7 1.68 3.93 3.93 0 0 0 .82 2.08 9 9 0 0 0 3.45 3.06c.48.21.86.33 1.16.43a2.8 2.8 0 0 0 1.28.08c.39-.06 1.18-.48 1.34-.95.17-.46.17-.86.12-.94-.05-.09-.18-.13-.38-.23Z"/></svg></span>
-        <span>Hablar por WhatsApp<br><span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:400;letter-spacing:2px;opacity:.85">RESPUESTA EN 1 HORA</span></span>
+        <span>Hablar por WhatsApp<span class="meta">RESPUESTA EN 1 HORA</span></span>
       </a>
-      <span class="mono">★ AURY · T E N E T · MARKETING 360 · MADRID 2026</span>
+      <span class="mono" style="margin-top:8px">★ AURY · T E N E T · MARKETING 360 · MADRID 2026</span>
     </div>
   </section>
 
 </div>
 
-<!-- ─── floating CTWA (after slide 1) ─── -->
+<!-- ─── floating CTWA ─── -->
 <a class="floating" id="floating" href="https://wa.me/34684790538?text=Hola%2C%20vi%20su%20landing%20de%20AURY%20T%20E%20N%20E%20T%20y%20quiero%20info%20sobre%20closed-loop%20marketing." target="_blank" rel="noopener noreferrer">
   <svg viewBox="0 0 24 24"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.06 4 7.94 7.94 0 0 0 4.13 11.94a7.85 7.85 0 0 0 1.07 4l-1.13 4.13 4.23-1.11a7.94 7.94 0 0 0 3.79.96h.01a7.94 7.94 0 0 0 7.93-7.94 7.85 7.85 0 0 0-2.43-5.66Z"/></svg>
   <span>WhatsApp</span>
 </a>
 
-<!-- ─── arrows desktop ─── -->
+<!-- ─── arrows ─── -->
 <div class="arrows" id="arrows">
   <button class="arrow" id="prev" aria-label="anterior">‹</button>
   <button class="arrow" id="next" aria-label="siguiente">›</button>
@@ -509,93 +492,55 @@
 
   function getCurrent(){
     if(isMobile){
-      // vertical scroll
-      var scroll = deck.scrollTop;
-      var h = window.innerHeight;
-      return Math.round(scroll / h);
+      return Math.round(deck.scrollTop / window.innerHeight);
     } else {
-      // horizontal scroll
-      var scroll = deck.scrollLeft;
-      var w = window.innerWidth;
-      return Math.round(scroll / w);
+      return Math.round(deck.scrollLeft / window.innerWidth);
     }
   }
-
   function setActive(i){
     current = Math.max(0, Math.min(slides.length - 1, i));
-    dots.forEach(function(d, idx){
-      d.classList.toggle('active', idx === current);
-    });
+    dots.forEach(function(d, idx){ d.classList.toggle('active', idx === current); });
     floating.classList.toggle('show', current > 0 && current < slides.length - 1);
   }
-
   function goTo(i){
     i = Math.max(0, Math.min(slides.length - 1, i));
-    if(isMobile){
-      deck.scrollTo({top: i * window.innerHeight, behavior: 'smooth'});
-    } else {
-      deck.scrollTo({left: i * window.innerWidth, behavior: 'smooth'});
-    }
+    if(isMobile) deck.scrollTo({top: i * window.innerHeight, behavior: 'smooth'});
+    else deck.scrollTo({left: i * window.innerWidth, behavior: 'smooth'});
     setActive(i);
   }
-
-  // dot click
-  dots.forEach(function(d){
-    d.addEventListener('click', function(){
-      goTo(parseInt(this.dataset.i));
-    });
-  });
-
-  // arrows
+  dots.forEach(function(d){ d.addEventListener('click', function(){ goTo(parseInt(this.dataset.i)); }); });
   prev.addEventListener('click', function(){ goTo(current - 1); });
   next.addEventListener('click', function(){ goTo(current + 1); });
-
-  // scroll listener
-  deck.addEventListener('scroll', function(){
-    setActive(getCurrent());
-  }, {passive: true});
-
-  // keyboard nav
+  deck.addEventListener('scroll', function(){ setActive(getCurrent()); }, {passive:true});
   document.addEventListener('keydown', function(e){
     if(e.key === 'ArrowRight' || e.key === 'ArrowDown'){ e.preventDefault(); goTo(current + 1); }
     if(e.key === 'ArrowLeft' || e.key === 'ArrowUp'){ e.preventDefault(); goTo(current - 1); }
     if(e.key === 'Home'){ e.preventDefault(); goTo(0); }
     if(e.key === 'End'){ e.preventDefault(); goTo(slides.length - 1); }
   });
-
-  // resize handler
   window.addEventListener('resize', function(){
     isMobile = window.matchMedia('(max-width:768px)').matches;
     goTo(current);
   });
-
-  // wheel: convert vertical wheel to horizontal scroll on desktop
   if(!isMobile){
     deck.addEventListener('wheel', function(e){
-      // if the user uses vertical wheel/trackpad, convert to horizontal
-      if(Math.abs(e.deltaY) > Math.abs(e.deltaX)){
-        e.preventDefault();
-        deck.scrollLeft += e.deltaY;
-      }
+      if(Math.abs(e.deltaY) > Math.abs(e.deltaX)){ e.preventDefault(); deck.scrollLeft += e.deltaY; }
     }, {passive: false});
   }
-
-  // gtag-ready hook for tracking events
+  // gtag hooks
   window.addEventListener('load', function(){
-    if(typeof gtag === 'function'){
-      gtag('event', 'landing_view', {page: 'landing-aury-tenet'});
-    }
+    if(typeof gtag === 'function'){ gtag('event', 'landing_view', {page: 'landing-aury-tenet'}); }
   });
-
-  // cta click tracking placeholder
   document.querySelectorAll('a[href*="wa.me"]').forEach(function(a){
     a.addEventListener('click', function(){
-      if(typeof gtag === 'function'){
-        gtag('event', 'whatsapp_click', {source: 'landing-aury-tenet'});
-      }
+      if(typeof gtag === 'function'){ gtag('event', 'whatsapp_click', {source: 'landing-aury-tenet'}); }
     });
   });
 
+  // console manifesto
+  console.log("%c AURY · T E N E T ", "background:#E50914;color:#F5F1E8;font-weight:900;font-size:18px;padding:6px 14px;letter-spacing:6px");
+  console.log("%c El loop está cerrado.", "color:#F5D000;font-family:monospace;font-size:13px;letter-spacing:2px");
+  console.log("%c hola@tenet.partners", "color:#fff;font-family:monospace;text-decoration:underline");
 })();
 </script>
 
