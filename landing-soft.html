@@ -66,14 +66,18 @@
       padding:74px 20px 60px;
     }
   }
-  /* ─── MOBILE OPTIMIZATION · TikTok-style cleanup ─── */
+  /* ─── MOBILE OPTIMIZATION v2 · más agresivo · evitar cortes ─── */
   @media (max-width:768px){
     h1.title,h2.title{
-      font-size:clamp(38px,11vw,64px) !important;
-      line-height:.92;letter-spacing:-.015em;
+      font-size:clamp(30px,8.5vw,52px) !important;
+      line-height:.95;letter-spacing:-.01em;
+      text-shadow:1px 0 0 var(--red),-1px 0 0 var(--blue-soft) !important;
+      overflow-wrap:break-word;
+      hyphens:auto;
+      max-width:100%;
     }
     .s3 h2.title,.s4 h2.title,.s7 h2.title{
-      font-size:clamp(34px,9vw,56px) !important;
+      font-size:clamp(28px,7.5vw,46px) !important;
     }
     .lede{font-size:15px;line-height:1.45;max-width:100%}
     .mono{font-size:10px;letter-spacing:1.8px;line-height:1.5}
@@ -446,6 +450,13 @@
     filter:saturate(.6) contrast(1.1) hue-rotate(-15deg);
     mix-blend-mode:screen;
   }
+  /* ahorrar bandwidth en mobile · video off, GIFs reducidos */
+  @media (max-width:768px){
+    .ambient-video{display:none}
+    .glitch-bg{opacity:.08}
+    .vu-corner{width:160px;opacity:.4}
+    .chrome-accent{opacity:.12}
+  }
 
   /* ─── glitch GIF backdrop · slide 2 ─── */
   .glitch-bg{
@@ -766,7 +777,7 @@
 
   <!-- 1 · HOOK -->
   <section class="slide s1">
-    <video class="ambient-video" autoplay muted loop playsinline preload="auto">
+    <video class="ambient-video" autoplay muted loop playsinline preload="metadata">
       <source src="assets/img/landing/loop-hero.mp4" type="video/mp4">
     </video>
     <div class="wrap">
@@ -780,7 +791,7 @@
 
   <!-- 2 · LAS 4 FUGAS · técnico + preciso -->
   <section class="slide s2">
-    <img class="glitch-bg" src="assets/img/landing/glitch-fugas.gif" alt="" aria-hidden="true">
+    <img class="glitch-bg" src="assets/img/landing/glitch-fugas.gif" alt="" aria-hidden="true" loading="lazy" decoding="async">
     <div class="aury-mark plushy-night">
       <img src="assets/img/landing/aury-ball-night.png" alt="Aury observando las fugas a las 3am">
     </div>
@@ -842,7 +853,7 @@
 
   <!-- 5 · CASOS · técnico verificable -->
   <section class="slide s5">
-    <img class="vu-corner" src="assets/img/landing/vu-meters.gif" alt="" aria-hidden="true">
+    <img class="vu-corner" src="assets/img/landing/vu-meters.gif" alt="" aria-hidden="true" loading="lazy" decoding="async">
     <div class="aury-mark plushy-laptop">
       <img src="assets/img/landing/aury-ball-laptop.png" alt="Aury plushy estudiando casos">
     </div>
