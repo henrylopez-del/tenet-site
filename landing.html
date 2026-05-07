@@ -3,14 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>AURY · T E N E T — Closed-Loop Marketing</title>
-<meta name="description" content="Cerramos el loop entre tu inversión en ads y tus ventas reales. Server-side + CRM + IA. Madrid · 2026.">
+<title>AURY · T E N E T — Cerramos el loop entre tu inversión en ads y tus ventas reales</title>
+<meta name="description" content="Recuperas el 30-60% de conversiones que iOS, GDPR y bloqueadores te han ocultado. 14 días. Desde €600/mes. Devolución 100% primeros 60 días.">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@1,800;1,900&display=swap" rel="stylesheet">
 <style>
-  /* ─── reset ─── */
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{
     --red:#E50914;
@@ -21,7 +20,7 @@
     --ink:#0A0A0A;
     --ash:#1A1410;
     --line:#2A2018;
-    --orange:#D85A2E;
+    --green:#3DBE88;
   }
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
   body{
@@ -32,14 +31,10 @@
     height:100vh;height:100dvh;
     -webkit-font-smoothing:antialiased;
   }
-
-  /* ─── halftone grain SVG embedded as data URI ─── */
   body::before{
     content:"";position:fixed;inset:0;z-index:99;pointer-events:none;
     background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-    background-size:320px;
-    opacity:.18;
-    mix-blend-mode:overlay;
+    background-size:320px;opacity:.18;mix-blend-mode:overlay;
   }
   body::after{
     content:"";position:fixed;inset:0;z-index:99;pointer-events:none;
@@ -53,72 +48,55 @@
 
   /* ─── deck ─── */
   .deck{
-    display:flex;
-    height:100vh;height:100dvh;
-    width:100vw;
+    display:flex;height:100vh;height:100dvh;width:100vw;
     overflow-x:auto;overflow-y:hidden;
-    scroll-snap-type:x mandatory;
-    scroll-behavior:smooth;
+    scroll-snap-type:x mandatory;scroll-behavior:smooth;
     -webkit-overflow-scrolling:touch;
   }
   .deck::-webkit-scrollbar{display:none}
   .deck{scrollbar-width:none}
   .slide{
-    flex:0 0 100vw;
-    width:100vw;height:100vh;height:100dvh;
+    flex:0 0 100vw;width:100vw;height:100vh;height:100dvh;
     scroll-snap-align:start;scroll-snap-stop:always;
     display:flex;align-items:center;justify-content:center;
-    padding:64px 40px;
+    padding:80px 48px 64px;
     position:relative;overflow:hidden;
   }
   @media (max-width:768px){
     .deck{flex-direction:column;overflow-x:hidden;overflow-y:auto;scroll-snap-type:y mandatory}
-    .slide{flex:0 0 100vh;flex:0 0 100dvh;padding:40px 24px}
+    .slide{flex:0 0 100vh;flex:0 0 100dvh;padding:64px 22px 40px}
   }
 
   /* ─── topbar ─── */
   .topbar{
     position:fixed;top:0;left:0;right:0;z-index:50;
     display:flex;justify-content:space-between;align-items:center;
-    padding:18px 28px;
-    pointer-events:none;
+    padding:18px 28px;pointer-events:none;
   }
   .topbar > *{pointer-events:auto}
   .wordmark{
-    font-family:'Anton','Inter',sans-serif;
-    font-size:14px;letter-spacing:7px;
-    color:var(--cream);
-    text-decoration:none;
-    text-shadow:1.5px 0 0 var(--red), -1.5px 0 0 #1B3CFF;
+    font-family:'Anton',sans-serif;
+    font-size:14px;letter-spacing:6px;
+    color:var(--cream);text-decoration:none;
+    text-shadow:1.5px 0 0 var(--red),-1.5px 0 0 #1B3CFF;
   }
   .wordmark span{color:var(--red)}
-  .progress{display:flex;gap:6px}
+  .progress{display:flex;gap:5px}
   .dot{
-    width:26px;height:3px;
+    width:24px;height:3px;
     background:rgba(245,241,232,.22);
     transition:background .25s ease;cursor:pointer;
   }
   .dot.active{background:var(--red)}
   @media (max-width:768px){
     .progress{flex-direction:column;width:3px}
-    .dot{width:3px;height:20px}
+    .dot{width:3px;height:18px}
   }
-
-  /* ─── viewer-discretion bumper top ─── */
-  .bumper{
-    position:fixed;top:50px;left:0;right:0;z-index:48;
-    background:transparent;
-    text-align:center;padding:6px 0;
-    font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:5px;
-    color:var(--cream);opacity:.55;text-transform:uppercase;
-    pointer-events:none;
-  }
-  .bumper .red{color:var(--red);opacity:.95}
 
   /* ─── content blocks ─── */
   .wrap{
-    width:100%;max-width:840px;
-    display:flex;flex-direction:column;gap:24px;
+    width:100%;max-width:880px;
+    display:flex;flex-direction:column;gap:22px;
     position:relative;z-index:2;
   }
   .eyebrow{
@@ -128,45 +106,61 @@
   }
   .eyebrow::before{content:"■  "}
   h1.title,h2.title{
-    font-family:'Anton','Inter',sans-serif;
-    font-size:clamp(64px,11vw,168px);
-    line-height:.86;
-    letter-spacing:-.02em;
-    text-transform:uppercase;
-    color:var(--cream);
-    text-shadow:3px 0 0 var(--red), -3px 0 0 #1B3CFF;
+    font-family:'Anton',sans-serif;
+    font-size:clamp(56px,9.5vw,140px);
+    line-height:.86;letter-spacing:-.02em;
+    text-transform:uppercase;color:var(--cream);
+    text-shadow:3px 0 0 var(--red),-3px 0 0 #1B3CFF;
   }
-  h1.title .y,h2.title .y{
-    color:var(--yellow);
-    text-shadow:none;
-  }
+  h1.title .y,h2.title .y{color:var(--yellow);text-shadow:none}
   h1.title .stop,h2.title .stop{color:var(--red);text-shadow:none}
   .lede{
-    font-size:clamp(17px,2.2vw,22px);
-    line-height:1.5;
-    color:#cfcfcf;
-    max-width:680px;font-weight:500;
+    font-size:clamp(16px,1.9vw,21px);
+    line-height:1.5;color:#cfcfcf;
+    max-width:720px;font-weight:500;
   }
   .lede b{color:var(--cream);font-weight:700}
   .lede .hl{background:linear-gradient(transparent 60%, rgba(229,9,20,.4) 60%);padding:0 4px;color:var(--cream);font-weight:700}
   .mono{
     font-family:'JetBrains Mono',monospace;
-    font-size:12px;letter-spacing:2px;
-    color:#999;text-transform:uppercase;
+    font-size:11px;letter-spacing:2.5px;
+    color:#999;text-transform:uppercase;line-height:1.6;
   }
 
-  /* ─── stack of stats (RS-frame meets TENET-color) ─── */
-  .stack{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-  .stack .item{
+  /* ─── 4 fugas data points ─── */
+  .fugas{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:8px}
+  .fuga{
     border:2px solid var(--cream);
     background:rgba(245,241,232,.04);
+    padding:18px 16px;text-align:left;
+  }
+  .fuga .pct{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(36px,4.8vw,56px);line-height:1;
+    color:var(--red);
+  }
+  .fuga .lab{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;letter-spacing:1.5px;
+    text-transform:uppercase;color:var(--cream);
+    margin-top:8px;line-height:1.4;
+  }
+  @media (max-width:768px){
+    .fugas{grid-template-columns:1fr 1fr;gap:8px}
+    .fuga{padding:12px 14px}
+    .fuga .pct{font-size:38px}
+  }
+
+  /* ─── stats stack ─── */
+  .stack{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .stack .item{
+    border:2px solid var(--cream);background:rgba(245,241,232,.04);
     padding:22px 24px;text-align:left;
   }
   .stack .item .big{
     font-family:'Anton',sans-serif;
     font-size:clamp(48px,7vw,84px);line-height:1;
-    color:var(--yellow);
-    text-shadow:2px 0 0 var(--red);
+    color:var(--yellow);text-shadow:2px 0 0 var(--red);
   }
   .stack .item .lab{
     font-family:'JetBrains Mono',monospace;
@@ -180,8 +174,8 @@
     .stack .item .big{font-size:54px}
   }
 
-  /* ─── questions list ─── */
-  .qs{display:flex;flex-direction:column;gap:8px}
+  /* ─── questions ─── */
+  .qs{display:flex;flex-direction:column;gap:6px}
   .qs li{
     list-style:none;
     font-family:'Anton',sans-serif;
@@ -195,17 +189,78 @@
   }
   .qs li:nth-child(5)::before{color:var(--yellow)}
 
+  /* ─── 7 piezas grid ─── */
+  .piezas{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:8px;
+  }
+  .pieza{
+    border:2px solid var(--cream);background:rgba(245,241,232,.05);
+    padding:16px;display:flex;flex-direction:column;gap:6px;min-height:140px;
+  }
+  .pieza .num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;letter-spacing:2px;color:var(--red);
+  }
+  .pieza .nm{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(16px,1.8vw,22px);line-height:1.05;
+    text-transform:uppercase;color:var(--cream);
+    letter-spacing:.01em;
+  }
+  .pieza .desc{
+    font-size:12px;line-height:1.45;color:#bdbdbd;
+  }
+  @media (max-width:768px){
+    .piezas{grid-template-columns:1fr 1fr;gap:8px}
+    .pieza{padding:12px;min-height:auto}
+  }
+
+  /* ─── case cards ─── */
+  .cases{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px}
+  .case{
+    border:2px solid var(--cream);background:rgba(245,241,232,.05);
+    padding:24px;display:flex;flex-direction:column;gap:12px;
+  }
+  .case .meta{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;letter-spacing:2px;color:var(--red);text-transform:uppercase;
+  }
+  .case .head{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(20px,2.4vw,28px);line-height:1.1;
+    text-transform:uppercase;color:var(--cream);letter-spacing:-.005em;
+  }
+  .case .body{
+    font-size:13px;line-height:1.55;color:#cfcfcf;
+  }
+  .case .nums{
+    display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto;
+  }
+  .case .nums .k{
+    border-top:1px solid rgba(245,241,232,.2);
+    padding-top:8px;
+  }
+  .case .nums .k .v{
+    font-family:'Anton',sans-serif;font-size:24px;color:var(--yellow);line-height:1;
+  }
+  .case .nums .k .l{
+    font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;
+    text-transform:uppercase;color:var(--cream);opacity:.75;margin-top:4px;
+  }
+  @media (max-width:768px){
+    .cases{grid-template-columns:1fr;gap:10px}
+    .case{padding:18px}
+  }
+
   /* ─── pricing tiers ─── */
   .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
   .tier{
-    border:2px solid var(--cream);
-    background:rgba(245,241,232,.05);
-    padding:22px 22px;text-align:left;
+    border:2px solid var(--cream);background:rgba(245,241,232,.05);
+    padding:22px;text-align:left;
   }
   .tier.featured{
-    background:var(--red);
-    border-color:var(--cream);
-    box-shadow:8px 8px 0 var(--ink), 8px 8px 0 4px var(--cream);
+    background:var(--red);border-color:var(--cream);
+    box-shadow:8px 8px 0 var(--ink),8px 8px 0 4px var(--cream);
     position:relative;
   }
   .tier.featured::after{
@@ -230,44 +285,71 @@
     font-size:10px;letter-spacing:1.5px;
     margin-top:6px;color:var(--cream);opacity:.75;
   }
+  .tier .out{
+    font-size:12px;line-height:1.5;color:#cfcfcf;margin-top:10px;
+  }
+  .tier.featured .out{color:var(--cream)}
   @media (max-width:768px){
     .tiers{grid-template-columns:1fr;gap:10px}
+  }
+
+  /* ─── filter cols ─── */
+  .filt{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .filt .col{
+    border:2px solid var(--cream);background:rgba(245,241,232,.04);
+    padding:22px;
+  }
+  .filt .col.no{border-color:var(--red)}
+  .filt .col h3{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(22px,2.8vw,32px);text-transform:uppercase;
+    color:var(--cream);margin-bottom:14px;letter-spacing:-.005em;
+  }
+  .filt .col.no h3{color:var(--red)}
+  .filt .col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+  .filt .col li{
+    font-size:14px;line-height:1.4;color:#cfcfcf;
+    padding-left:22px;position:relative;
+  }
+  .filt .col.no li::before{content:"✕";position:absolute;left:0;color:var(--red);font-weight:700}
+  .filt .col.yes li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700}
+  @media (max-width:768px){
+    .filt{grid-template-columns:1fr;gap:10px}
+    .filt .col{padding:16px}
   }
 
   /* ─── CTA ─── */
   .cta{
     display:inline-flex;align-items:center;gap:16px;
-    padding:22px 30px;
-    background:var(--red);
-    color:var(--cream);
-    border:none;
-    font-family:'Anton',sans-serif;
+    padding:22px 30px;background:var(--red);color:var(--cream);
+    border:none;font-family:'Anton',sans-serif;
     font-weight:400;font-size:clamp(18px,2.4vw,26px);
     text-decoration:none;text-transform:uppercase;letter-spacing:1px;
-    transition:all .15s ease;
-    align-self:flex-start;
+    transition:all .15s ease;align-self:flex-start;
     box-shadow:8px 8px 0 var(--cream);
   }
   .cta:hover{background:var(--red-deep);transform:translate(2px,2px);box-shadow:6px 6px 0 var(--cream)}
   .cta .wa{width:30px;height:30px;flex-shrink:0;display:inline-flex;align-items:center}
   .cta .wa svg{width:100%;height:100%;fill:var(--cream)}
-  .cta .meta{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;font-weight:400;opacity:.85;display:block;margin-top:2px}
+  .cta .meta{
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;
+    font-weight:400;opacity:.85;display:block;margin-top:2px;
+  }
 
   /* ─── floating CTWA ─── */
   .floating{
     position:fixed;bottom:24px;right:24px;z-index:60;
-    display:flex;align-items:center;gap:10px;
-    padding:13px 20px;
-    background:var(--red);color:var(--cream);
-    text-decoration:none;
-    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;font-weight:700;
+    display:flex;align-items:center;gap:10px;padding:13px 20px;
+    background:var(--red);color:var(--cream);text-decoration:none;
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2.5px;
+    text-transform:uppercase;font-weight:700;
     box-shadow:5px 5px 0 var(--cream);
     opacity:0;transform:translateY(20px);transition:all .35s ease;pointer-events:none;
   }
   .floating.show{opacity:1;transform:translateY(0);pointer-events:auto}
   .floating svg{width:18px;height:18px;fill:var(--cream)}
   @media (max-width:768px){
-    .floating{bottom:16px;right:16px;padding:11px 16px;font-size:10px}
+    .floating{bottom:14px;right:14px;padding:11px 16px;font-size:10px}
   }
 
   /* ─── arrows ─── */
@@ -277,17 +359,14 @@
   }
   .arrow{
     width:54px;height:54px;
-    border:2px solid var(--cream);
-    background:transparent;color:var(--cream);
-    cursor:pointer;
-    font-family:'Anton',sans-serif;font-size:28px;
-    transition:all .12s ease;
-    display:flex;align-items:center;justify-content:center;
+    border:2px solid var(--cream);background:transparent;color:var(--cream);
+    cursor:pointer;font-family:'Anton',sans-serif;font-size:28px;
+    transition:all .12s ease;display:flex;align-items:center;justify-content:center;
   }
   .arrow:hover{background:var(--red);border-color:var(--red);color:var(--cream)}
   @media (max-width:768px){.arrows{display:none}}
 
-  /* ─── slide-specific backgrounds ─── */
+  /* ─── slide bg ─── */
   .s1{background:var(--ink)}
   .s2{background:var(--ink)}
   .s3{background:var(--ink)}
@@ -297,59 +376,65 @@
   .s4 h2.title .y{color:var(--red);text-shadow:none}
   .s4 .lede{color:#3a2018}
   .s4 .lede b{color:var(--ink)}
-  .s4 .mono{color:#3a2018;opacity:.7}
-  .s5{background:var(--red);color:var(--cream)}
-  .s5 .eyebrow{color:var(--ink)}
-  .s5 h2.title{color:var(--cream);text-shadow:3px 0 0 var(--ink),-3px 0 0 var(--yellow)}
-  .s5 h2.title .y{color:var(--yellow);text-shadow:none}
-  .s5 .lede{color:var(--cream)}
-  .s5 .tier{border-color:var(--cream);background:rgba(0,0,0,.15)}
-  .s5 .tier.featured{background:var(--cream);color:var(--ink);border-color:var(--ink);box-shadow:8px 8px 0 var(--ink)}
-  .s5 .tier.featured .label,.s5 .tier.featured .price,.s5 .tier.featured .small{color:var(--ink)}
-  .s5 .tier .label,.s5 .tier .price,.s5 .tier .small{color:var(--cream)}
-  .s5 .mono{color:var(--cream);opacity:.85}
-  .s6{background:var(--ink)}
-
-  /* ─── sticker plate (advisory) ─── */
-  .plate{
-    display:inline-flex;flex-direction:column;align-items:center;justify-content:center;
-    border:2px solid var(--cream);
-    padding:8px 14px;line-height:1;
-    align-self:flex-start;
-  }
-  .plate .top{font-family:'Anton',sans-serif;font-size:14px;letter-spacing:2px;color:var(--cream)}
-  .plate .mid{font-family:'Anton',sans-serif;font-size:22px;color:var(--red);margin:2px 0;letter-spacing:1px}
-  .plate .bot{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#aaa;text-transform:uppercase}
-  .s4 .plate{border-color:var(--ink)}
-  .s4 .plate .top{color:var(--ink)}
-  .s4 .plate .mid{color:var(--red)}
-  .s4 .plate .bot{color:#3a2018}
-  .s5 .plate{border-color:var(--cream)}
-  .s5 .plate .top{color:var(--cream)}
-  .s5 .plate .mid{color:var(--ink)}
-  .s5 .plate .bot{color:var(--cream);opacity:.85}
+  .s4 .mono{color:#3a2018;opacity:.75}
+  .s4 .pieza{border-color:var(--ink);background:rgba(0,0,0,.04)}
+  .s4 .pieza .num{color:var(--red)}
+  .s4 .pieza .nm{color:var(--ink)}
+  .s4 .pieza .desc{color:#3a2018}
+  .s5{background:var(--ink)}
+  .s6{background:var(--red);color:var(--cream)}
+  .s6 .eyebrow{color:var(--ink)}
+  .s6 h2.title{color:var(--cream);text-shadow:3px 0 0 var(--ink),-3px 0 0 var(--yellow)}
+  .s6 h2.title .y{color:var(--yellow);text-shadow:none}
+  .s6 .lede{color:var(--cream)}
+  .s6 .tier{border-color:var(--cream);background:rgba(0,0,0,.15)}
+  .s6 .tier.featured{background:var(--cream);color:var(--ink);border-color:var(--ink);box-shadow:8px 8px 0 var(--ink)}
+  .s6 .tier.featured .label,.s6 .tier.featured .price,.s6 .tier.featured .small,.s6 .tier.featured .out{color:var(--ink)}
+  .s6 .tier .label,.s6 .tier .price,.s6 .tier .small,.s6 .tier .out{color:var(--cream)}
+  .s6 .mono{color:var(--cream);opacity:.85}
+  .s7{background:var(--ink)}
+  .s7 .filt .col.yes{border-color:var(--green)}
 
   /* ─── Sator stamp ─── */
   .sator{
     position:absolute;right:32px;bottom:32px;
     font-family:'Anton',sans-serif;font-size:11px;letter-spacing:6px;
     color:var(--red);opacity:.5;line-height:1.5;text-align:right;
-    transform:rotate(-2deg);
+    transform:rotate(-2deg);pointer-events:none;
   }
   @media (max-width:768px){.sator{display:none}}
 
-  /* ─── Big inline tag ─── */
+  /* ─── plate ─── */
+  .plate{
+    display:inline-flex;flex-direction:column;align-items:center;justify-content:center;
+    border:2px solid var(--cream);padding:8px 14px;line-height:1;align-self:flex-start;
+  }
+  .plate .top{font-family:'Anton',sans-serif;font-size:14px;letter-spacing:2px;color:var(--cream)}
+  .plate .mid{font-family:'Anton',sans-serif;font-size:22px;color:var(--red);margin:2px 0;letter-spacing:1px}
+  .plate .bot{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#aaa;text-transform:uppercase}
+
+  /* ─── tag ─── */
   .tag{
     display:inline-block;align-self:flex-start;
     font-family:'JetBrains Mono',monospace;
     font-size:11px;letter-spacing:2.5px;text-transform:uppercase;font-weight:700;
-    background:var(--yellow);color:var(--ink);
-    padding:8px 14px;
-    transform:rotate(-2deg);
-    box-shadow:4px 4px 0 var(--cream);
+    background:var(--yellow);color:var(--ink);padding:8px 14px;
+    transform:rotate(-2deg);box-shadow:4px 4px 0 var(--cream);
   }
   .s4 .tag{box-shadow:4px 4px 0 var(--ink)}
 
+  /* ─── guarantee strip ─── */
+  .guarantee{
+    border-top:2px solid var(--cream);
+    padding:14px 0 0;margin-top:8px;
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  }
+  .guarantee .num{
+    font-family:'Anton',sans-serif;font-size:36px;color:var(--yellow);line-height:1;
+  }
+  .guarantee .txt{
+    font-family:'Inter',sans-serif;font-size:13px;color:var(--cream);line-height:1.4;flex:1;min-width:160px;
+  }
 </style>
 </head>
 <body>
@@ -364,27 +449,44 @@
     <span class="dot" data-i="3"></span>
     <span class="dot" data-i="4"></span>
     <span class="dot" data-i="5"></span>
+    <span class="dot" data-i="6"></span>
   </div>
 </div>
 
-<!-- ─── deck ─── -->
+<!-- ─── deck · 7 slides ─── -->
 <div class="deck" id="deck">
 
-  <!-- 1 · HOOK -->
+  <!-- 1 · HOOK + dream outcome -->
   <section class="slide s1">
     <div class="wrap">
       <span class="eyebrow">★ ANTES DE GASTAR UN EURO MÁS</span>
       <h1 class="title">Tu pixel<br>te <span class="y">miente</span><span class="stop">.</span></h1>
-      <p class="lede">iOS, GDPR y los bloqueadores te han ocultado entre el <span class="hl">30% y el 60%</span> de las ventas que tu publicidad genera. Tu agencia no te lo dice porque ella tampoco lo ve.</p>
-      <span class="mono">Desliza →</span>
+      <p class="lede"><b>iOS, GDPR y los bloqueadores</b> te han ocultado entre el <span class="hl">30% y el 60%</span> de las ventas que tu publicidad genera. Tu agencia no te lo dice porque ella tampoco lo ve.<br><br>Recuperamos esa atribución en <b>14 días</b>. Desde <b>€600/mes</b>. <b>Devolución 100% si no funciona en 60d.</b></p>
+      <span class="mono">Desliza · 7 slides · 90 segundos</span>
     </div>
     <div class="sator">S A T O R<br>A R E P O<br>T E N E T<br>O P E R A<br>R O T A S</div>
   </section>
 
-  <!-- 2 · SIN CRM -->
+  <!-- 2 · LAS 4 FUGAS (Ogilvy specifics + Sutherland reframe) -->
   <section class="slide s2">
     <div class="wrap">
-      <span class="eyebrow">★ LO QUE TU PIXEL NO TE DICE</span>
+      <span class="eyebrow">★ POR DÓNDE SE TE FUGA</span>
+      <h2 class="title">Crees que mides.<br>No estás <span class="y">midiendo</span><span class="stop">.</span></h2>
+      <p class="lede">Esto es lo que hoy, en 2026, tu pixel client-side ya no captura. <b>No son hipótesis</b> — son las 4 fugas que encontramos en cada audit técnico:</p>
+      <div class="fugas">
+        <div class="fuga"><div class="pct">−47%</div><div class="lab">iOS 14.5 ATT · iPhone deja de mandar eventos</div></div>
+        <div class="fuga"><div class="pct">−22%</div><div class="lab">Cookies caducas · Safari ITP · 7 días</div></div>
+        <div class="fuga"><div class="pct">−18%</div><div class="lab">Bloqueadores · uBlock · Brave · GDPR</div></div>
+        <div class="fuga"><div class="pct">−40%</div><div class="lab">Vista offline · WhatsApp · llamadas · presencial</div></div>
+      </div>
+      <span class="mono">★ Total perdido típico: 30–60% de las conversiones reales</span>
+    </div>
+  </section>
+
+  <!-- 3 · SIN CRM no sabes ni (Sutherland reframe) -->
+  <section class="slide s3">
+    <div class="wrap">
+      <span class="eyebrow">★ EL PIXEL CUENTA CLICKS · TU CRM CUENTA VENTAS</span>
       <h2 class="title">Sin CRM<br>no sabes ni…</h2>
       <ul class="qs">
         <li>quién agendó cita</li>
@@ -393,40 +495,59 @@
         <li>quién volvió</li>
         <li>quién te <span class="y">recomendó</span></li>
       </ul>
+      <p class="mono">★ Por eso incluimos GoHighLevel configurado · CRM all-in-one · sin coste extra</p>
     </div>
   </section>
 
-  <!-- 3 · CERRAMOS EL LOOP -->
-  <section class="slide s3">
+  <!-- 4 · 7 piezas unpacked (Hormozi outcome + Ogilvy specifics) -->
+  <section class="slide s4">
     <div class="wrap">
-      <span class="eyebrow">★ LO QUE INSTALAMOS</span>
-      <h2 class="title">Cerramos<br>el <span class="y">loop</span><span class="stop">.</span></h2>
-      <p class="lede">Tracking <b>server-side</b> · Meta CAPI + Google Enhanced Conversions · tu CRM all-in-one (GoHighLevel) · capa de IA optimizando con datos limpios. <b>14 días</b> de instalación · datos limpios desde el día 15.</p>
-      <div class="stack">
-        <div class="item"><div class="big">14d</div><div class="lab">Instalación</div></div>
-        <div class="item"><div class="big">+47%</div><div class="lab">Atribución recuperada</div></div>
-        <div class="item"><div class="big">7</div><div class="lab">Piezas incluidas</div></div>
+      <span class="eyebrow">★ END-TO-END · NO COMPLEMENTO</span>
+      <h2 class="title">7 piezas.<br>Todas <span class="y">incluidas</span><span class="stop">.</span></h2>
+      <div class="piezas">
+        <div class="pieza"><div class="num">PIEZA 01</div><div class="nm">Auditoría de negocio</div><div class="desc">Diagnóstico forense de tu funnel real, históricos, fugas concretas en euros</div></div>
+        <div class="pieza"><div class="num">PIEZA 02</div><div class="nm">Buyer personas</div><div class="desc">De tus conversaciones reales con verbatims · no estereotipos</div></div>
+        <div class="pieza"><div class="num">PIEZA 03</div><div class="nm">Landing alta conversión</div><div class="desc">Form 3 campos · WhatsApp CTA · gtag completo · sessionStorage</div></div>
+        <div class="pieza"><div class="num">PIEZA 04</div><div class="nm">Tracking server-side</div><div class="desc">Meta CAPI + Google EC + GTM SS container + dedupe browser↔server</div></div>
+        <div class="pieza"><div class="num">PIEZA 05</div><div class="nm">CRM completo (GHL)</div><div class="desc">Pipelines, custom fields, tags categorizados, calendar Zoom OAuth</div></div>
+        <div class="pieza"><div class="num">PIEZA 06</div><div class="nm">Creativos basados en data</div><div class="desc">15 RSA headlines · sitelinks · callouts · estáticos AI Meta</div></div>
+        <div class="pieza"><div class="num">PIEZA 07</div><div class="nm">Análisis continuo + IA</div><div class="desc">Bid modifiers stacking · Looker Studio · modelos predictivos</div></div>
+        <div class="pieza" style="background:var(--ink);color:var(--cream);border-color:var(--ink)"><div class="num" style="color:var(--yellow)">★ TODAS</div><div class="nm" style="color:var(--cream)">En cada plan</div><div class="desc" style="color:#cfcfcf">META · GOOGLE · AMBOS · todas traen las 7 piezas. Solo cambia qué canales gestionamos activamente.</div></div>
       </div>
     </div>
   </section>
 
-  <!-- 4 · TOMAMOS · cream -->
-  <section class="slide s4">
+  <!-- 5 · CASOS (Ogilvy proof) -->
+  <section class="slide s5">
     <div class="wrap">
-      <span class="eyebrow">★ END-TO-END · NO COMPLEMENTO</span>
-      <h2 class="title">Tomamos<br>tu <span class="y">adquisición</span>.<br>De principio<br>a fin.</h2>
-      <p class="lede">Auditoría · landing · tracking · CRM · creativos basados en data · gestión activa · IA. <b>Siete piezas</b>, todas incluidas.</p>
-      <span class="tag">★ NO COMMUNITY · NO SOCIAL ORGÁNICO · NO SEO</span>
-    </div>
-    <div class="plate" style="position:absolute;top:96px;right:32px">
-      <div class="top">★ AVISO ★</div>
-      <div class="mid">NO PARA TODOS</div>
-      <div class="bot">PERFORMANCE · MADRID · 2026</div>
+      <span class="eyebrow">★ COHORTE ACTIVA · 2 IMPLEMENTACIONES</span>
+      <h2 class="title">Lo que han<br><span class="y">recuperado</span><span class="stop">.</span></h2>
+      <div class="cases">
+        <div class="case">
+          <span class="meta">CASO 01 · ALUMINIO ARQUITECTÓNICO · CANCÚN</span>
+          <h3 class="head">"28 días con €0 atribuidos. Primer lead real al día 2 post-rebuild."</h3>
+          <p class="body">30+ años en fachadas y muros cortina · pre-TENET: 50/70 keywords muertos, landing BELOW AVERAGE, AD_CALL fake conversion · post-TENET: rebuild de 2 ad groups + bid modifiers stacking + landing v3 + RSA EXCELLENT (15 headlines) + tracking Capa 4.</p>
+          <div class="nums">
+            <div class="k"><div class="v">~50</div><div class="l">keywords reactivados</div></div>
+            <div class="k"><div class="v">2d</div><div class="l">tiempo a primer lead</div></div>
+          </div>
+        </div>
+        <div class="case">
+          <span class="meta">CASO 02 · CONSULTING SALONES · LATAM</span>
+          <h3 class="head">"$14K MXN gastados sin pixel funcional. Post-TENET: 14 fields + 39 tags + 2 agentes."</h3>
+          <p class="body">Coach beauty consulting · pre-TENET: 6 meses de gasto Meta sin pixel · post-TENET: reinstalación pixel + Meta CAPI server-side + GHL configurado · qualification logic HIGH/LOW/NURTURING + 2 agentes Modo Especialista + UTM dashboard live.</p>
+          <div class="nums">
+            <div class="k"><div class="v">14</div><div class="l">custom fields</div></div>
+            <div class="k"><div class="v">39</div><div class="l">tags categorizados</div></div>
+          </div>
+        </div>
+      </div>
+      <span class="mono">★ Sin logos públicos por petición de los clientes · referencias con nombre bajo NDA en primera llamada</span>
     </div>
   </section>
 
-  <!-- 5 · PRICING · red -->
-  <section class="slide s5">
+  <!-- 6 · PRICING + comparación (Hormozi outcome framing) -->
+  <section class="slide s6">
     <div class="wrap">
       <span class="eyebrow" style="color:var(--ink)">★ PRICING PÚBLICO · CERO ASTERISCOS</span>
       <h2 class="title">Tres precios.<br>Sin <span class="y">negociar</span><span class="stop" style="color:var(--ink)">.</span></h2>
@@ -435,45 +556,68 @@
           <div class="label">META</div>
           <div class="price">€600</div>
           <div class="small">/mes · 2 meses por adelantado</div>
+          <div class="out">Pixel + CAPI server-side + GHL CRM + landing</div>
         </div>
         <div class="tier featured">
           <div class="label">AMBOS · LOOP COMPLETO</div>
           <div class="price">€1.500</div>
           <div class="small">/mes · 2 meses por adelantado</div>
+          <div class="out">Meta CAPI + Google EC + GHL + 2 landings + gestión activa Google</div>
         </div>
         <div class="tier">
           <div class="label">GOOGLE</div>
           <div class="price">€1.000</div>
           <div class="small">/mes · 2 meses por adelantado</div>
+          <div class="out">EC + OCI + GHL + RSA + audiencias + extensiones</div>
         </div>
       </div>
-      <span class="mono">★ DEVOLUCIÓN 100% PRIMEROS 60 DÍAS · SIN SETUP · SIN % SOBRE AD SPEND</span>
+      <p class="mono">★ Otras agencias cobran 10–20% sobre ad spend · cliente con €10K/mes paga €1.000–€2.000 · y crece cuando tú gastas más. Nosotros cobramos fijo. Eso evita incentivos perversos.</p>
+      <p class="mono">★ Sin setup · sin % · sin contrato anual · DEVOLUCIÓN 100% PRIMEROS 60 DÍAS</p>
     </div>
   </section>
 
-  <!-- 6 · CTA -->
-  <section class="slide s6">
+  <!-- 7 · CTA + filter -->
+  <section class="slide s7">
     <div class="wrap">
-      <span class="eyebrow">★ HABLEMOS</span>
-      <h2 class="title">30 minutos.<br>Una <span class="y">decisión</span><span class="stop">.</span></h2>
-      <p class="lede">Si en la primera llamada no aprendes algo nuevo sobre tu propia atribución, te debemos un café. <b>Sin formularios.</b> Sin demos. Sin agendar tres semanas adelante.</p>
+      <span class="eyebrow">★ NO PARA TODOS · POR DESIGN</span>
+      <h2 class="title">¿Encajas?<br>30 minutos.<br>Una <span class="y">decisión</span><span class="stop">.</span></h2>
+      <div class="filt">
+        <div class="col no">
+          <h3>Donde NO encajamos</h3>
+          <ul>
+            <li>Sin acceso técnico al DNS y código fuente</li>
+            <li>Implementación parcial: "solo el pixel"</li>
+            <li>Otra agencia ya gestiona el tracking del cliente</li>
+          </ul>
+        </div>
+        <div class="col yes">
+          <h3>Donde SÍ</h3>
+          <ul>
+            <li>Negocios donde perder atribución cuesta más que el retainer</li>
+            <li>Equipos que quieren revender o white-labelear closed-loop</li>
+            <li>Marcas que aceptan que el primer mes es infraestructura</li>
+          </ul>
+        </div>
+      </div>
       <a class="cta" href="https://wa.me/34684790538?text=Hola%2C%20vi%20su%20landing%20de%20AURY%20T%20E%20N%20E%20T%20y%20quiero%20info%20sobre%20closed-loop%20marketing." target="_blank" rel="noopener noreferrer" id="cta-main">
-        <span class="wa"><svg viewBox="0 0 24 24"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.06 4 7.94 7.94 0 0 0 4.13 11.94a7.85 7.85 0 0 0 1.07 4l-1.13 4.13 4.23-1.11a7.94 7.94 0 0 0 3.79.96h.01a7.94 7.94 0 0 0 7.93-7.94 7.85 7.85 0 0 0-2.43-5.66ZM12.07 18.6a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.66.67-2.45-.16-.25a6.6 6.6 0 0 1-1-3.5 6.6 6.6 0 0 1 11.27-4.66 6.55 6.55 0 0 1 1.92 4.67 6.6 6.6 0 0 1-6.6 6.6Zm3.62-4.94c-.2-.1-1.18-.58-1.36-.65-.18-.07-.31-.1-.45.1s-.51.65-.63.78c-.11.13-.23.15-.43.05a5.43 5.43 0 0 1-1.6-.99 6 6 0 0 1-1.1-1.38c-.12-.2-.01-.31.09-.41.09-.09.2-.23.3-.35.1-.11.13-.2.2-.33.07-.13.03-.25-.01-.35-.05-.1-.45-1.08-.61-1.48-.16-.39-.32-.34-.45-.34h-.39a.74.74 0 0 0-.54.25 2.27 2.27 0 0 0-.7 1.68 3.93 3.93 0 0 0 .82 2.08 9 9 0 0 0 3.45 3.06c.48.21.86.33 1.16.43a2.8 2.8 0 0 0 1.28.08c.39-.06 1.18-.48 1.34-.95.17-.46.17-.86.12-.94-.05-.09-.18-.13-.38-.23Z"/></svg></span>
-        <span>Hablar por WhatsApp<span class="meta">RESPUESTA EN 1 HORA</span></span>
+        <span class="wa"><svg viewBox="0 0 24 24"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.06 4 7.94 7.94 0 0 0 4.13 11.94a7.85 7.85 0 0 0 1.07 4l-1.13 4.13 4.23-1.11a7.94 7.94 0 0 0 3.79.96h.01a7.94 7.94 0 0 0 7.93-7.94 7.85 7.85 0 0 0-2.43-5.66ZM12.07 18.6a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.66.67-2.45-.16-.25a6.6 6.6 0 0 1-1-3.5 6.6 6.6 0 0 1 11.27-4.66 6.55 6.55 0 0 1 1.92 4.67 6.6 6.6 0 0 1-6.6 6.6Z"/></svg></span>
+        <span>Hablar por WhatsApp<span class="meta">RESPUESTA EN 1 HORA · SIN FORMULARIO · SIN AGENDAR DEMO</span></span>
       </a>
-      <span class="mono" style="margin-top:8px">★ AURY · T E N E T · MARKETING 360 · MADRID 2026</span>
+      <div class="guarantee">
+        <span class="num">60d</span>
+        <span class="txt"><b>Devolución 100%</b> en los primeros 60 días si no recuperamos atribución. Después · cancelación libre con 30 días de aviso.</span>
+      </div>
+      <span class="mono">★ AURY · T E N E T · MARKETING 360 · MADRID 2026</span>
     </div>
   </section>
 
 </div>
 
-<!-- ─── floating CTWA ─── -->
 <a class="floating" id="floating" href="https://wa.me/34684790538?text=Hola%2C%20vi%20su%20landing%20de%20AURY%20T%20E%20N%20E%20T%20y%20quiero%20info%20sobre%20closed-loop%20marketing." target="_blank" rel="noopener noreferrer">
   <svg viewBox="0 0 24 24"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.06 4 7.94 7.94 0 0 0 4.13 11.94a7.85 7.85 0 0 0 1.07 4l-1.13 4.13 4.23-1.11a7.94 7.94 0 0 0 3.79.96h.01a7.94 7.94 0 0 0 7.93-7.94 7.85 7.85 0 0 0-2.43-5.66Z"/></svg>
   <span>WhatsApp</span>
 </a>
 
-<!-- ─── arrows ─── -->
 <div class="arrows" id="arrows">
   <button class="arrow" id="prev" aria-label="anterior">‹</button>
   <button class="arrow" id="next" aria-label="siguiente">›</button>
@@ -489,13 +633,9 @@
   var floating = document.getElementById('floating');
   var current = 0;
   var isMobile = window.matchMedia('(max-width:768px)').matches;
-
   function getCurrent(){
-    if(isMobile){
-      return Math.round(deck.scrollTop / window.innerHeight);
-    } else {
-      return Math.round(deck.scrollLeft / window.innerWidth);
-    }
+    if(isMobile) return Math.round(deck.scrollTop / window.innerHeight);
+    return Math.round(deck.scrollLeft / window.innerWidth);
   }
   function setActive(i){
     current = Math.max(0, Math.min(slides.length - 1, i));
@@ -527,7 +667,6 @@
       if(Math.abs(e.deltaY) > Math.abs(e.deltaX)){ e.preventDefault(); deck.scrollLeft += e.deltaY; }
     }, {passive: false});
   }
-  // gtag hooks
   window.addEventListener('load', function(){
     if(typeof gtag === 'function'){ gtag('event', 'landing_view', {page: 'landing-aury-tenet'}); }
   });
@@ -536,10 +675,8 @@
       if(typeof gtag === 'function'){ gtag('event', 'whatsapp_click', {source: 'landing-aury-tenet'}); }
     });
   });
-
-  // console manifesto
   console.log("%c AURY · T E N E T ", "background:#E50914;color:#F5F1E8;font-weight:900;font-size:18px;padding:6px 14px;letter-spacing:6px");
-  console.log("%c El loop está cerrado.", "color:#F5D000;font-family:monospace;font-size:13px;letter-spacing:2px");
+  console.log("%c Cerramos el loop.", "color:#F5D000;font-family:monospace;font-size:13px;letter-spacing:2px");
   console.log("%c hola@tenet.partners", "color:#fff;font-family:monospace;text-decoration:underline");
 })();
 </script>
