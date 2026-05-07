@@ -63,12 +63,26 @@
     position:relative;overflow:hidden;
   }
   @media (max-width:768px){
-    .deck{flex-direction:column;overflow-x:hidden;overflow-y:auto;scroll-snap-type:y mandatory}
+    body{height:auto;min-height:100svh;overflow:auto}
+    .deck{
+      flex-direction:column;
+      overflow:visible;
+      height:auto;
+      scroll-snap-type:y proximity;
+    }
     .slide{
       flex:0 0 auto;
-      min-height:100vh;min-height:100dvh;
-      padding:74px 20px 60px;
+      min-height:100svh;
+      height:auto;
+      padding:
+        calc(env(safe-area-inset-top,0px) + 56px)
+        max(env(safe-area-inset-right,0px),18px)
+        calc(env(safe-area-inset-bottom,0px) + 48px)
+        max(env(safe-area-inset-left,0px),18px);
+      scroll-snap-stop:normal;
     }
+    /* slides densos pueden exceder un viewport */
+    .s3,.s4,.s5,.s6{min-height:auto}
   }
   /* ─── MOBILE OPTIMIZATION v2 · más agresivo · evitar cortes ─── */
   @media (max-width:768px){
@@ -87,7 +101,10 @@
     .lede{font-size:15px;line-height:1.45;max-width:100%}
     .mono{font-size:10px;letter-spacing:1.8px;line-height:1.5}
     .eyebrow{font-size:10px;letter-spacing:3px}
-    .wrap{gap:14px;max-width:100%}
+    .wrap{gap:14px;max-width:100%;width:100%}
+    /* contenido alineado al top en mobile — evita que flex center empuje fuera */
+    .slide{align-items:flex-start;justify-content:flex-start}
+    .slide > .wrap,.slide > div{margin-top:auto;margin-bottom:auto;width:100%}
 
     /* components compactos */
     .stack{grid-template-columns:1fr 1fr;gap:8px}
