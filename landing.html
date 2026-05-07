@@ -431,8 +431,36 @@
     bottom:18%;left:5%;width:200px;
     transform:rotate(2deg);
   }
+  /* Ball's plushy penguin variants */
+  .aury-mark.plushy-laptop{
+    top:18%;right:6%;width:170px;
+    transform:rotate(-2deg);
+    background:transparent;border:none;box-shadow:none;
+    padding:0;
+  }
+  .aury-mark.plushy-laptop::before{
+    content:"★ POR BALL · MOOD WORK";
+    background:var(--cream);border:2px solid var(--ink);
+    box-shadow:2px 2px 0 var(--ink);
+    transform:rotate(-3deg);
+    top:auto;bottom:-8px;left:0;
+  }
+  .aury-mark.plushy-night{
+    top:60%;left:6%;width:140px;
+    transform:rotate(3deg);
+    background:transparent;border:none;box-shadow:none;
+    padding:0;
+    filter:drop-shadow(0 0 12px rgba(216,90,46,.25));
+  }
+  .aury-mark.plushy-night::before{
+    content:"★ POR BALL · 3 AM";
+    background:var(--ink);color:var(--cream);
+    box-shadow:2px 2px 0 var(--orange);
+    transform:rotate(2deg);
+    top:auto;bottom:-8px;left:0;
+  }
   @media (max-width:768px){
-    .aury-mark.observa,.aury-mark.pingu,.aury-mark.crash{display:none}
+    .aury-mark.observa,.aury-mark.pingu,.aury-mark.crash,.aury-mark.plushy-laptop,.aury-mark.plushy-night{display:none}
   }
 
   /* ─── chrome accent slide 4 ─── */
@@ -687,6 +715,9 @@
   <!-- 2 · LAS 4 FUGAS · técnico + preciso -->
   <section class="slide s2">
     <img class="glitch-bg" src="assets/img/landing/glitch-fugas.gif" alt="" aria-hidden="true">
+    <div class="aury-mark plushy-night">
+      <img src="assets/img/landing/aury-ball-night.png" alt="Aury observando las fugas a las 3am">
+    </div>
     <div class="wrap">
       <span class="eyebrow">★ FOUR-VECTOR ATTRIBUTION GAP</span>
       <h2 class="title">Lo que tu pixel<br>ya no <span class="y">captura</span><span class="stop">.</span></h2>
@@ -746,6 +777,9 @@
   <!-- 5 · CASOS · técnico verificable -->
   <section class="slide s5">
     <img class="vu-corner" src="assets/img/landing/vu-meters.gif" alt="" aria-hidden="true">
+    <div class="aury-mark plushy-laptop">
+      <img src="assets/img/landing/aury-ball-laptop.png" alt="Aury plushy estudiando casos">
+    </div>
     <div class="wrap">
       <span class="eyebrow">★ DEPLOYMENTS EN PRODUCCIÓN</span>
       <h2 class="title">Casos<br><span class="y">verificables</span><span class="stop">.</span></h2>
