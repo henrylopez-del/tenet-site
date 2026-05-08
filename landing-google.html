@@ -1190,6 +1190,25 @@
     setTimeout(function(){ animateSlide(slides[0]); }, 100);
   }
 
+  /* ─── s5 · vu-corner · play 2.5s then freeze ─── */
+  var vuVideo = document.querySelector('.vu-corner');
+  if(vuVideo){
+    vuVideo.pause();
+    var vuTimer = null;
+    var vuObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          clearTimeout(vuTimer);
+          vuVideo.currentTime = 0;
+          vuVideo.play();
+          vuTimer = setTimeout(function(){ vuVideo.pause(); }, 2500);
+        } else {
+          clearTimeout(vuTimer);
+        }
+      });
+    }, {threshold: 0.5});
+    vuObs.observe(document.querySelector('.s5'));
+  }
 
 })();
 </script>
