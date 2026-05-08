@@ -167,14 +167,33 @@
     .s4 .lede{display:none}
     .s4 .wrap{height:100%;justify-content:flex-start}
     .s4 .piezas{grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:4px;margin-top:4px;flex:1;align-content:stretch}
-    .s4 .pieza{padding:9px 10px;cursor:pointer;position:relative;transition:background .15s ease;user-select:none;display:flex;flex-direction:column;justify-content:flex-start}
+    .s4 .pieza{padding:9px 10px;cursor:pointer;position:relative;user-select:none;display:flex;flex-direction:column;justify-content:flex-start}
     .s4 .pieza .num{font-size:8px;letter-spacing:1px;margin-bottom:2px}
-    .s4 .pieza .nm{font-size:13px;line-height:1.15;margin-top:1px;padding-right:16px}
-    .s4 .pieza .desc{font-size:10px;line-height:1.35;margin-top:6px;display:none}
-    .s4 .pieza.open .desc{display:block}
-    .s4 .pieza::after{content:"+";position:absolute;top:8px;right:8px;font-size:14px;color:var(--red);font-weight:700;line-height:1;transition:transform .15s ease}
-    .s4 .pieza.open::after{transform:rotate(45deg)}
-    .s4 .pieza.open{grid-column:span 2;background:rgba(229,9,20,.08);border-color:var(--red)}
+    .s4 .pieza .nm{font-size:13px;line-height:1.15;margin-top:1px;padding-right:18px}
+    .s4 .pieza .desc{display:none}
+    .s4 .pieza::after{content:"+";position:absolute;top:8px;right:8px;font-size:15px;color:var(--red);font-weight:700;line-height:1}
+
+    /* popup modal */
+    .pieza-modal{
+      display:none;position:fixed;inset:0;z-index:200;
+      background:rgba(0,0,0,.75);backdrop-filter:blur(4px);
+      align-items:center;justify-content:center;padding:24px;
+    }
+    .pieza-modal.show{display:flex}
+    .pieza-modal .box{
+      background:#0a0a0a;border:1px solid var(--red);
+      padding:24px 20px;width:100%;max-width:360px;
+      position:relative;
+    }
+    .pieza-modal .box .m-num{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--red);text-transform:uppercase;margin-bottom:8px}
+    .pieza-modal .box .m-nm{font-family:'Anton',sans-serif;font-size:26px;text-transform:uppercase;color:#f5f1e8;line-height:1;margin-bottom:14px}
+    .pieza-modal .box .m-desc{font-family:'Inter',sans-serif;font-size:13px;line-height:1.55;color:#c8c8c8}
+    .pieza-modal .box .m-close{
+      position:absolute;top:12px;right:14px;
+      font-size:22px;color:#888;cursor:pointer;line-height:1;
+      background:none;border:none;padding:0;font-family:'Inter',sans-serif;
+    }
+    .pieza-modal .box .m-close:hover{color:#fff}
 
     /* s5 · casos mobile · body truncado a 3 líneas */
     .s5 .cases{gap:8px;margin-top:4px}
@@ -1033,6 +1052,16 @@
 
 </div>
 
+<!-- ─── pieza modal ─── -->
+<div class="pieza-modal" id="piezaModal">
+  <div class="box">
+    <button class="m-close" id="piezaClose">×</button>
+    <div class="m-num" id="piezaNum"></div>
+    <div class="m-nm" id="piezaNm"></div>
+    <div class="m-desc" id="piezaDesc"></div>
+  </div>
+</div>
+
 <a class="floating" id="floating" href="https://wa.me/34684790538?text=Hola%2C%20vi%20su%20landing%20de%20AURY%20T%20E%20N%20E%20T%20y%20quiero%20info%20sobre%20closed-loop%20marketing." target="_blank" rel="noopener noreferrer">
   <svg viewBox="0 0 24 24"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.06 4 7.94 7.94 0 0 0 4.13 11.94a7.85 7.85 0 0 0 1.07 4l-1.13 4.13 4.23-1.11a7.94 7.94 0 0 0 3.79.96h.01a7.94 7.94 0 0 0 7.93-7.94 7.85 7.85 0 0 0-2.43-5.66Z"/></svg>
   <span>WhatsApp</span>
@@ -1200,12 +1229,19 @@
     setTimeout(function(){ animateSlide(slides[0]); }, 100);
   }
 
-  /* ─── s4 · pieza accordion (mobile only) ─── */
+  /* ─── s4 · pieza popup (mobile only) ─── */
+  var modal = document.getElementById('piezaModal');
+  var mNum  = document.getElementById('piezaNum');
+  var mNm   = document.getElementById('piezaNm');
+  var mDesc = document.getElementById('piezaDesc');
+  document.getElementById('piezaClose').addEventListener('click', function(){ modal.classList.remove('show'); });
+  modal.addEventListener('click', function(e){ if(e.target === modal) modal.classList.remove('show'); });
   document.querySelectorAll('.s4 .pieza').forEach(function(card){
     card.addEventListener('click', function(){
-      var isOpen = card.classList.contains('open');
-      document.querySelectorAll('.s4 .pieza.open').forEach(function(c){ c.classList.remove('open'); });
-      if(!isOpen) card.classList.add('open');
+      mNum.textContent  = card.querySelector('.num').textContent;
+      mNm.textContent   = card.querySelector('.nm').textContent;
+      mDesc.textContent = card.querySelector('.desc').textContent;
+      modal.classList.add('show');
     });
   });
 
