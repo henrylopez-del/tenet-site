@@ -93,7 +93,7 @@
   /* ─── MOBILE OPTIMIZATION v2 · más agresivo · evitar cortes ─── */
   @media (max-width:768px){
     h1.title,h2.title{
-      font-size:clamp(28px,7.5vw,42px) !important;
+      font-size:clamp(34px,9vw,48px) !important;
       line-height:.92;letter-spacing:-.01em;
       text-shadow:1px 0 0 var(--red),-1px 0 0 var(--blue-soft) !important;
       overflow-wrap:break-word;
@@ -101,13 +101,28 @@
       max-width:100%;
       margin:0;
     }
-    .s3 h2.title,.s4 h2.title,.s7 h2.title{
-      font-size:clamp(24px,6.5vw,36px) !important;
+    .s4 h2.title,.s7 h2.title{
+      font-size:clamp(28px,7vw,40px) !important;
     }
-    .lede{font-size:14.5px;line-height:1.4;max-width:100%}
+    .lede{font-size:15px;line-height:1.45;max-width:100%}
     .mono{font-size:10px;letter-spacing:1.8px;line-height:1.5}
     .eyebrow{font-size:10px;letter-spacing:3px}
-    .wrap{gap:10px;max-width:100%;width:100%;max-height:100%}
+    .wrap{gap:14px;max-width:100%;width:100%;max-height:100%}
+
+    /* slides 1 · 3 · 7 · poco contenido → centrar verticalmente */
+    .s1,.s3,.s7{align-items:center}
+
+    /* s1 · hero · más espira */
+    .s1 .wrap{gap:20px}
+    .s1 h1.title{font-size:clamp(42px,11vw,60px) !important}
+    .s1 .lede{font-size:16px;line-height:1.5}
+
+    /* s3 · CRM slide · lista grande */
+    .s3 .wrap{gap:18px}
+    .qs{gap:6px}
+    .qs li{font-size:30px;padding-left:30px;line-height:1.1}
+    .qs li::before{font-size:12px;top:9px}
+    .s3 .mono{font-size:10px;letter-spacing:1.5px;line-height:1.5}
 
     .stack{grid-template-columns:1fr 1fr;gap:8px}
     .stack .item{padding:12px 14px;min-height:auto}
@@ -118,10 +133,6 @@
     .fuga{padding:12px}
     .fuga .pct{font-size:32px}
     .fuga .lab{font-size:9px;letter-spacing:1.2px;margin-top:6px}
-
-    .qs{gap:2px}
-    .qs li{font-size:22px;padding-left:26px;line-height:1.1}
-    .qs li::before{font-size:10px;top:8px}
 
     .piezas{grid-template-columns:1fr;gap:5px;margin-top:4px}
     .pieza{padding:8px 11px;min-height:auto}
@@ -152,26 +163,25 @@
     .s6 .wrap{gap:6px}
     .s6 h2.title{font-size:clamp(22px,6vw,32px) !important}
 
-    /* s4 · 7 piezas mobile · grid 2 columnas para que entren todas */
+    /* s4 · 7 piezas mobile · grid 2 col, desc truncada */
     .s4 .lede{display:none}
     .s4 .piezas{grid-template-columns:1fr 1fr;gap:4px;margin-top:4px}
     .s4 .pieza{padding:7px 9px}
     .s4 .pieza .num{font-size:8px;letter-spacing:1px;margin-bottom:2px}
     .s4 .pieza .nm{font-size:12px;line-height:1.1;margin-top:1px}
-    .s4 .pieza .desc{font-size:10px;line-height:1.25;margin-top:2px}
-    .s4 h2.title{font-size:clamp(26px,7vw,38px) !important}
+    .s4 .pieza .desc{font-size:9.5px;line-height:1.2;margin-top:2px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 
-    /* s5 · casos mobile · compacto pero completo */
+    /* s5 · casos mobile · body truncado a 3 líneas */
     .s5 .cases{gap:8px;margin-top:4px}
-    .s5 .case{padding:0}
+    .s5 .case{padding:10px 12px;gap:5px}
     .s5 .case .meta{font-size:9px;letter-spacing:1px}
-    .s5 .case .head{font-size:13px;line-height:1.2;margin:4px 0}
-    .s5 .case .body{font-size:10.5px;line-height:1.3;margin-top:3px}
+    .s5 .case .head{font-size:13.5px;line-height:1.2;margin:3px 0}
+    .s5 .case .body{font-size:11px;line-height:1.35;margin-top:3px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
     .s5 .case .nums{gap:8px;margin-top:6px}
     .s5 .case .nums .k .v{font-size:28px}
     .s5 .case .nums .k .l{font-size:9px}
     .s5 .mono{font-size:9px;margin-top:4px}
-    .s5 h2.title{font-size:clamp(26px,7vw,38px) !important}
+    .s5 h2.title{font-size:clamp(28px,7vw,40px) !important}
 
     .filt{grid-template-columns:1fr;gap:6px;margin-top:2px}
     .filt .col{padding:10px 12px}
@@ -185,15 +195,14 @@
 
     .sator{display:none}
 
-    /* s7 · CTA slide · compact para que todo entre en 100svh */
-    .s7 .wrap{gap:6px}
-    .s7 h2.title{font-size:clamp(24px,7vw,36px) !important;margin-bottom:0}
-    .s7 .filt{gap:4px;margin-top:0}
-    .s7 .filt .col{padding:8px 10px}
-    .s7 .filt .col h3{font-size:12px;margin-bottom:4px}
-    .s7 .filt .col li{font-size:10px;line-height:1.25}
-    .s7 .cta{margin-top:2px}
-    .s7 .mono{display:none}
+    /* s7 · CTA · centrado + respiración */
+    .s7 .wrap{gap:12px}
+    .s7 .filt{gap:5px;margin-top:0}
+    .s7 .filt .col{padding:9px 11px}
+    .s7 .filt .col h3{font-size:13px;margin-bottom:4px}
+    .s7 .filt .col li{font-size:11px;line-height:1.3}
+    .s7 .cta{margin-top:6px}
+    .s7 .mono{font-size:9px;letter-spacing:1.5px;margin-top:4px}
 
     /* topbar minimal · wordmark oculto en mobile (consumía espacio y chocaba con eyebrows) */
     .topbar{padding:8px 12px;justify-content:flex-end}
