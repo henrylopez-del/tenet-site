@@ -164,6 +164,16 @@
 
     .sator{display:none}
 
+    /* s7 · CTA slide · compact para que todo entre en 100svh */
+    .s7 .wrap{gap:6px}
+    .s7 h2.title{font-size:clamp(24px,7vw,36px) !important;margin-bottom:0}
+    .s7 .filt{gap:4px;margin-top:0}
+    .s7 .filt .col{padding:8px 10px}
+    .s7 .filt .col h3{font-size:12px;margin-bottom:4px}
+    .s7 .filt .col li{font-size:10px;line-height:1.25}
+    .s7 .cta{margin-top:2px}
+    .s7 .mono{display:none}
+
     /* topbar minimal · wordmark oculto en mobile (consumía espacio y chocaba con eyebrows) */
     .topbar{padding:8px 12px;justify-content:flex-end}
     .wordmark{display:none}
@@ -1077,7 +1087,7 @@
 <script>
 (function(){
   var deck = document.getElementById('deck');
-  var dots = document.querySelectorAll('.dot');
+  var progress = document.getElementById('progress');
   var prev = document.getElementById('prev');
   var next = document.getElementById('next');
   var floating = document.getElementById('floating');
@@ -1088,6 +1098,25 @@
     return deck.querySelectorAll(sel);
   }
   var slides = getSlides();
+  var dots;
+
+  function buildDots(){
+    progress.innerHTML = '';
+    dots = [];
+    for(var i = 0; i < slides.length; i++){
+      var d = document.createElement('span');
+      d.className = 'dot' + (i === 0 ? ' active' : '');
+      d.dataset.i = i;
+      d.addEventListener('click', (function(idx){ return function(){ goTo(idx); }; })(i));
+      progress.appendChild(d);
+      dots.push(d);
+    }
+  }
+  buildDots();
+
+  function slideSize(){
+    return isMobile ? (slides[0] ? slides[0].offsetHeight : window.innerHeight) : window.innerWidth;
+  }
 
   /* video bootstrap · swap a versión mobile + forzar play() (Safari iOS bloquea autoplay si no llamas .play()) */
   function bootVideos(){
@@ -1109,8 +1138,9 @@
   document.addEventListener('click', bootVideos, {once:true});
 
   function getCurrent(){
-    if(isMobile) return Math.round(deck.scrollTop / window.innerHeight);
-    return Math.round(deck.scrollLeft / window.innerWidth);
+    var sz = slideSize();
+    if(isMobile) return Math.round(deck.scrollTop / sz);
+    return Math.round(deck.scrollLeft / sz);
   }
   function setActive(i){
     current = Math.max(0, Math.min(slides.length - 1, i));
@@ -1119,11 +1149,11 @@
   }
   function goTo(i){
     i = Math.max(0, Math.min(slides.length - 1, i));
-    if(isMobile) deck.scrollTo({top: i * window.innerHeight, behavior: 'smooth'});
-    else deck.scrollTo({left: i * window.innerWidth, behavior: 'smooth'});
+    var sz = slideSize();
+    if(isMobile) deck.scrollTo({top: i * sz, behavior: 'smooth'});
+    else deck.scrollTo({left: i * sz, behavior: 'smooth'});
     setActive(i);
   }
-  dots.forEach(function(d){ d.addEventListener('click', function(){ goTo(parseInt(this.dataset.i)); }); });
   prev.addEventListener('click', function(){ goTo(current - 1); });
   next.addEventListener('click', function(){ goTo(current + 1); });
   deck.addEventListener('scroll', function(){ setActive(getCurrent()); }, {passive:true});
@@ -1136,6 +1166,7 @@
   window.addEventListener('resize', function(){
     isMobile = window.matchMedia('(max-width:768px)').matches;
     slides = getSlides();
+    buildDots();
     goTo(current);
   });
   if(!isMobile){
