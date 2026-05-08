@@ -72,9 +72,9 @@
       width:100vw;
       height:100svh;
       max-height:100svh;
-      /* clear: 56px topbar + safe-area top · 70px bottom para CTA flotante + safe-area */
+      /* topbar oculto en mobile · solo safe-area + breathing top */
       padding:
-        calc(env(safe-area-inset-top,0px) + 64px)
+        calc(env(safe-area-inset-top,0px) + 28px)
         max(env(safe-area-inset-right,0px),16px)
         calc(env(safe-area-inset-bottom,0px) + 70px)
         max(env(safe-area-inset-left,0px),16px);
@@ -138,17 +138,19 @@
     .case .nums .k .v{font-size:22px}
     .case .nums .k .l{font-size:8.5px}
 
-    .tiers{grid-template-columns:1fr;gap:6px;margin-top:2px}
-    .tier{padding:9px 12px}
+    .tiers{grid-template-columns:1fr;gap:5px;margin-top:2px}
+    .tier{padding:7px 11px}
     .tier.featured{box-shadow:3px 3px 0 var(--ink),3px 3px 0 2px var(--cream)}
-    .tier .label{font-size:8.5px;letter-spacing:1.4px;margin-bottom:2px}
-    .tier .price{font-size:24px;line-height:1;margin:0}
-    .tier .small{font-size:8.5px;margin-top:1px;line-height:1.2}
-    .tier .out{font-size:10px;line-height:1.32;margin-top:4px}
+    .tier .label{font-size:8px;letter-spacing:1.3px;margin-bottom:1px}
+    .tier .price{font-size:22px;line-height:1;margin:0}
+    .tier .small{font-size:8px;margin-top:1px;line-height:1.18}
+    .tier .out{font-size:9.5px;line-height:1.28;margin-top:3px}
     .tier.featured::after{font-size:8px;padding:2px 5px;top:-7px}
-    /* slide 6 · solo 1 nota mono en mobile */
+    /* slide 6 · solo 1 nota mono en mobile, ultra compacto */
     .s6 .mono + .mono{display:none}
-    .s6 .mono{font-size:9.5px;line-height:1.35;margin-top:6px}
+    .s6 .mono{font-size:9px;line-height:1.3;margin-top:5px}
+    .s6 .wrap{gap:6px}
+    .s6 h2.title{font-size:clamp(22px,6vw,32px) !important}
 
     .filt{grid-template-columns:1fr;gap:6px;margin-top:2px}
     .filt .col{padding:10px 12px}
@@ -162,10 +164,13 @@
 
     .sator{display:none}
 
-    .topbar{padding:14px 16px}
-    .wordmark{font-size:11px;letter-spacing:4px}
+    /* topbar minimal · wordmark oculto en mobile (consumía espacio y chocaba con eyebrows) */
+    .topbar{padding:8px 12px;justify-content:flex-end}
+    .wordmark{display:none}
     .progress{flex-direction:column;width:3px;gap:3px}
     .dot{width:3px;height:14px}
+    /* eyebrow forzado a una línea para no wrappear sobre el contenido */
+    .eyebrow{font-size:9.5px;letter-spacing:2.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;max-width:100%}
   }
 
   /* ─── topbar ─── */
@@ -807,8 +812,7 @@
 
   <!-- 1 · HOOK -->
   <section class="slide s1">
-    <video class="ambient-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
-      <source src="assets/img/landing/loop-hero-small.mp4" media="(max-width:768px)" type="video/mp4">
+    <video class="ambient-video" autoplay muted loop playsinline preload="auto" aria-hidden="true" data-mobile-src="assets/img/landing/loop-hero-small.mp4">
       <source src="assets/img/landing/loop-hero.mp4" type="video/mp4">
     </video>
     <div class="wrap">
@@ -1084,6 +1088,26 @@
     return deck.querySelectorAll(sel);
   }
   var slides = getSlides();
+
+  /* video bootstrap · swap a versión mobile + forzar play() (Safari iOS bloquea autoplay si no llamas .play()) */
+  function bootVideos(){
+    document.querySelectorAll('video').forEach(function(v){
+      var mobileSrc = v.getAttribute('data-mobile-src');
+      if(isMobile && mobileSrc){
+        var src = v.querySelector('source');
+        if(src && src.src.indexOf(mobileSrc) === -1){
+          src.src = mobileSrc;
+          v.load();
+        }
+      }
+      var p = v.play();
+      if(p && p.catch) p.catch(function(){ /* autoplay bloqueado, espera tap */ });
+    });
+  }
+  bootVideos();
+  document.addEventListener('touchstart', bootVideos, {once:true, passive:true});
+  document.addEventListener('click', bootVideos, {once:true});
+
   function getCurrent(){
     if(isMobile) return Math.round(deck.scrollTop / window.innerHeight);
     return Math.round(deck.scrollLeft / window.innerWidth);
