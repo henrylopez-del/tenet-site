@@ -507,6 +507,11 @@
     filter:saturate(.6) contrast(1.1) hue-rotate(-15deg);
     mix-blend-mode:screen;
   }
+  .s1.no-autoplay{
+    background-image:url('assets/img/landing/hero-poster.jpg');
+    background-size:cover;background-position:center;
+  }
+  .s1.no-autoplay .ambient-video{display:none}
   /* ahorrar bandwidth en mobile · video off, GIFs reducidos */
   @media (max-width:768px){
     .ambient-video{display:block;opacity:.55}
@@ -1191,19 +1196,27 @@
     setTimeout(function(){ animateSlide(slides[0]); }, 100);
   }
 
-  /* ─── s1 · ambient hero · forzar play cuando S1 es visible ─── */
+  /* ─── s1 · ambient hero · play con fallback explícito ─── */
   var heroVideo = document.querySelector('.ambient-video');
-  if(heroVideo){
+  var s1El = document.querySelector('.s1');
+  if(heroVideo && s1El){
+    heroVideo.play().catch(function(){
+      s1El.classList.add('no-autoplay');
+    });
     var heroObs = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
         if(e.isIntersecting){
-          heroVideo.play().catch(function(){});
+          heroVideo.play().then(function(){
+            s1El.classList.remove('no-autoplay');
+          }).catch(function(){
+            s1El.classList.add('no-autoplay');
+          });
         } else {
           heroVideo.pause();
         }
       });
     }, {threshold: 0.3});
-    heroObs.observe(document.querySelector('.s1'));
+    heroObs.observe(s1El);
   }
 
   /* ─── s5 · vu-corner · play 2.5s then freeze ─── */
