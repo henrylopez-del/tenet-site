@@ -163,37 +163,15 @@
     .s6 .wrap{gap:6px}
     .s6 h2.title{font-size:clamp(22px,6vw,32px) !important}
 
-    /* s4 · 7 piezas mobile · grid llena el slide */
+    /* s4 · 4 partes mobile */
     .s4 .lede{display:none}
     .s4 .wrap{height:100%;justify-content:flex-start}
-    .s4 .piezas{grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:4px;margin-top:4px;flex:1;align-content:stretch}
-    .s4 .pieza{padding:9px 10px;cursor:pointer;position:relative;user-select:none;display:flex;flex-direction:column;justify-content:flex-start}
-    .s4 .pieza .num{font-size:8px;letter-spacing:1px;margin-bottom:2px}
-    .s4 .pieza .nm{font-size:13px;line-height:1.15;margin-top:1px;padding-right:18px}
-    .s4 .pieza .desc{display:none}
-    .s4 .pieza::after{content:"+";position:absolute;top:8px;right:8px;font-size:15px;color:var(--red);font-weight:700;line-height:1}
-
-    /* popup modal */
-    .pieza-modal{
-      display:none;position:fixed;inset:0;z-index:200;
-      background:rgba(0,0,0,.75);backdrop-filter:blur(4px);
-      align-items:center;justify-content:center;padding:24px;
-    }
-    .pieza-modal.show{display:flex}
-    .pieza-modal .box{
-      background:#0a0a0a;border:1px solid var(--red);
-      padding:24px 20px;width:100%;max-width:360px;
-      position:relative;
-    }
-    .pieza-modal .box .m-num{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--red);text-transform:uppercase;margin-bottom:8px}
-    .pieza-modal .box .m-nm{font-family:'Anton',sans-serif;font-size:26px;text-transform:uppercase;color:#f5f1e8;line-height:1;margin-bottom:14px}
-    .pieza-modal .box .m-desc{font-family:'Inter',sans-serif;font-size:13px;line-height:1.55;color:#c8c8c8}
-    .pieza-modal .box .m-close{
-      position:absolute;top:12px;right:14px;
-      font-size:22px;color:#888;cursor:pointer;line-height:1;
-      background:none;border:none;padding:0;font-family:'Inter',sans-serif;
-    }
-    .pieza-modal .box .m-close:hover{color:#fff}
+    .partes{display:flex;flex-direction:column;gap:7px;flex:1;margin-top:8px;overflow:hidden}
+    .parte{border-left:2px solid var(--red);padding:5px 0 5px 10px;display:flex;flex-direction:column}
+    .parte-num{font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:2px;color:var(--red);text-transform:uppercase;margin-bottom:2px}
+    .parte-nm{font-family:'Anton',sans-serif;font-size:14px;text-transform:uppercase;color:var(--cream);line-height:1;margin-bottom:3px}
+    .parte-desc{font-family:'Inter',sans-serif;font-size:10px;line-height:1.38;color:#a8a8a8}
+    .cierre{font-family:'Anton',sans-serif;font-size:clamp(15px,4vw,20px);color:var(--yellow);text-transform:uppercase;letter-spacing:1px;display:block;margin-top:8px;text-align:right}
 
     /* s5 · casos mobile · body truncado a 3 líneas */
     .s5 .cases{gap:8px;margin-top:4px}
@@ -364,31 +342,13 @@
   }
   .qs li:nth-child(5)::before{color:var(--yellow)}
 
-  /* ─── 7 piezas grid ─── */
-  .piezas{
-    display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:8px;
-  }
-  .pieza{
-    border:2px solid var(--cream);background:rgba(245,241,232,.05);
-    padding:16px;display:flex;flex-direction:column;gap:6px;min-height:140px;
-  }
-  .pieza .num{
-    font-family:'JetBrains Mono',monospace;
-    font-size:10px;letter-spacing:2px;color:var(--red);
-  }
-  .pieza .nm{
-    font-family:'Anton',sans-serif;
-    font-size:clamp(16px,1.8vw,22px);line-height:1.05;
-    text-transform:uppercase;color:var(--cream);
-    letter-spacing:.01em;
-  }
-  .pieza .desc{
-    font-size:12px;line-height:1.45;color:#bdbdbd;
-  }
-  @media (max-width:768px){
-    .piezas{grid-template-columns:1fr 1fr;gap:8px}
-    .pieza{padding:12px;min-height:auto}
-  }
+  /* ─── 4 partes (desktop) ─── */
+  .partes{display:flex;flex-direction:column;gap:14px;flex:1;margin-top:14px;overflow:hidden}
+  .parte{border-left:3px solid var(--red);padding:8px 0 8px 18px;display:flex;flex-direction:column}
+  .parte-num{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--red);text-transform:uppercase;margin-bottom:3px}
+  .parte-nm{font-family:'Anton',sans-serif;font-size:clamp(17px,2vw,26px);text-transform:uppercase;color:var(--cream);line-height:1;margin-bottom:5px}
+  .parte-desc{font-family:'Inter',sans-serif;font-size:clamp(12px,1.2vw,14px);line-height:1.45;color:#a8a8a8}
+  .cierre{font-family:'Anton',sans-serif;font-size:clamp(18px,3vw,28px);color:var(--yellow);text-transform:uppercase;letter-spacing:1px;display:block;margin-top:14px;text-align:right}
 
   /* ─── case cards ─── */
   .cases{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px}
@@ -927,26 +887,38 @@
     </div>
   </section>
 
-  <!-- 4 · 7 piezas · técnico preciso -->
+  <!-- 4 · La vuelta completa -->
   <section class="slide s4">
     <div class="chrome-accent"></div>
     <div class="aury-mark pingu" data-tag="★ PINGU REGISTER">
       <img src="assets/img/landing/aury-pingu-sheet.webp" alt="Aury pingu register sheet">
     </div>
     <div class="wrap">
-      <span class="eyebrow">★ TODO LO QUE CONSTRUIMOS PARA TI</span>
-      <h2 class="title">7 piezas.<br>Una <span class="y">arquitectura</span><span class="stop">.</span></h2>
-      <p class="lede">Hacer publicidad en internet en 2026 no es solo poner anuncios bonitos. Necesitas la estructura completa: datos que miden bien, una web que convierte, un sistema de clientes organizado y anuncios que mejoran solos. TENET construye las siete piezas:</p>
-      <div class="piezas">
-        <div class="pieza"><div class="num">PIEZA 01</div><div class="nm">Auditoría técnica</div><div class="desc">Revisamos todo lo que tienes instalado: píxeles, medición, configuración. Te decimos exactamente cuánto dinero estás perdiendo hoy por errores técnicos — en euros, no en teoría.</div></div>
-        <div class="pieza"><div class="num">PIEZA 02</div><div class="nm">Perfil de tu cliente ideal</div><div class="desc">Definimos quién es tu cliente ideal basándonos en lo que tus clientes reales han dicho, no en suposiciones. Así los anuncios hablan exactamente al problema que tienen.</div></div>
-        <div class="pieza"><div class="num">PIEZA 03</div><div class="nm">Página de captación</div><div class="desc">Una página diseñada para convertir visitas en contactos. Simple, rápida, sin distracciones. El botón correcto en el lugar correcto, con el mensaje correcto.</div></div>
-        <div class="pieza"><div class="num">PIEZA 04</div><div class="nm">Medición avanzada</div><div class="desc">Medimos tus conversiones desde el servidor, no solo desde el navegador. Así iOS, bloqueadores de anuncios y la normativa de privacidad dejan de hacerte invisible — recuperas datos que antes se perdían.</div></div>
-        <div class="pieza"><div class="num">PIEZA 05</div><div class="nm">Gestión de clientes (CRM)</div><div class="desc">Organizamos todos tus contactos en un solo lugar: quién llegó, en qué etapa está, cuándo hacer seguimiento. Nunca más un cliente perdido en el correo o el WhatsApp.</div></div>
-        <div class="pieza"><div class="num">PIEZA 06</div><div class="nm">Anuncios basados en datos</div><div class="desc">Creamos los textos e imágenes de tus anuncios usando lo que ya sabemos que funciona en tu mercado. Nada de "a ver qué pasa" — todo parte de datos reales.</div></div>
-        <div class="pieza"><div class="num">PIEZA 07</div><div class="nm">Optimización con IA</div><div class="desc">Usamos inteligencia artificial para decidir cuándo, dónde y a quién mostrar tus anuncios. El presupuesto va donde más convierte — automáticamente, todos los días.</div></div>
-        <div class="pieza" style="background:var(--ink);color:var(--cream);border-color:var(--ink)"><div class="num" style="color:var(--yellow)">★ TODAS</div><div class="nm" style="color:var(--cream)">Incluidas en cada plan</div><div class="desc" style="color:#cfcfcf">Da igual si contratas Meta, Google o los dos — las 7 piezas siempre están incluidas. La diferencia entre planes es en qué canales trabajamos, no cuánto te damos.</div></div>
+      <span class="eyebrow">★ LAS 4 PARTES DE LA VUELTA COMPLETA</span>
+      <h2 class="title">4 partes.<br>La vuelta <span class="y">completa</span><span class="stop">.</span></h2>
+      <div class="partes">
+        <div class="parte">
+          <div class="parte-num">PARTE 01</div>
+          <div class="parte-nm">Las cuentas</div>
+          <div class="parte-desc">Meta y Google configuradas correctamente desde el principio — sin esto, todo lo demás falla.</div>
+        </div>
+        <div class="parte">
+          <div class="parte-num">PARTE 02</div>
+          <div class="parte-nm">El sitio web</div>
+          <div class="parte-desc">Optimizado para que te encuentren, para que conviertan visitas en contactos, y para que cada acción quede registrada.</div>
+        </div>
+        <div class="parte">
+          <div class="parte-num">PARTE 03</div>
+          <div class="parte-nm">El CRM</div>
+          <div class="parte-desc">El sistema donde viven tus clientes: quién agendó, quién compró, quién volvió, quién te recomendó.</div>
+        </div>
+        <div class="parte">
+          <div class="parte-num">PARTE 04</div>
+          <div class="parte-nm">La vuelta completa</div>
+          <div class="parte-desc">Tomamos lo que pasó de verdad — qué lead compró, cuánto pagó — y se lo enviamos de regreso a Meta y Google. Los anuncios aprenden a traerte clientes así. No solo clicks.</div>
+        </div>
       </div>
+      <span class="cierre">El ciclo se cierra.</span>
     </div>
   </section>
 
@@ -999,7 +971,7 @@
           <div class="out">Seguimiento reparado en Meta · CRM (sistema de clientes) · página de captación · sin gestión activa de campañas</div>
         </div>
         <div class="tier featured">
-          <div class="label">AMBOS · LOOP COMPLETO</div>
+          <div class="label">AMBOS · LA VUELTA COMPLETA</div>
           <div class="price" data-anim-num="1500" data-prefix="€">€1.500</div>
           <div class="small">/mes · 2 meses por adelantado</div>
           <div class="out">Todo incluido: seguimiento en Meta y Google · CRM · dos páginas de captación · gestión activa de campañas · optimización automática con IA</div>
@@ -1042,7 +1014,7 @@
           </ul>
         </div>
       </div>
-      <a class="cta" href="https://wa.me/34684790538?text=Hola%2C%20vi%20su%20landing%20de%20AURY%20T%20E%20N%20E%20T%20y%20quiero%20info%20sobre%20closed-loop%20marketing." target="_blank" rel="noopener noreferrer" id="cta-main">
+      <a class="cta" href="https://wa.me/34684790538?text=Hola%2C%20vi%20su%20landing%20de%20AURY%20T%20E%20N%20E%20T%20y%20quiero%20info%20sobre%20TENET%20y%20quiero%20saber%20c%C3%B3mo%20funciona%20la%20vuelta%20completa." target="_blank" rel="noopener noreferrer" id="cta-main">
         <span class="wa"><svg viewBox="0 0 24 24"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.06 4 7.94 7.94 0 0 0 4.13 11.94a7.85 7.85 0 0 0 1.07 4l-1.13 4.13 4.23-1.11a7.94 7.94 0 0 0 3.79.96h.01a7.94 7.94 0 0 0 7.93-7.94 7.85 7.85 0 0 0-2.43-5.66ZM12.07 18.6a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.66.67-2.45-.16-.25a6.6 6.6 0 0 1-1-3.5 6.6 6.6 0 0 1 11.27-4.66 6.55 6.55 0 0 1 1.92 4.67 6.6 6.6 0 0 1-6.6 6.6Z"/></svg></span>
         <span>Escribir por WhatsApp<span class="meta">RESPUESTA EN 1 HORA · SIN FORMULARIO · SIN AGENDAR</span></span>
       </a>
@@ -1052,17 +1024,8 @@
 
 </div>
 
-<!-- ─── pieza modal ─── -->
-<div class="pieza-modal" id="piezaModal">
-  <div class="box">
-    <button class="m-close" id="piezaClose">×</button>
-    <div class="m-num" id="piezaNum"></div>
-    <div class="m-nm" id="piezaNm"></div>
-    <div class="m-desc" id="piezaDesc"></div>
-  </div>
-</div>
 
-<a class="floating" id="floating" href="https://wa.me/34684790538?text=Hola%2C%20vi%20su%20landing%20de%20AURY%20T%20E%20N%20E%20T%20y%20quiero%20info%20sobre%20closed-loop%20marketing." target="_blank" rel="noopener noreferrer">
+<a class="floating" id="floating" href="https://wa.me/34684790538?text=Hola%2C%20vi%20su%20landing%20de%20AURY%20T%20E%20N%20E%20T%20y%20quiero%20info%20sobre%20TENET%20y%20quiero%20saber%20c%C3%B3mo%20funciona%20la%20vuelta%20completa." target="_blank" rel="noopener noreferrer">
   <svg viewBox="0 0 24 24"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.06 4 7.94 7.94 0 0 0 4.13 11.94a7.85 7.85 0 0 0 1.07 4l-1.13 4.13 4.23-1.11a7.94 7.94 0 0 0 3.79.96h.01a7.94 7.94 0 0 0 7.93-7.94 7.85 7.85 0 0 0-2.43-5.66Z"/></svg>
   <span>WhatsApp</span>
 </a>
@@ -1229,21 +1192,6 @@
     setTimeout(function(){ animateSlide(slides[0]); }, 100);
   }
 
-  /* ─── s4 · pieza popup (mobile only) ─── */
-  var modal = document.getElementById('piezaModal');
-  var mNum  = document.getElementById('piezaNum');
-  var mNm   = document.getElementById('piezaNm');
-  var mDesc = document.getElementById('piezaDesc');
-  document.getElementById('piezaClose').addEventListener('click', function(){ modal.classList.remove('show'); });
-  modal.addEventListener('click', function(e){ if(e.target === modal) modal.classList.remove('show'); });
-  document.querySelectorAll('.s4 .pieza').forEach(function(card){
-    card.addEventListener('click', function(){
-      mNum.textContent  = card.querySelector('.num').textContent;
-      mNm.textContent   = card.querySelector('.nm').textContent;
-      mDesc.textContent = card.querySelector('.desc').textContent;
-      modal.classList.add('show');
-    });
-  });
 
 })();
 </script>
