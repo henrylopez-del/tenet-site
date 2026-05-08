@@ -1190,6 +1190,21 @@
     setTimeout(function(){ animateSlide(slides[0]); }, 100);
   }
 
+  /* ─── s1 · ambient hero · forzar play cuando S1 es visible ─── */
+  var heroVideo = document.querySelector('.ambient-video');
+  if(heroVideo){
+    var heroObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          heroVideo.play().catch(function(){});
+        } else {
+          heroVideo.pause();
+        }
+      });
+    }, {threshold: 0.3});
+    heroObs.observe(document.querySelector('.s1'));
+  }
+
   /* ─── s5 · vu-corner · play 2.5s then freeze ─── */
   var vuVideo = document.querySelector('.vu-corner');
   if(vuVideo){
