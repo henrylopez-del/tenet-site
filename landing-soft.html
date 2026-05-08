@@ -72,19 +72,24 @@
       width:100vw;
       height:100svh;
       max-height:100svh;
+      /* clear: 56px topbar + safe-area top · 70px bottom para CTA flotante + safe-area */
       padding:
-        calc(env(safe-area-inset-top,0px) + 54px)
+        calc(env(safe-area-inset-top,0px) + 64px)
         max(env(safe-area-inset-right,0px),16px)
-        calc(env(safe-area-inset-bottom,0px) + 40px)
+        calc(env(safe-area-inset-bottom,0px) + 70px)
         max(env(safe-area-inset-left,0px),16px);
       scroll-snap-align:start;
       scroll-snap-stop:always;
       overflow:hidden;
+      /* contenido top-aligned: si overflow, se corta por abajo (no choca con wordmark) */
+      align-items:flex-start;
     }
-    .slide.d-only{display:none}
-    .slide.m-only{display:flex}
+    .slide.d-only{display:none !important}
+    .slide.m-only{display:flex !important}
   }
-  .slide.m-only{display:none}
+  @media (min-width:769px){
+    .slide.m-only{display:none !important}
+  }
   /* ─── MOBILE OPTIMIZATION v2 · más agresivo · evitar cortes ─── */
   @media (max-width:768px){
     h1.title,h2.title{
@@ -133,19 +138,23 @@
     .case .nums .k .v{font-size:22px}
     .case .nums .k .l{font-size:8.5px}
 
-    .tiers{grid-template-columns:1fr;gap:7px}
-    .tier{padding:11px 14px}
-    .tier.featured{box-shadow:4px 4px 0 var(--ink),4px 4px 0 2px var(--cream)}
-    .tier .label{font-size:9px;letter-spacing:1.6px}
-    .tier .price{font-size:28px;line-height:1}
-    .tier .small{font-size:9px;margin-top:2px}
-    .tier .out{font-size:10.5px;line-height:1.35;margin-top:5px}
-    .tier.featured::after{font-size:8.5px;padding:3px 6px;top:-8px}
+    .tiers{grid-template-columns:1fr;gap:6px;margin-top:2px}
+    .tier{padding:9px 12px}
+    .tier.featured{box-shadow:3px 3px 0 var(--ink),3px 3px 0 2px var(--cream)}
+    .tier .label{font-size:8.5px;letter-spacing:1.4px;margin-bottom:2px}
+    .tier .price{font-size:24px;line-height:1;margin:0}
+    .tier .small{font-size:8.5px;margin-top:1px;line-height:1.2}
+    .tier .out{font-size:10px;line-height:1.32;margin-top:4px}
+    .tier.featured::after{font-size:8px;padding:2px 5px;top:-7px}
+    /* slide 6 · solo 1 nota mono en mobile */
+    .s6 .mono + .mono{display:none}
+    .s6 .mono{font-size:9.5px;line-height:1.35;margin-top:6px}
 
-    .filt{grid-template-columns:1fr;gap:8px;margin-top:4px}
-    .filt .col{padding:14px}
-    .filt .col h3{font-size:18px;margin-bottom:8px}
-    .filt .col li{font-size:12px;line-height:1.35;padding-left:18px}
+    .filt{grid-template-columns:1fr;gap:6px;margin-top:2px}
+    .filt .col{padding:10px 12px}
+    .filt .col h3{font-size:14px;margin-bottom:6px;letter-spacing:.3px}
+    .filt .col ul{gap:5px}
+    .filt .col li{font-size:11px;line-height:1.3;padding-left:16px}
 
     .cta{padding:16px 20px;font-size:15px;gap:10px;box-shadow:5px 5px 0 var(--cream)}
     .cta .wa{width:24px;height:24px}
@@ -473,9 +482,9 @@
   }
   /* ahorrar bandwidth en mobile · video off, GIFs reducidos */
   @media (max-width:768px){
-    .ambient-video{display:none}
+    .ambient-video{display:block;opacity:.55}
     .glitch-bg{opacity:.08}
-    .vu-corner{width:160px;opacity:.4}
+    .vu-corner{width:140px;opacity:.4}
     .chrome-accent{opacity:.12}
   }
 
@@ -798,7 +807,8 @@
 
   <!-- 1 · HOOK -->
   <section class="slide s1">
-    <video class="ambient-video" autoplay muted loop playsinline preload="metadata">
+    <video class="ambient-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+      <source src="assets/img/landing/loop-hero-small.mp4" media="(max-width:768px)" type="video/mp4">
       <source src="assets/img/landing/loop-hero.mp4" type="video/mp4">
     </video>
     <div class="wrap">
@@ -812,7 +822,7 @@
 
   <!-- 2 · LAS 4 FUGAS · técnico + preciso -->
   <section class="slide s2">
-    <img class="glitch-bg" src="assets/img/landing/glitch-fugas.gif" alt="" aria-hidden="true" loading="lazy" decoding="async">
+    <video class="glitch-bg" autoplay muted loop playsinline preload="auto" aria-hidden="true"><source src="assets/img/landing/glitch-fugas.mp4" type="video/mp4"></video>
     <div class="aury-mark plushy-night">
       <img src="assets/img/landing/aury-ball-night.webp" alt="Aury observando las fugas a las 3am">
     </div>
@@ -907,7 +917,7 @@
 
   <!-- 5 · CASOS · técnico verificable -->
   <section class="slide s5 d-only">
-    <video class="vu-corner" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="assets/img/landing/vu-meters.mp4" type="video/mp4"></video>
+    <video class="vu-corner" autoplay muted loop playsinline preload="auto" aria-hidden="true"><source src="assets/img/landing/vu-meters.mp4" type="video/mp4"></video>
     <div class="aury-mark plushy-laptop">
       <img src="assets/img/landing/aury-ball-laptop.webp" alt="Aury plushy estudiando casos">
     </div>
@@ -1063,13 +1073,17 @@
 <script>
 (function(){
   var deck = document.getElementById('deck');
-  var slides = deck.querySelectorAll('.slide');
   var dots = document.querySelectorAll('.dot');
   var prev = document.getElementById('prev');
   var next = document.getElementById('next');
   var floating = document.getElementById('floating');
   var current = 0;
   var isMobile = window.matchMedia('(max-width:768px)').matches;
+  function getSlides(){
+    var sel = isMobile ? '.slide:not(.d-only)' : '.slide:not(.m-only)';
+    return deck.querySelectorAll(sel);
+  }
+  var slides = getSlides();
   function getCurrent(){
     if(isMobile) return Math.round(deck.scrollTop / window.innerHeight);
     return Math.round(deck.scrollLeft / window.innerWidth);
@@ -1097,6 +1111,7 @@
   });
   window.addEventListener('resize', function(){
     isMobile = window.matchMedia('(max-width:768px)').matches;
+    slides = getSlides();
     goTo(current);
   });
   if(!isMobile){
@@ -1120,23 +1135,23 @@
   function animateNumber(el, end, duration, prefix, suffix){
     var start = 0;
     var t0 = performance.now();
-    function fmt(n){
-      // Spanish locale thousands separator (dot)
-      return n.toLocaleString('es-ES');
+    function fmt(n){ return n.toLocaleString('es-ES'); }
+    function finalize(){
+      el.textContent = prefix + fmt(end) + suffix;
+      el.classList.add('num-popped');
+      setTimeout(function(){ el.classList.remove('num-popped'); }, 360);
     }
     function tick(now){
       var t = Math.min((now - t0) / duration, 1);
-      var eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+      var eased = 1 - Math.pow(1 - t, 3);
       var v = Math.round(start + (end - start) * eased);
       el.textContent = prefix + fmt(v) + suffix;
       if(t < 1) requestAnimationFrame(tick);
-      else {
-        el.textContent = prefix + fmt(end) + suffix;
-        el.classList.add('num-popped');
-        setTimeout(function(){ el.classList.remove('num-popped'); }, 360);
-      }
+      else finalize();
     }
     requestAnimationFrame(tick);
+    /* failsafe: rAF puede pausarse cuando slide sale del viewport — asegurar valor final */
+    setTimeout(finalize, duration + 250);
   }
 
   function animateSlide(slide){
