@@ -8,7 +8,7 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@1,800;1,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@500;700&family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@1,800;1,900&display=swap" rel="stylesheet">
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{
@@ -678,42 +678,33 @@
   .s3-note{flex:1;padding:0;border:none;background:none}
   /* SÍ stamp */
   .si{font-style:normal;color:var(--red);display:inline-block;transform:rotate(-5deg) translateY(-2px);letter-spacing:.02em}
-  /* S3 sticky notes */
-  .s3-no{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
+  /* S3 notebook pages */
+  .s3-no{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px}
   .sticky{
-    background:#FFF176;
-    padding:16px 16px 20px;
-    box-shadow:4px 6px 18px rgba(0,0,0,.55), 0 1px 0 rgba(0,0,0,.15);
+    background:#FBF7E8;
+    background-image:
+      linear-gradient(to right, transparent 28px, #E5A8A8 28px, #E5A8A8 29px, transparent 29px),
+      repeating-linear-gradient(to bottom, transparent 0, transparent 26px, #B8C5D6 26px, #B8C5D6 27px);
+    padding:14px 18px 18px 38px;
+    box-shadow:5px 8px 24px rgba(0,0,0,.6), 0 1px 0 rgba(0,0,0,.15);
     width:100%;
-    max-width:230px;
+    max-width:280px;
     position:relative;
-  }
-  .sticky:nth-child(1){transform:rotate(-3deg)}
-  .sticky:nth-child(2){transform:rotate(2.5deg);margin-left:20px}
-  .sticky::before{
-    content:'';
-    display:block;
-    height:5px;
-    background:rgba(0,0,0,.08);
-    position:absolute;
-    top:0;left:0;right:0;
-  }
-  .no-big{
-    font-family:'Anton',sans-serif;
-    font-size:clamp(40px,7vw,60px);
-    color:#C0392B;
-    line-height:1;
-    letter-spacing:.01em;
-    display:block;
-  }
-  .no-sub{
-    margin-top:6px;
-    display:block;
-    font-family:'Inter',sans-serif;
+    font-family:'Caveat','Bradley Hand',cursive;
     font-weight:700;
-    font-size:clamp(11px,1.3vw,13px);
-    color:#222;
-    line-height:1.35;
+    font-size:clamp(22px,2.8vw,28px);
+    color:#1a2438;
+    line-height:1.2;
+    letter-spacing:.005em;
+  }
+  .sticky:nth-child(1){transform:rotate(-2.5deg)}
+  .sticky:nth-child(2){transform:rotate(2deg)}
+  .sticky .no{
+    font-family:'Anton',sans-serif;
+    color:#C0392B;
+    font-size:1.5em;
+    margin-right:6px;
+    font-weight:400;
   }
   .s4{background:var(--cream-warm);color:var(--ink)}
   .s4 .eyebrow{color:var(--red)}
@@ -953,14 +944,8 @@
           <li>quién <span class="y">volvió</span></li>
         </ul>
         <div class="s3-no">
-          <div class="sticky">
-            <span class="no-big">NO.</span>
-            <span class="no-sub">quien no quiere pagar tus precios.</span>
-          </div>
-          <div class="sticky">
-            <span class="no-big">NO.</span>
-            <span class="no-sub">quien no entiende tu servicio.</span>
-          </div>
+          <div class="sticky"><span class="no">NO</span> quien no quiere pagar tus precios.</div>
+          <div class="sticky"><span class="no">NO</span> quien no entiende tu servicio.</div>
         </div>
       </div>
       <p class="mono">★ Sin tomar una sola decisión extra. Con datos limpios, Meta y Google mejoran solos.</p>
