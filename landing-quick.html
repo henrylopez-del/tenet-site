@@ -113,6 +113,38 @@
     .s1{align-items:center}
   }
 
+  /* ─── background media ─── */
+  .ambient-video{
+    position:absolute;inset:0;z-index:0;
+    width:100%;height:100%;object-fit:cover;
+    opacity:.18;pointer-events:none;
+    filter:saturate(.6) contrast(1.1) hue-rotate(-15deg);
+    mix-blend-mode:screen;
+  }
+  .glitch-bg{
+    position:absolute;inset:0;z-index:0;pointer-events:none;
+    width:100%;height:100%;object-fit:cover;
+    opacity:.1;filter:saturate(1.2) contrast(1.1);mix-blend-mode:screen;
+  }
+  .chrome-bg{
+    position:absolute;inset:0;z-index:0;pointer-events:none;
+    width:100%;height:100%;object-fit:cover;
+    opacity:.06;mix-blend-mode:overlay;
+  }
+  .vu-corner{
+    position:absolute;bottom:0;right:0;
+    width:300px;height:auto;z-index:1;pointer-events:none;
+    opacity:.5;transform:rotate(-2deg);
+    mask-image:radial-gradient(ellipse at bottom right,black 0%,transparent 90%);
+    -webkit-mask-image:radial-gradient(ellipse at bottom right,black 0%,transparent 90%);
+  }
+  .slide .wrap{position:relative;z-index:2}
+  .slide .s2-wrap,.slide .s3-wrap{position:relative;z-index:2}
+  @media(max-width:768px){
+    .ambient-video{opacity:.5}
+    .vu-corner{width:180px}
+  }
+
   /* ─── type system ─── */
   .mono{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:var(--cream-warm);text-transform:uppercase}
   .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--red)}
@@ -317,6 +349,9 @@
 
   <!-- ─── S1 · EL GOLPE ─── -->
   <section class="slide s1" id="s1">
+    <video class="ambient-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="assets/img/landing/hero-poster.jpg" aria-hidden="true">
+      <source src="assets/img/landing/loop-hero-mini.mp4" type="video/mp4">
+    </video>
     <div class="wrap">
       <span class="eyebrow">★ META Y GOOGLE APRENDEN DE LO QUE LES ENSEÑAS</span>
       <h1 class="title">El doble de clientes.<br><span class="y">Mismo presupuesto<span class="stop">.</span></span></h1>
@@ -332,6 +367,9 @@
 
   <!-- ─── S2 · EL PROBLEMA ─── -->
   <section class="slide s2" id="s2">
+    <video class="glitch-bg" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+      <source src="assets/img/landing/glitch-fugas.mp4" type="video/mp4">
+    </video>
     <div class="s2-wrap">
       <div class="s2-left">
         <span class="eyebrow" style="margin-bottom:16px">El problema</span>
@@ -368,6 +406,7 @@
 
   <!-- ─── S3 · EL SISTEMA ─── -->
   <section class="slide s3" id="s3">
+    <img class="chrome-bg" src="assets/img/landing/bg-chrome.webp" alt="" aria-hidden="true">
     <div class="s3-wrap">
       <div class="s3-left">
         <span class="eyebrow">El sistema</span>
@@ -406,6 +445,9 @@
 
   <!-- ─── S4 · PRICING ─── -->
   <section class="slide s4" id="s4">
+    <video class="vu-corner" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+      <source src="assets/img/landing/vu-meters.mp4" type="video/mp4">
+    </video>
     <div class="wrap" style="max-width:960px">
       <span class="eyebrow">Empieza hoy</span>
       <h2 class="title">Elige tu sistema<span class="stop">.</span></h2>
