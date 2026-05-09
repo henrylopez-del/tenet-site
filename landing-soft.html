@@ -678,27 +678,42 @@
   .s3-note{flex:1;padding:0;border:none;background:none}
   /* SÍ stamp */
   .si{font-style:normal;color:var(--red);display:inline-block;transform:rotate(-5deg) translateY(-2px);letter-spacing:.02em}
-  /* S3 NO block */
-  .s3-no{flex:1;display:flex;flex-direction:column;justify-content:center;padding-left:24px;border-left:1px solid var(--line)}
+  /* S3 sticky notes */
+  .s3-no{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
+  .sticky{
+    background:#FFF176;
+    padding:16px 16px 20px;
+    box-shadow:4px 6px 18px rgba(0,0,0,.55), 0 1px 0 rgba(0,0,0,.15);
+    width:100%;
+    max-width:230px;
+    position:relative;
+  }
+  .sticky:nth-child(1){transform:rotate(-3deg)}
+  .sticky:nth-child(2){transform:rotate(2.5deg);margin-left:20px}
+  .sticky::before{
+    content:'';
+    display:block;
+    height:5px;
+    background:rgba(0,0,0,.08);
+    position:absolute;
+    top:0;left:0;right:0;
+  }
   .no-big{
     font-family:'Anton',sans-serif;
-    font-size:clamp(80px,14vw,160px);
-    color:var(--red);
-    line-height:.9;
-    letter-spacing:-.02em;
-  }
-  .no-subs{
-    margin-top:12px;
-    display:flex;
-    flex-direction:column;
-    gap:4px;
+    font-size:clamp(40px,7vw,60px);
+    color:#C0392B;
+    line-height:1;
+    letter-spacing:.01em;
+    display:block;
   }
   .no-sub{
+    margin-top:6px;
+    display:block;
     font-family:'Inter',sans-serif;
-    font-weight:600;
-    font-size:clamp(11px,1.4vw,14px);
-    color:rgba(237,237,237,.4);
-    line-height:1.4;
+    font-weight:700;
+    font-size:clamp(11px,1.3vw,13px);
+    color:#222;
+    line-height:1.35;
   }
   .s4{background:var(--cream-warm);color:var(--ink)}
   .s4 .eyebrow{color:var(--red)}
@@ -938,9 +953,12 @@
           <li>quién <span class="y">volvió</span></li>
         </ul>
         <div class="s3-no">
-          <span class="no-big">NO.</span>
-          <div class="no-subs">
+          <div class="sticky">
+            <span class="no-big">NO.</span>
             <span class="no-sub">quien no quiere pagar tus precios.</span>
+          </div>
+          <div class="sticky">
+            <span class="no-big">NO.</span>
             <span class="no-sub">quien no entiende tu servicio.</span>
           </div>
         </div>
