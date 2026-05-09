@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>AURY · Convierte el doble de leads en clientes. Con el mismo presupuesto.</title>
+<meta name="description" content="Construimos el sistema completo que conecta tus anuncios con tus ventas reales. Meta y Google aprenden de compradores, no de clicks. Desde €600/mes.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --red:#E04E1C;
+    --red-deep:#B84215;
+    --cream:#EDEDED;
+    --cream-warm:#A8A8A8;
+    --ink:#070D1F;
+    --ash:#0D1530;
+    --line:#1A2B48;
+    --blue-soft:#1A4FCC;
+  }
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--ink);
+    color:var(--cream);
+    font-family:'Inter',system-ui,sans-serif;
+    overflow:hidden;
+    height:100vh;height:100dvh;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:99;pointer-events:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.4 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    background-size:320px;opacity:.06;mix-blend-mode:overlay;
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:98;pointer-events:none;
+    background:repeating-linear-gradient(0deg,transparent,transparent 11px,rgba(255,255,255,0.025) 11px,rgba(255,255,255,0.025) 12px);
+  }
+
+  /* ─── deck ─── */
+  .deck{
+    display:flex;height:100vh;height:100dvh;width:100vw;
+    overflow-x:auto;overflow-y:hidden;
+    scroll-snap-type:x mandatory;scroll-behavior:smooth;
+    -webkit-overflow-scrolling:touch;
+  }
+  .deck::-webkit-scrollbar{display:none}
+  .deck{scrollbar-width:none}
+  .slide{
+    flex:0 0 100vw;width:100vw;height:100vh;height:100dvh;
+    scroll-snap-align:start;scroll-snap-stop:always;
+    display:flex;align-items:center;justify-content:center;
+    padding:80px 48px 64px;
+    position:relative;overflow:hidden;
+  }
+
+  @media(max-width:768px){
+    body{height:100svh;overflow:hidden}
+    .deck{
+      flex-direction:column;
+      overflow-x:hidden;overflow-y:auto;
+      height:100svh;
+      scroll-snap-type:y mandatory;
+    }
+    .slide{
+      flex:0 0 100svh;width:100vw;height:100svh;max-height:100svh;
+      padding:calc(env(safe-area-inset-top,0px) + 28px) max(env(safe-area-inset-right,0px),20px) calc(env(safe-area-inset-bottom,0px) + 70px) max(env(safe-area-inset-left,0px),20px);
+      align-items:flex-start;
+    }
+  }
+
+  /* ─── nav dots ─── */
+  .nav{
+    position:fixed;right:18px;top:50%;transform:translateY(-50%);
+    display:flex;flex-direction:column;gap:8px;z-index:200;
+  }
+  .dot{
+    width:6px;height:6px;border-radius:50%;
+    background:var(--cream-warm);opacity:.4;
+    cursor:pointer;transition:all .3s ease;
+    border:none;padding:0;
+  }
+  .dot.active{opacity:1;background:var(--red);transform:scale(1.4)}
+  @media(max-width:768px){
+    .nav{
+      right:auto;bottom:20px;top:auto;
+      left:50%;transform:translateX(-50%);
+      flex-direction:row;
+    }
+  }
+
+  /* ─── wordmark ─── */
+  .wordmark{
+    position:fixed;top:20px;left:28px;z-index:200;
+    font-family:'JetBrains Mono','Courier New',monospace;
+    font-size:11px;font-weight:500;letter-spacing:3px;
+    color:var(--cream);opacity:.7;text-transform:uppercase;
+  }
+  @media(max-width:768px){.wordmark{top:12px;left:16px;font-size:10px;letter-spacing:2px}}
+
+  /* ─── slide counter ─── */
+  .counter{
+    position:fixed;bottom:20px;right:28px;z-index:200;
+    font-family:'JetBrains Mono',monospace;font-size:10px;
+    letter-spacing:2px;color:var(--cream-warm);opacity:.5;
+  }
+  @media(max-width:768px){.counter{bottom:56px;right:16px}}
+
+  /* ─── type ─── */
+  .mono{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:var(--cream-warm);text-transform:uppercase}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--red)}
+  .title{
+    font-family:'Anton','Impact',sans-serif;
+    font-weight:400;
+    line-height:.9;letter-spacing:-.02em;
+    text-transform:uppercase;
+    text-shadow:2px 0 0 var(--red),-2px 0 0 var(--blue-soft);
+  }
+  h1.title{font-size:clamp(52px,7.5vw,110px)}
+  h2.title{font-size:clamp(40px,5.5vw,80px)}
+  .red{color:var(--red)}
+  .muted{color:var(--cream-warm)}
+  .wrap{display:flex;flex-direction:column;gap:20px;max-width:900px;width:100%}
+
+  /* ─── S1 · hero ─── */
+  .s1{background:var(--ink)}
+  .s1 .lede{font-size:clamp(17px,2vw,22px);line-height:1.45;color:var(--cream);max-width:560px;font-weight:400}
+  .s1 .lede strong{color:var(--red);font-weight:700}
+  .cta-row{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:8px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--red);color:#fff;
+    font-family:'Inter',sans-serif;font-size:15px;font-weight:700;
+    padding:16px 32px;border:none;cursor:pointer;
+    transition:background .2s,transform .15s;
+    text-decoration:none;letter-spacing:.5px;
+  }
+  .btn:hover{background:var(--red-deep);transform:translateY(-1px)}
+  .btn-ghost{
+    background:transparent;border:1px solid var(--line);color:var(--cream-warm);
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;
+    padding:16px 24px;cursor:pointer;transition:border-color .2s,color .2s;text-decoration:none;
+  }
+  .btn-ghost:hover{border-color:var(--cream-warm);color:var(--cream)}
+  .price-hint{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--cream-warm)}
+
+  @media(max-width:768px){
+    .s1{align-items:center}
+    .s1 .wrap{gap:18px}
+    h1.title{font-size:clamp(44px,12vw,64px) !important;hyphens:none}
+    .s1 .lede{font-size:16px}
+    .btn{padding:14px 28px;font-size:14px;width:100%;justify-content:center}
+    .btn-ghost{width:100%;justify-content:center;text-align:center}
+    .cta-row{flex-direction:column;gap:12px}
+  }
+
+  /* ─── S2 · problema ─── */
+  .s2{background:var(--ink)}
+  .pain-list{
+    display:flex;flex-direction:column;gap:0;
+    border-left:2px solid var(--line);
+    padding-left:0;list-style:none;
+  }
+  .pain-list li{
+    padding:18px 0 18px 28px;
+    font-size:clamp(18px,2.2vw,26px);
+    font-weight:500;
+    line-height:1.25;
+    color:var(--cream);
+    border-bottom:1px solid var(--line);
+    transition:color .3s,border-left-color .3s;
+    cursor:default;
+  }
+  .pain-list li:last-child{border-bottom:none}
+  .pain-list li span.cut{
+    color:var(--cream-warm);
+    text-decoration:line-through;
+    text-decoration-color:var(--red);
+    text-decoration-thickness:2px;
+  }
+  .pain-list li span.real{color:var(--red);font-weight:700}
+  .s2-right{
+    flex:0 0 38%;display:flex;flex-direction:column;justify-content:center;gap:16px;
+    padding-left:32px;border-left:1px solid var(--line);
+  }
+  .s2-wrap{display:flex;gap:40px;align-items:stretch;width:100%;max-width:1100px}
+  .s2-left{flex:1}
+  .s2-stat{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(52px,6vw,88px);line-height:.85;color:var(--red);text-shadow:1px 0 0 var(--red-deep)}
+  .s2-stat-label{font-size:13px;color:var(--cream-warm);line-height:1.4;margin-top:6px;max-width:180px}
+
+  @media(max-width:768px){
+    .s2-wrap{flex-direction:column;gap:24px;max-width:100%}
+    .s2-right{flex:none;padding-left:0;border-left:none;border-top:1px solid var(--line);padding-top:20px;flex-direction:row;gap:24px;flex-wrap:wrap}
+    .pain-list li{font-size:17px;padding:14px 0 14px 20px}
+    .s2-stat{font-size:clamp(44px,10vw,64px)}
+  }
+
+  /* ─── S3 · sistema ─── */
+  .s3{background:var(--ink)}
+  .system-block{
+    background:var(--ash);
+    border:1px solid var(--line);
+    padding:32px;
+    position:relative;
+    overflow:hidden;
+  }
+  .system-block::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,var(--red),transparent);
+  }
+  .system-lede{font-size:clamp(18px,2.2vw,24px);line-height:1.4;color:var(--cream);max-width:600px}
+  .system-lede strong{color:var(--red)}
+  .components{
+    display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;
+  }
+  .tag{
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;
+    padding:8px 14px;border:1px solid var(--line);color:var(--cream-warm);
+    text-transform:uppercase;
+  }
+  .tag.active{border-color:var(--red);color:var(--cream);background:rgba(224,78,28,.08)}
+  .result-line{
+    margin-top:28px;padding-top:20px;border-top:1px solid var(--line);
+    font-size:clamp(15px,1.8vw,19px);color:var(--cream-warm);line-height:1.5;
+  }
+  .result-line strong{color:var(--cream)}
+
+  @media(max-width:768px){
+    .system-block{padding:22px}
+    .system-lede{font-size:17px}
+    .components{gap:8px}
+    .tag{font-size:10px;padding:7px 11px}
+    .result-line{font-size:15px}
+  }
+
+  /* ─── S4 · pricing ─── */
+  .s4{background:var(--ink)}
+  .pricing-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    margin-top:4px;
+  }
+  .tier{
+    background:var(--ash);padding:28px 24px;display:flex;flex-direction:column;gap:12px;
+    transition:background .25s;cursor:default;
+  }
+  .tier:hover{background:#111D38}
+  .tier.featured{background:#0F1E3A;position:relative}
+  .tier.featured::before{
+    content:"MÁS ELEGIDO";position:absolute;top:-1px;left:50%;transform:translateX(-50%);
+    font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;
+    background:var(--red);color:#fff;padding:4px 12px;white-space:nowrap;
+  }
+  .tier-name{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:var(--cream-warm);text-transform:uppercase}
+  .tier-price{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(36px,4vw,54px);color:var(--cream);line-height:1}
+  .tier-price span{font-size:18px;color:var(--cream-warm);font-family:'Inter',sans-serif;font-weight:400}
+  .tier-desc{font-size:13px;color:var(--cream-warm);line-height:1.45}
+  .tier-includes{display:flex;flex-direction:column;gap:6px;margin-top:4px;padding-top:12px;border-top:1px solid var(--line)}
+  .tier-includes li{font-size:12px;color:var(--cream-warm);list-style:none;padding-left:14px;position:relative;line-height:1.4}
+  .tier-includes li::before{content:"·";position:absolute;left:0;color:var(--red)}
+  .s4-cta{margin-top:20px}
+  .anti{
+    margin-top:20px;padding-top:16px;border-top:1px solid var(--line);
+    display:flex;gap:24px;flex-wrap:wrap;
+  }
+  .anti span{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:var(--cream-warm);text-transform:uppercase}
+  .anti span::before{content:"✗ ";color:var(--red)}
+
+  @media(max-width:768px){
+    .s4{align-items:flex-start}
+    .pricing-grid{grid-template-columns:1fr}
+    .tier{padding:22px 18px}
+    .tier.featured::before{font-size:8px}
+    .tier-price{font-size:40px}
+    .anti{gap:14px}
+    .anti span{font-size:9px}
+    .s4 h2.title{font-size:clamp(32px,8vw,48px) !important}
+  }
+
+  /* ─── entrada ─── */
+  .slide-in{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+  .in-view .slide-in{opacity:1;transform:translateY(0)}
+  .slide-in:nth-child(2){transition-delay:.1s}
+  .slide-in:nth-child(3){transition-delay:.2s}
+  .slide-in:nth-child(4){transition-delay:.3s}
+  .slide-in:nth-child(5){transition-delay:.4s}
+</style>
+</head>
+<body>
+
+<!-- wordmark -->
+<div class="wordmark">AURY</div>
+
+<!-- nav dots -->
+<nav class="nav" id="navDots">
+  <button class="dot active" data-idx="0" aria-label="Slide 1"></button>
+  <button class="dot" data-idx="1" aria-label="Slide 2"></button>
+  <button class="dot" data-idx="2" aria-label="Slide 3"></button>
+  <button class="dot" data-idx="3" aria-label="Slide 4"></button>
+</nav>
+
+<!-- counter -->
+<div class="counter" id="counter">01 / 04</div>
+
+<main class="deck" id="deck">
+
+  <!-- ─── S1 · EL GOLPE ─── -->
+  <section class="slide s1" id="s1">
+    <div class="wrap">
+      <div class="eyebrow slide-in">AURY · Performance Marketing</div>
+      <h1 class="title slide-in">
+        Convierte el doble<br>
+        de leads en clientes.<br>
+        <span class="red">Mismo presupuesto.</span>
+      </h1>
+      <p class="lede slide-in">
+        Construimos el sistema completo que conecta tus anuncios con tus ventas reales.<br>
+        <strong>Google y Meta aprenden de compradores, no de clicks.</strong>
+      </p>
+      <div class="cta-row slide-in">
+        <a href="#s4" class="btn" id="heroBtn">Quiero esto →</a>
+        <span class="price-hint">Desde €600 / mes · sin % del ad spend</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── S2 · EL PROBLEMA ─── -->
+  <section class="slide s2" id="s2">
+    <div class="s2-wrap">
+      <div class="s2-left">
+        <div class="wrap" style="max-width:100%">
+          <div class="eyebrow slide-in">El problema</div>
+          <ul class="pain-list slide-in">
+            <li>Gastas en ads. <span class="real">No sabes qué ad cerró la venta.</span></li>
+            <li>Tienes leads. <span class="real">No sabes cuáles valen.</span></li>
+            <li>Google optimiza. <span class="cut">Para los datos equivocados.</span></li>
+            <li>Tu competidor ya sabe qué funciona. <span class="real">Tú todavía adivinas.</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="s2-right slide-in">
+        <div>
+          <div class="s2-stat">2×</div>
+          <div class="s2-stat-label">más conversiones cuando Meta aprende de compradores reales</div>
+        </div>
+        <div style="margin-top:12px">
+          <div class="s2-stat" style="font-size:clamp(36px,4vw,60px)">€0</div>
+          <div class="s2-stat-label">extra de presupuesto necesario para lograrlo</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── S3 · LA SOLUCIÓN ─── -->
+  <section class="slide s3" id="s3">
+    <div class="wrap" style="max-width:860px">
+      <div class="eyebrow slide-in">El sistema</div>
+      <h2 class="title slide-in" style="font-size:clamp(36px,5vw,68px)">
+        Conectamos tus anuncios<br>con tus ventas reales.
+      </h2>
+      <div class="system-block slide-in">
+        <p class="system-lede">
+          Construimos y operamos la infraestructura completa para que <strong>Google y Meta aprendan de lo que realmente importa:</strong> quién compró, cuánto pagó, quién volvió.
+        </p>
+        <div class="components">
+          <span class="tag active">Campañas</span>
+          <span class="tag active">Landing funnel</span>
+          <span class="tag active">CRM</span>
+          <span class="tag active">Tracking avanzado</span>
+          <span class="tag active">Señales de conversión</span>
+          <span class="tag active">Analítica</span>
+        </div>
+        <p class="result-line">
+          Resultado: <strong>sabes exactamente qué está funcionando</strong> y qué parte del sistema hay que optimizar. No más intuición.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── S4 · PRICING ─── -->
+  <section class="slide s4" id="s4">
+    <div class="wrap" style="max-width:960px">
+      <div class="eyebrow slide-in">Empieza hoy</div>
+      <h2 class="title slide-in">Elige tu sistema.</h2>
+      <div class="pricing-grid slide-in">
+        <div class="tier">
+          <div class="tier-name">Meta Signal System</div>
+          <div class="tier-price">€600<span>/mes</span></div>
+          <div class="tier-desc">Infraestructura técnica completa para que Meta aprenda de compradores reales.</div>
+          <ul class="tier-includes">
+            <li>Landing funnel</li>
+            <li>CRM en GHL</li>
+            <li>Tracking + señales de conversión</li>
+            <li>Analítica + heatmaps</li>
+          </ul>
+        </div>
+        <div class="tier featured">
+          <div class="tier-name">Google Growth System</div>
+          <div class="tier-price">€1.000<span>/mes</span></div>
+          <div class="tier-desc">Sistema completo con gestión de campañas Google Ads incluida.</div>
+          <ul class="tier-includes">
+            <li>Google Ads operado</li>
+            <li>Landing funnel</li>
+            <li>CRM en GHL</li>
+            <li>Tracking + señales de conversión</li>
+            <li>Analítica + heatmaps</li>
+            <li>Optimización continua</li>
+          </ul>
+        </div>
+        <div class="tier">
+          <div class="tier-name">Full Funnel System</div>
+          <div class="tier-price">€1.500<span>/mes</span></div>
+          <div class="tier-desc">Google + Meta + funnel completo. Infraestructura de captación integral.</div>
+          <ul class="tier-includes">
+            <li>Google Ads operado</li>
+            <li>Meta Signal System</li>
+            <li>Landing funnel</li>
+            <li>CRM en GHL</li>
+            <li>Tracking + señales de conversión</li>
+            <li>Reporting mensual completo</li>
+          </ul>
+        </div>
+      </div>
+      <div class="s4-cta slide-in">
+        <a href="https://api.whatsapp.com/send?phone=34000000000&text=Hola%2C%20quiero%20información%20sobre%20AURY" class="btn" target="_blank" rel="noopener">Empezar ahora →</a>
+      </div>
+      <div class="anti slide-in">
+        <span>Community managers</span>
+        <span>Clicks sin datos</span>
+        <span>Creativos sin estrategia</span>
+        <span>% del ad spend</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+(function(){
+  var deck=document.getElementById('deck');
+  var dots=document.querySelectorAll('.dot');
+  var counter=document.getElementById('counter');
+  var slides=document.querySelectorAll('.slide');
+  var current=0;
+
+  function pad(n){return n<10?'0'+n:String(n)}
+
+  function setSlide(idx){
+    current=idx;
+    dots.forEach(function(d,i){d.classList.toggle('active',i===idx)});
+    counter.textContent=pad(idx+1)+' / '+pad(slides.length);
+  }
+
+  // nav dots click
+  dots.forEach(function(d){
+    d.addEventListener('click',function(){
+      var idx=parseInt(d.getAttribute('data-idx'));
+      if(window.innerWidth<=768){
+        slides[idx].scrollIntoView({behavior:'smooth'});
+      } else {
+        deck.scrollTo({left:idx*window.innerWidth,behavior:'smooth'});
+      }
+    });
+  });
+
+  // hero CTA → S4
+  document.getElementById('heroBtn').addEventListener('click',function(e){
+    e.preventDefault();
+    if(window.innerWidth<=768){
+      slides[3].scrollIntoView({behavior:'smooth'});
+    } else {
+      deck.scrollTo({left:3*window.innerWidth,behavior:'smooth'});
+    }
+  });
+
+  // scroll observer for dots + counter
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var idx=Array.prototype.indexOf.call(slides,e.target);
+      if(idx>=0) setSlide(idx);
+    });
+  },{threshold:0.55});
+  slides.forEach(function(s){obs.observe(s)});
+
+  // in-view animation observer
+  var animObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting) e.target.classList.add('in-view');
+    });
+  },{threshold:0.3});
+  slides.forEach(function(s){animObs.observe(s)});
+})();
+</script>
+</body>
+</html>
