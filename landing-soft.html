@@ -773,23 +773,20 @@
   .num-popped{animation:num-pop .35s ease-out}
 
   /* fugas borde flash al contar */
-  /* ─── s2 beats ─── */
-  .s2-beats{display:flex;flex-direction:column;gap:0;margin-top:20px}
-  .s2-beat{display:flex;align-items:flex-start;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
-  .s2-beat:first-child{border-top:1px solid var(--line)}
-  .s2-n{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--red);min-width:22px;padding-top:4px;flex-shrink:0}
-  .s2-beat p{font-family:'Inter',sans-serif;font-size:clamp(17px,2.8vw,24px);font-weight:600;color:var(--cream);line-height:1.25}
-  .s2-beat--key p em{color:var(--red);font-style:normal}
+  /* ─── s2 narrative ─── */
+  .s2-story{display:flex;flex-direction:column;gap:28px;margin-top:24px}
+  .s2-story p{font-family:'Inter',sans-serif;font-size:clamp(18px,3vw,26px);font-weight:500;color:rgba(237,237,237,.75);line-height:1.45}
+  .s2-reveal{color:var(--cream) !important;font-weight:700 !important}
   @keyframes fuga-flash{
     0%,100%{border-color:var(--cream)}
     50%{border-color:var(--red);box-shadow:0 0 0 2px rgba(229,9,20,.15)}
   }
-  .s2.in-view .s2-beat{
+  .s2.in-view .s2-story p{
     animation:fuga-flash 1.6s ease-out;
   }
-  .s2.in-view .s2-beat:nth-child(1){animation-delay:200ms}
-  .s2.in-view .s2-beat:nth-child(2){animation-delay:450ms}
-  .s2.in-view .s2-beat:nth-child(3){animation-delay:700ms}
+  .s2.in-view .s2-story p:nth-child(1){animation-delay:200ms}
+  .s2.in-view .s2-story p:nth-child(2){animation-delay:500ms}
+  .s2.in-view .s2-story p:nth-child(3){animation-delay:900ms}
 
   /* CTA glow en slide 7 entry */
   @keyframes cta-pulse{
@@ -810,7 +807,7 @@
 
   /* respect reduced motion */
   @media (prefers-reduced-motion: reduce){
-    .slide .wrap > *,.slide.in-view h1.title,.slide.in-view h2.title,.s6.in-view .tier.featured,.s2.in-view .s2-beat,.s7.in-view .cta,.s1.in-view .sator{
+    .slide .wrap > *,.slide.in-view h1.title,.slide.in-view h2.title,.s6.in-view .tier.featured,.s2.in-view .s2-story p,.s7.in-view .cta,.s1.in-view .sator{
       animation:none !important;transition:none !important;
       opacity:1 !important;transform:none !important;
     }
@@ -869,10 +866,10 @@
     <div class="wrap">
       <span class="eyebrow">★ POR QUÉ EL ALGORITMO NO TE TRAE COMPRADORES</span>
       <h2 class="title">Datos sucios.<br>Algoritmo <span class="y">ciego</span><span class="stop">.</span></h2>
-      <div class="s2-beats">
-        <div class="s2-beat"><span class="s2-n">01</span><p>El algoritmo nunca supo quién compró.</p></div>
-        <div class="s2-beat"><span class="s2-n">02</span><p>Le mostraste clicks, no compradores.</p></div>
-        <div class="s2-beat s2-beat--key"><span class="s2-n">03</span><p>Le falta el dato más importante: <em>el cierre.</em></p></div>
+      <div class="s2-story">
+        <p>Tu cliente vio el anuncio, lo pensó tres días, te escribió por WhatsApp y pagó.</p>
+        <p class="s2-reveal">El algoritmo no sabe que pagó.<br>Para él, ese anuncio no funcionó.</p>
+        <p>Le mostraste clicks. Nunca le dijiste quién compró.</p>
       </div>
       <span class="mono">★ El algoritmo optimiza para lo que le muestras. Si le muestras clicks, trae clicks. Si le muestras compradores, trae compradores.</span>
     </div>
