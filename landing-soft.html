@@ -169,11 +169,15 @@
     /* s4 · 4 partes mobile */
     .s4 .lede{display:none}
     .s4 .wrap{height:100%;justify-content:flex-start}
-    .partes{display:flex;flex-direction:column;gap:7px;flex:1;margin-top:8px;overflow:hidden}
-    .parte{border-left:2px solid var(--red);padding:5px 0 5px 10px;display:flex;flex-direction:column}
-    .parte-num{font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:2px;color:var(--red);text-transform:uppercase;margin-bottom:2px}
-    .parte-nm{font-family:'Anton',sans-serif;font-size:14px;text-transform:uppercase;color:var(--cream);line-height:1;margin-bottom:3px}
-    .parte-desc{font-family:'Inter',sans-serif;font-size:10px;line-height:1.38;color:#a8a8a8}
+    .s4-grid{display:flex;flex-direction:column;gap:10px;margin-top:8px;flex:1;min-height:0}
+    .partes{display:flex;flex-direction:column;gap:5px;flex:0 0 auto}
+    .parte{border-left:2px solid var(--ink);padding:4px 8px 4px 10px}
+    .parte-num{font-size:7px;margin-bottom:1px}
+    .parte-nm{font-size:13px;margin-bottom:0}
+    .s4-info{padding:12px 14px;font-size:11px}
+    .info-tag{font-size:8px;letter-spacing:2px;margin-bottom:6px}
+    .info-title{font-size:18px;margin-bottom:7px}
+    .info-desc{font-size:11px;line-height:1.4}
     .cierre{font-family:'Anton',sans-serif;font-size:clamp(15px,4vw,20px);color:var(--yellow);text-transform:uppercase;letter-spacing:1px;display:block;margin-top:8px;text-align:right}
 
     /* s5 · casos mobile · body truncado a 3 líneas */
@@ -346,11 +350,106 @@
   .qs li:nth-child(5)::before{color:var(--yellow)}
 
   /* ─── 4 partes (desktop) ─── */
-  .partes{display:flex;flex-direction:column;gap:14px;flex:1;margin-top:14px;overflow:hidden}
-  .parte{border-left:3px solid var(--red);padding:8px 0 8px 18px;display:flex;flex-direction:column}
-  .parte-num{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--red);text-transform:uppercase;margin-bottom:3px}
-  .parte-nm{font-family:'Anton',sans-serif;font-size:clamp(17px,2vw,26px);text-transform:uppercase;color:var(--cream);line-height:1;margin-bottom:5px}
-  .parte-desc{font-family:'Inter',sans-serif;font-size:clamp(12px,1.2vw,14px);line-height:1.45;color:#a8a8a8}
+  .s4-grid{display:flex;gap:24px;align-items:stretch;flex:1;margin-top:14px;min-height:0}
+  .partes{display:flex;flex-direction:column;gap:12px;flex:0 0 42%}
+  .parte{
+    border-left:3px solid var(--ink);
+    padding:10px 12px 10px 16px;
+    display:flex;
+    flex-direction:column;
+    cursor:pointer;
+    transition:all .35s cubic-bezier(.4,0,.2,1);
+    position:relative;
+    background:transparent;
+  }
+  .parte::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    border:1px solid transparent;
+    pointer-events:none;
+    transition:all .35s ease;
+  }
+  .parte:hover{background:rgba(0,0,0,.04)}
+  .parte.is-active{
+    background:var(--ink);
+    border-left-color:var(--red);
+    transform:translateX(4px);
+    box-shadow:0 0 24px rgba(224,78,28,.4), 0 0 0 1px rgba(224,78,28,.6);
+  }
+  .parte.is-active::before{border-color:var(--red);animation:xbox-pulse 1.4s ease-out}
+  @keyframes xbox-pulse{
+    0%{box-shadow:0 0 0 0 rgba(224,78,28,.7), inset 0 0 20px rgba(224,78,28,.3)}
+    100%{box-shadow:0 0 0 12px rgba(224,78,28,0), inset 0 0 0 rgba(224,78,28,0)}
+  }
+  .parte.is-active .parte-num{color:var(--red)}
+  .parte.is-active .parte-nm{color:var(--cream)}
+  .parte-num{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--ink);text-transform:uppercase;margin-bottom:3px;transition:color .3s}
+  .parte-nm{font-family:'Anton',sans-serif;font-size:clamp(17px,2vw,26px);text-transform:uppercase;color:var(--ink);line-height:1;transition:color .3s}
+
+  /* Xbox blade info panel */
+  .s4-info{
+    flex:1;
+    background:linear-gradient(135deg, rgba(8,13,24,.96), rgba(8,13,24,.88));
+    border:1px solid rgba(224,78,28,.55);
+    box-shadow:
+      0 0 32px rgba(224,78,28,.35),
+      inset 0 0 60px rgba(224,78,28,.06),
+      inset 0 1px 0 rgba(255,255,255,.04);
+    padding:22px 24px;
+    position:relative;
+    clip-path:polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+  }
+  .s4-info::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,.012) 3px, rgba(255,255,255,.012) 4px);
+    pointer-events:none;
+  }
+  .s4-info::after{
+    content:'';
+    position:absolute;
+    top:0;left:0;right:0;
+    height:1px;
+    background:linear-gradient(90deg, transparent, var(--red), transparent);
+    opacity:.7;
+  }
+  .info-tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    letter-spacing:3px;
+    color:var(--red);
+    text-transform:uppercase;
+    margin-bottom:10px;
+    opacity:.85;
+  }
+  .info-title{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(26px,3.2vw,40px);
+    color:var(--cream);
+    text-transform:uppercase;
+    line-height:1;
+    margin-bottom:14px;
+    text-shadow:0 0 18px rgba(224,78,28,.45);
+  }
+  .info-desc{
+    font-family:'Inter',sans-serif;
+    font-size:clamp(13px,1.3vw,16px);
+    line-height:1.55;
+    color:rgba(237,237,237,.82);
+  }
+  .info-panel{display:none;flex-direction:column;animation:fade-in .4s ease}
+  .info-panel.is-active{display:flex}
+  @keyframes fade-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+  @media(max-width:720px){
+    .s4-grid{flex-direction:column;gap:16px}
+    .partes{flex:0 0 auto}
+    .s4-info{padding:16px;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)}
+  }
   .cierre{font-family:'Anton',sans-serif;font-size:clamp(18px,3vw,28px);color:var(--yellow);text-transform:uppercase;letter-spacing:1px;display:block;margin-top:14px;text-align:right}
 
   /* ─── case cards ─── */
@@ -958,26 +1057,46 @@
     <div class="wrap">
       <span class="eyebrow">★ LAS 4 PARTES DE LA VUELTA COMPLETA</span>
       <h2 class="title">4 partes.<br>La vuelta <span class="y">completa</span><span class="stop">.</span></h2>
-      <div class="partes">
-        <div class="parte">
-          <div class="parte-num">PARTE 01</div>
-          <div class="parte-nm">Las cuentas</div>
-          <div class="parte-desc">Meta y Google configuradas correctamente desde el principio — sin esto, todo lo demás falla.</div>
+      <div class="s4-grid">
+        <div class="partes" id="partesNav">
+          <div class="parte" data-fase="1">
+            <div class="parte-num">PARTE 01</div>
+            <div class="parte-nm">Las cuentas</div>
+          </div>
+          <div class="parte" data-fase="2">
+            <div class="parte-num">PARTE 02</div>
+            <div class="parte-nm">El sitio web</div>
+          </div>
+          <div class="parte" data-fase="3">
+            <div class="parte-num">PARTE 03</div>
+            <div class="parte-nm">El CRM</div>
+          </div>
+          <div class="parte" data-fase="4">
+            <div class="parte-num">PARTE 04</div>
+            <div class="parte-nm">La vuelta completa</div>
+          </div>
         </div>
-        <div class="parte">
-          <div class="parte-num">PARTE 02</div>
-          <div class="parte-nm">El sitio web</div>
-          <div class="parte-desc">Optimizado para que te encuentren, para que conviertan visitas en contactos, y para que cada acción quede registrada.</div>
-        </div>
-        <div class="parte">
-          <div class="parte-num">PARTE 03</div>
-          <div class="parte-nm">El CRM</div>
-          <div class="parte-desc">El sistema donde viven tus clientes: quién agendó, quién compró, quién volvió, quién te recomendó.</div>
-        </div>
-        <div class="parte">
-          <div class="parte-num">PARTE 04</div>
-          <div class="parte-nm">La vuelta completa</div>
-          <div class="parte-desc">Tomamos lo que pasó de verdad — qué lead compró, cuánto pagó — y se lo enviamos de regreso a Meta y Google. Los anuncios aprenden a traerte clientes así. No solo clicks.</div>
+        <div class="s4-info" id="s4Info">
+          <div class="info-panel" data-fase="1">
+            <span class="info-tag">▸ FASE 01 · CIMIENTOS</span>
+            <h3 class="info-title">Las cuentas</h3>
+            <p class="info-desc">Meta y Google configuradas correctamente desde el principio. Pixel, GA4, Tag Manager, eventos. Sin esto, todo lo demás falla — el algoritmo no puede aprender de datos rotos.</p>
+          </div>
+          <div class="info-panel" data-fase="2">
+            <span class="info-tag">▸ FASE 02 · CONVERSIÓN</span>
+            <h3 class="info-title">El sitio web</h3>
+            <p class="info-desc">Optimizado para que te encuentren, para que conviertan visitas en contactos, y para que cada acción quede registrada. Velocidad, tracking, formularios, eventos clave.</p>
+          </div>
+          <div class="info-panel" data-fase="3">
+            <span class="info-tag">▸ FASE 03 · DATOS LIMPIOS</span>
+            <h3 class="info-title">El CRM</h3>
+            <p class="info-desc">El sistema donde viven tus clientes: quién agendó, quién asistió, quién compró, cuánto pagó, quién volvió, quién te recomendó. La verdad operativa de tu negocio.</p>
+          </div>
+          <div class="info-panel" data-fase="4">
+            <span class="info-tag">▸ FASE 04 · LOOP CERRADO</span>
+            <h3 class="info-title">La vuelta completa</h3>
+            <p class="info-desc">Tomamos lo que pasó de verdad — qué lead compró, cuánto pagó — y se lo enviamos de regreso a Meta y Google. Los anuncios aprenden a traerte clientes así. No solo clicks.</p>
+          </div>
         </div>
       </div>
       <span class="cierre">El ciclo se cierra.</span>
@@ -1291,6 +1410,51 @@
     }, {threshold: 0.5});
     vuObs.observe(document.querySelector('.s5'));
   }
+
+  /* ─── S4 Xbox blade cycle ─── */
+  (function(){
+    var nav = document.getElementById('partesNav');
+    var info = document.getElementById('s4Info');
+    if(!nav || !info) return;
+    var partes = nav.querySelectorAll('.parte');
+    var panels = info.querySelectorAll('.info-panel');
+    var s4 = document.querySelector('.s4');
+    var idx = 0;
+    var timer = null;
+    var hovering = false;
+    var inView = false;
+
+    function setActive(n){
+      idx = ((n % 4) + 4) % 4;
+      partes.forEach(function(p,i){
+        p.classList.toggle('is-active', i === idx);
+        if(i === idx){
+          p.classList.remove('is-active');
+          void p.offsetWidth;
+          p.classList.add('is-active');
+        }
+      });
+      panels.forEach(function(pn,i){pn.classList.toggle('is-active', i === idx)});
+    }
+    function tick(){ if(!hovering) setActive(idx + 1); }
+    function start(){
+      stop();
+      if(inView && !hovering) timer = setInterval(tick, 4000);
+    }
+    function stop(){ if(timer){clearInterval(timer); timer = null;} }
+
+    partes.forEach(function(p, i){
+      p.addEventListener('mouseenter', function(){ hovering = true; setActive(i); stop(); });
+      p.addEventListener('mouseleave', function(){ hovering = false; start(); });
+      p.addEventListener('click', function(){ setActive(i); });
+    });
+
+    setActive(0);
+    var s4Obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ inView = e.isIntersecting; if(inView) start(); else stop(); });
+    }, {threshold: 0.4});
+    s4Obs.observe(s4);
+  })();
 
 })();
 </script>
