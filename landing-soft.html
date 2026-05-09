@@ -667,6 +667,13 @@
   .s1{background:var(--ink)}
   .s2{background:var(--ink)}
   .s3{background:var(--ink)}
+  /* s3 split layout */
+  .s3-split{display:flex;gap:14px;align-items:flex-start;margin-top:4px}
+  .s3-note{flex:1;padding:14px 12px;border:1px solid var(--line);border-left:2px solid rgba(224,78,28,.4);background:rgba(255,255,255,.02)}
+  .s3-note-label{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:2px;color:rgba(224,78,28,.5);display:block;margin-bottom:8px;text-transform:uppercase}
+  .s3-note p{font-family:'Inter',sans-serif;font-size:13px;color:rgba(237,237,237,.38);line-height:1.55;font-style:italic}
+  /* SÍ stamp */
+  .si{font-style:normal;color:var(--red);display:inline-block;transform:rotate(-5deg) translateY(-2px);letter-spacing:.02em}
   .s4{background:var(--cream-warm);color:var(--ink)}
   .s4 .eyebrow{color:var(--red)}
   .s4 h2.title{color:var(--ink);text-shadow:1.5px 0 0 var(--red),-1.5px 0 0 var(--blue-soft)}
@@ -895,14 +902,20 @@
   <section class="slide s3">
     <div class="wrap">
       <span class="eyebrow">★ EL ALGORITMO APRENDE DE LO QUE LE ENSEÑAS</span>
-      <h2 class="title">Le dices quién compró.<br>Él busca más<br>como <span class="y">ese</span><span class="stop">.</span></h2>
-      <ul class="qs">
-        <li>quién agendó</li>
-        <li>quién asistió</li>
-        <li>quién compró</li>
-        <li>cuánto pagó</li>
-        <li>quién <span class="y">volvió</span></li>
-      </ul>
+      <h2 class="title">Le dices quién <em class="si">SÍ</em> compró.<br>Él busca más<br>como <span class="y">ese</span><span class="stop">.</span></h2>
+      <div class="s3-split">
+        <ul class="qs">
+          <li>quién agendó</li>
+          <li>quién asistió</li>
+          <li>quién compró</li>
+          <li>cuánto pagó</li>
+          <li>quién <span class="y">volvió</span></li>
+        </ul>
+        <div class="s3-note">
+          <span class="s3-note-label">NO</span>
+          <p>Quien le dio clic al anuncio y no compró nada.</p>
+        </div>
+      </div>
       <p class="mono">★ Sin tomar una sola decisión extra. Con datos limpios, Meta y Google mejoran solos.</p>
     </div>
   </section>
