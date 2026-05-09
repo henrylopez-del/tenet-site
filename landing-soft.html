@@ -773,20 +773,24 @@
   .num-popped{animation:num-pop .35s ease-out}
 
   /* fugas borde flash al contar */
-  /* ─── s2 narrative ─── */
-  .s2-story{display:flex;flex-direction:column;gap:28px;margin-top:24px}
-  .s2-story p{font-family:'Inter',sans-serif;font-size:clamp(18px,3vw,26px);font-weight:500;color:rgba(237,237,237,.75);line-height:1.45}
-  .s2-reveal{color:var(--cream) !important;font-weight:700 !important}
+  /* ─── s2 cards ─── */
+  .s2-cards{display:flex;flex-direction:column;gap:8px;margin-top:18px}
+  .s2-card{padding:18px 16px;border:1px solid var(--line);background:rgba(255,255,255,.02);flex:1}
+  .s2-card--end{border-color:var(--red);background:rgba(224,78,28,.05)}
+  .s2-tag{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:2px;color:var(--red);text-transform:uppercase;display:block;margin-bottom:10px}
+  .s2-card h3{font-family:'Inter',sans-serif;font-size:clamp(16px,2.5vw,20px);font-weight:700;color:var(--cream);line-height:1.25;margin-bottom:7px}
+  .s2-card p{font-family:'Inter',sans-serif;font-size:clamp(12px,1.5vw,14px);color:rgba(237,237,237,.5);line-height:1.55}
+  @media(min-width:700px){.s2-cards{flex-direction:row}}
   @keyframes fuga-flash{
     0%,100%{border-color:var(--cream)}
     50%{border-color:var(--red);box-shadow:0 0 0 2px rgba(229,9,20,.15)}
   }
-  .s2.in-view .s2-story p{
+  .s2.in-view .s2-card{
     animation:fuga-flash 1.6s ease-out;
   }
-  .s2.in-view .s2-story p:nth-child(1){animation-delay:200ms}
-  .s2.in-view .s2-story p:nth-child(2){animation-delay:500ms}
-  .s2.in-view .s2-story p:nth-child(3){animation-delay:900ms}
+  .s2.in-view .s2-card:nth-child(1){animation-delay:150ms}
+  .s2.in-view .s2-card:nth-child(2){animation-delay:400ms}
+  .s2.in-view .s2-card:nth-child(3){animation-delay:700ms}
 
   /* CTA glow en slide 7 entry */
   @keyframes cta-pulse{
@@ -807,7 +811,7 @@
 
   /* respect reduced motion */
   @media (prefers-reduced-motion: reduce){
-    .slide .wrap > *,.slide.in-view h1.title,.slide.in-view h2.title,.s6.in-view .tier.featured,.s2.in-view .s2-story p,.s7.in-view .cta,.s1.in-view .sator{
+    .slide .wrap > *,.slide.in-view h1.title,.slide.in-view h2.title,.s6.in-view .tier.featured,.s2.in-view .s2-card,.s7.in-view .cta,.s1.in-view .sator{
       animation:none !important;transition:none !important;
       opacity:1 !important;transform:none !important;
     }
@@ -866,10 +870,22 @@
     <div class="wrap">
       <span class="eyebrow">★ POR QUÉ EL ALGORITMO NO TE TRAE COMPRADORES</span>
       <h2 class="title">Datos sucios.<br>Algoritmo <span class="y">ciego</span><span class="stop">.</span></h2>
-      <div class="s2-story">
-        <p>Tu cliente vio el anuncio, lo pensó tres días, te escribió por WhatsApp y pagó.</p>
-        <p class="s2-reveal">El algoritmo no sabe que pagó.<br>Para él, ese anuncio no funcionó.</p>
-        <p>Le mostraste clicks. Nunca le dijiste quién compró.</p>
+      <div class="s2-cards">
+        <div class="s2-card">
+          <span class="s2-tag">INICIO</span>
+          <h3>Tu cliente vio el anuncio y compró.</h3>
+          <p>Lo pensó tres días. Comparó. Volvió y pagó. Pero cerró por WhatsApp. Fuera del sistema.</p>
+        </div>
+        <div class="s2-card">
+          <span class="s2-tag">LO QUE EL ALGORITMO VIO</span>
+          <h3>Un click más. Nada especial.</h3>
+          <p>Nunca supo que ese click se convirtió en dinero real. Para él, ese anuncio no funcionó.</p>
+        </div>
+        <div class="s2-card s2-card--end">
+          <span class="s2-tag">EL RESULTADO</span>
+          <h3>Optimiza para clicks.</h3>
+          <p>Porque es lo único que le enseñaste. Y así seguirá — hasta que le digas la verdad.</p>
+        </div>
       </div>
       <span class="mono">★ El algoritmo optimiza para lo que le muestras. Si le muestras clicks, trae clicks. Si le muestras compradores, trae compradores.</span>
     </div>
